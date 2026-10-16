@@ -1,0 +1,12007 @@
+{
+ "thioglycolic-acid": {
+  "annex3": [
+   {
+    "ref": "2a",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "oxalic-acid": {
+  "annex3": [
+   {
+    "ref": "3",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ammonia": {
+  "annex3": [
+   {
+    "ref": "4",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "chloramine-t": {
+  "annex3": [
+   {
+    "ref": "5",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-chlorate": {
+  "annex3": [
+   {
+    "ref": "6",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "potassium-chlorate": {
+  "annex3": [
+   {
+    "ref": "6",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "p-phenylenediamine": {
+  "annex3": [
+   {
+    "ref": "8a",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "8b",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "p-phenylenediamine-hcl": {
+  "annex3": [
+   {
+    "ref": "8a",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "8b",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "n-n-bis-2-hydroxyethyl-2-nitro-p-phenylenediamine": {
+  "annex3": [
+   {
+    "ref": "8c",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "toluene-2-5-diamine": {
+  "annex3": [
+   {
+    "ref": "9a",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "toluene-2-5-diamine-sulfate": {
+  "annex3": [
+   {
+    "ref": "9a",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-6-dihydroxyethylaminotoluene": {
+  "annex3": [
+   {
+    "ref": "9b",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydrogen-peroxide": {
+  "annex3": [
+   {
+    "ref": "12",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroquinone": {
+  "annex3": [
+   {
+    "ref": "14",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "potassium-hydroxide": {
+  "annex3": [
+   {
+    "ref": "15a",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "15d",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-hydroxide": {
+  "annex3": [
+   {
+    "ref": "15a",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lithium-hydroxide": {
+  "annex3": [
+   {
+    "ref": "15b",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "calcium-hydroxide": {
+  "annex3": [
+   {
+    "ref": "15c",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-naphthol": {
+  "annex3": [
+   {
+    "ref": "16",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-nitrite": {
+  "annex3": [
+   {
+    "ref": "17",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "nitromethane": {
+  "annex3": [
+   {
+    "ref": "18",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "quinine": {
+  "annex3": [
+   {
+    "ref": "21",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "resorcinol": {
+  "annex3": [
+   {
+    "ref": "22",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-acetate": {
+  "annex3": [
+   {
+    "ref": "24",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-chloride": {
+  "annex3": [
+   {
+    "ref": "24",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-gluconate": {
+  "annex3": [
+   {
+    "ref": "24",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-glutamate": {
+  "annex3": [
+   {
+    "ref": "24",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-citrate": {
+  "annex3": [
+   {
+    "ref": "24",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-phenolsulfonate": {
+  "annex3": [
+   {
+    "ref": "25",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ammonium-monofluorophosphate": {
+  "annex3": [
+   {
+    "ref": "26",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-monofluorophosphate": {
+  "annex3": [
+   {
+    "ref": "27",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "potassium-monofluorophosphate": {
+  "annex3": [
+   {
+    "ref": "28",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "calcium-monofluorophosphate": {
+  "annex3": [
+   {
+    "ref": "29",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "calcium-fluoride": {
+  "annex3": [
+   {
+    "ref": "30",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-fluoride": {
+  "annex3": [
+   {
+    "ref": "31",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "potassium-fluoride": {
+  "annex3": [
+   {
+    "ref": "32",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ammonium-fluoride": {
+  "annex3": [
+   {
+    "ref": "33",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "aluminum-fluoride": {
+  "annex3": [
+   {
+    "ref": "34",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "stannous-fluoride": {
+  "annex3": [
+   {
+    "ref": "35",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cetylamine-hydrofluoride": {
+  "annex3": [
+   {
+    "ref": "36",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-fluorosilicate": {
+  "annex3": [
+   {
+    "ref": "40",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "potassium-fluorosilicate": {
+  "annex3": [
+   {
+    "ref": "41",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ammonium-fluorosilicate": {
+  "annex3": [
+   {
+    "ref": "42",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "magnesium-fluorosilicate": {
+  "annex3": [
+   {
+    "ref": "43",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "dimethylol-ethylene-thiourea": {
+  "annex3": [
+   {
+    "ref": "44",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzyl-alcohol": {
+  "annex3": [
+   {
+    "ref": "45",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "34"
+  ],
+  "annex6": []
+ },
+ "6-methyl-coumarin": {
+  "annex3": [
+   {
+    "ref": "46",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "silver-nitrate": {
+  "annex3": [
+   {
+    "ref": "48",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "selenium-sulfide": {
+  "annex3": [
+   {
+    "ref": "49",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "methyl-alcohol": {
+  "annex3": [
+   {
+    "ref": "52",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isopropyl-alcohol": {
+  "annex3": [
+   {
+    "ref": "52",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "etidronic-acid": {
+  "annex3": [
+   {
+    "ref": "53",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "phenoxyisopropanol": {
+  "annex3": [
+   {
+    "ref": "54",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "43"
+  ],
+  "annex6": []
+ },
+ "magnesium-fluoride": {
+  "annex3": [
+   {
+    "ref": "56",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "strontium-chloride-hexahydrate": {
+  "annex3": [
+   {
+    "ref": "57",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "strontium-chloride": {
+  "annex3": [
+   {
+    "ref": "57",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "strontium-acetate": {
+  "annex3": [
+   {
+    "ref": "58",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "talc": {
+  "annex3": [
+   {
+    "ref": "59",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "strontium-hydroxide": {
+  "annex3": [
+   {
+    "ref": "63",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "strontium-peroxide": {
+  "annex3": [
+   {
+    "ref": "64",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzalkonium-chloride": {
+  "annex3": [
+   {
+    "ref": "65",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "54"
+  ],
+  "annex6": []
+ },
+ "benzalkonium-bromide": {
+  "annex3": [
+   {
+    "ref": "65",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "54"
+  ],
+  "annex6": []
+ },
+ "benzalkonium-saccharinate": {
+  "annex3": [
+   {
+    "ref": "65",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "54"
+  ],
+  "annex6": []
+ },
+ "amyl-cinnamal": {
+  "annex3": [
+   {
+    "ref": "67",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cinnamyl-alcohol": {
+  "annex3": [
+   {
+    "ref": "69",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citral": {
+  "annex3": [
+   {
+    "ref": "70",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "phenol": {
+  "annex3": [
+   {
+    "ref": "71",
+    "allergen": true,
+    "restricted": false
+   },
+   {
+    "ref": "73",
+    "allergen": true,
+    "restricted": true
+   },
+   {
+    "ref": "201",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "269",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "284",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "303",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "319",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "368",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [
+   "151",
+   "152"
+  ],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1175"
+  ]
+ },
+ "eugenol": {
+  "annex3": [
+   {
+    "ref": "71",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxycitronellal": {
+  "annex3": [
+   {
+    "ref": "72",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isoeugenol": {
+  "annex3": [
+   {
+    "ref": "73",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "amylcinnamyl-alcohol": {
+  "annex3": [
+   {
+    "ref": "74",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzyl-salicylate": {
+  "annex3": [
+   {
+    "ref": "75",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cinnamal": {
+  "annex3": [
+   {
+    "ref": "76",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "coumarin": {
+  "annex3": [
+   {
+    "ref": "77",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "geraniol": {
+  "annex3": [
+   {
+    "ref": "78",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "anise-alcohol": {
+  "annex3": [
+   {
+    "ref": "80",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzyl-cinnamate": {
+  "annex3": [
+   {
+    "ref": "81",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "farnesol": {
+  "annex3": [
+   {
+    "ref": "82",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "linalool": {
+  "annex3": [
+   {
+    "ref": "84",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzyl-benzoate": {
+  "annex3": [
+   {
+    "ref": "85",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citronellol": {
+  "annex3": [
+   {
+    "ref": "86",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hexyl-cinnamal": {
+  "annex3": [
+   {
+    "ref": "87",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "limonene": {
+  "annex3": [
+   {
+    "ref": "88",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "methyl-2-octynoate": {
+  "annex3": [
+   {
+    "ref": "89",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "alpha-isomethyl-ionone": {
+  "annex3": [
+   {
+    "ref": "90",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "evernia-prunastri-extract": {
+  "annex3": [
+   {
+    "ref": "91",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "evernia-furfuracea-extract": {
+  "annex3": [
+   {
+    "ref": "92",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "diaminopyrimidine-oxide": {
+  "annex3": [
+   {
+    "ref": "93",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzoyl-peroxide": {
+  "annex3": [
+   {
+    "ref": "94",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "musk-xylene": {
+  "annex3": [
+   {
+    "ref": "96",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "musk-ketone": {
+  "annex3": [
+   {
+    "ref": "97",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzoic-acid": {
+  "annex3": [
+   {
+    "ref": "98",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "1"
+  ],
+  "annex6": [
+   "3",
+   "17",
+   "28"
+  ]
+ },
+ "salicylic-acid": {
+  "annex3": [
+   {
+    "ref": "98",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "triclocarban": {
+  "annex3": [
+   {
+    "ref": "100",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "23"
+  ],
+  "annex6": []
+ },
+ "methyl-eugenol": {
+  "annex3": [
+   {
+    "ref": "102",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-alba-cone-oil": {
+  "annex3": [
+   {
+    "ref": "103",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-alba-cone-extract": {
+  "annex3": [
+   {
+    "ref": "103",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-alba-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "103",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-alba-leaf-cera": {
+  "annex3": [
+   {
+    "ref": "103",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-alba-needle-extract": {
+  "annex3": [
+   {
+    "ref": "103",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-alba-needle-oil": {
+  "annex3": [
+   {
+    "ref": "103",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-pectinata-oil": {
+  "annex3": [
+   {
+    "ref": "105",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-pectinata-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "105",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-pectinata-needle-extract": {
+  "annex3": [
+   {
+    "ref": "105",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-pectinata-needle-oil": {
+  "annex3": [
+   {
+    "ref": "105",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-sibirica-oil": {
+  "annex3": [
+   {
+    "ref": "106",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-sibirica-needle-extract": {
+  "annex3": [
+   {
+    "ref": "106",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-sibirica-needle-oil": {
+  "annex3": [
+   {
+    "ref": "106",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-balsamea-needle-oil": {
+  "annex3": [
+   {
+    "ref": "107",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-balsamea-needle-extract": {
+  "annex3": [
+   {
+    "ref": "107",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-balsamea-resin": {
+  "annex3": [
+   {
+    "ref": "107",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-balsamea-extract": {
+  "annex3": [
+   {
+    "ref": "107",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "abies-balsamea-balsam-extract": {
+  "annex3": [
+   {
+    "ref": "107",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-mugo-pumilio-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "108",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-mugo-pumilio-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "108",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-mugo-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "109",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-mugo-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "109",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-mugo-twig-oil": {
+  "annex3": [
+   {
+    "ref": "109",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-oil": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-leaf-water": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-cone-extract": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-bark-extract": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-bud-extract": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-sylvestris-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "110",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-nigra-bud-needle-extract": {
+  "annex3": [
+   {
+    "ref": "111",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-nigra-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "111",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-nigra-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "111",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-palustris-oil": {
+  "annex3": [
+   {
+    "ref": "112",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-palustris-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "112",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-palustris-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "112",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-palustris-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "112",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-pinaster-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "113",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-pinaster-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "113",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-pumila-needle-extract": {
+  "annex3": [
+   {
+    "ref": "114",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-pumila-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "114",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-pumila-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "114",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-strobus-bark-extract": {
+  "annex3": [
+   {
+    "ref": "115",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-strobus-cone-extract": {
+  "annex3": [
+   {
+    "ref": "115",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-strobus-twig-oil": {
+  "annex3": [
+   {
+    "ref": "115",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-species-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "115",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-species-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "115",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-cembra-twig-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "116",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-cembra-twig-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "116",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinus-cembra-twig-leaf-extract-acetylated": {
+  "annex3": [
+   {
+    "ref": "117",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "picea-mariana-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "118",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "picea-mariana-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "118",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "thuja-occidentalis-bark-extract": {
+  "annex3": [
+   {
+    "ref": "119",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "thuja-occidentalis-leaf": {
+  "annex3": [
+   {
+    "ref": "119",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "thuja-occidentalis-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "119",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "thuja-occidentalis-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "119",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "thuja-occidentalis-stem-oil": {
+  "annex3": [
+   {
+    "ref": "119",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "thuja-occidentalis-root-extract": {
+  "annex3": [
+   {
+    "ref": "119",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-carene": {
+  "annex3": [
+   {
+    "ref": "121",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cedrus-atlantica-bark-extract": {
+  "annex3": [
+   {
+    "ref": "122",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cedrus-atlantica-bark-oil": {
+  "annex3": [
+   {
+    "ref": "122",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cedrus-atlantica-bark-water": {
+  "annex3": [
+   {
+    "ref": "122",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cedrus-atlantica-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "122",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cedrus-atlantica-wood-extract": {
+  "annex3": [
+   {
+    "ref": "122",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cedrus-atlantica-wood-oil": {
+  "annex3": [
+   {
+    "ref": "122",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-oil": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-bark-extract": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-cone-extract": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-fruit-extract": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-leaf-nut-stem-oil": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-leaf-stem-extract": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-leaf-water": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cupressus-sempervirens-seed-extract": {
+  "annex3": [
+   {
+    "ref": "123",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "turpentine": {
+  "annex3": [
+   {
+    "ref": "124",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "terpene-alcohols-acetates": {
+  "annex3": [
+   {
+    "ref": "127",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "terpene-hydrocarbons": {
+  "annex3": [
+   {
+    "ref": "128",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "terpenes-and-terpenoids": {
+  "annex3": [
+   {
+    "ref": "129",
+    "allergen": false,
+    "restricted": true
+   },
+   {
+    "ref": "130",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "alpha-terpinene": {
+  "annex3": [
+   {
+    "ref": "131",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "gamma-terpinene": {
+  "annex3": [
+   {
+    "ref": "132",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "terpinolene": {
+  "annex3": [
+   {
+    "ref": "133",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acetyl-hexamethyl-indan": {
+  "annex3": [
+   {
+    "ref": "134",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-butyrate": {
+  "annex3": [
+   {
+    "ref": "135",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-cinnamate": {
+  "annex3": [
+   {
+    "ref": "136",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-cyclohexylacetate": {
+  "annex3": [
+   {
+    "ref": "137",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-cyclohexylpropionate": {
+  "annex3": [
+   {
+    "ref": "138",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-heptanoate": {
+  "annex3": [
+   {
+    "ref": "139",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-caproate": {
+  "annex3": [
+   {
+    "ref": "140",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-isovalerate": {
+  "annex3": [
+   {
+    "ref": "141",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-octanoate": {
+  "annex3": [
+   {
+    "ref": "142",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-phenoxyacetate": {
+  "annex3": [
+   {
+    "ref": "143",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-phenylacetate": {
+  "annex3": [
+   {
+    "ref": "144",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-3-5-5-trimethylhexanoate": {
+  "annex3": [
+   {
+    "ref": "145",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-cyclohexyloxyacetate": {
+  "annex3": [
+   {
+    "ref": "146",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isoamyl-allylglycolate": {
+  "annex3": [
+   {
+    "ref": "147",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-2-methylbutoxyacetate": {
+  "annex3": [
+   {
+    "ref": "148",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-nonanoate": {
+  "annex3": [
+   {
+    "ref": "149",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-propionate": {
+  "annex3": [
+   {
+    "ref": "150",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-trimethylhexanoate": {
+  "annex3": [
+   {
+    "ref": "151",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-phenethyl-ether": {
+  "annex3": [
+   {
+    "ref": "151a",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "allyl-heptine-carbonate": {
+  "annex3": [
+   {
+    "ref": "152",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "amylcyclopentenone": {
+  "annex3": [
+   {
+    "ref": "153",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "myroxylon-balsamum-pereirae-balsam-extract": {
+  "annex3": [
+   {
+    "ref": "154",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "myroxylon-balsamum-pereirae-balsam-oil": {
+  "annex3": [
+   {
+    "ref": "154",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "myroxylon-pereirae-oil": {
+  "annex3": [
+   {
+    "ref": "154",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "myroxylon-pereirae-resin-extract": {
+  "annex3": [
+   {
+    "ref": "154",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "myroxylon-pereirae-resin": {
+  "annex3": [
+   {
+    "ref": "154",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-tert-butyldihydrocinnamaldehyde": {
+  "annex3": [
+   {
+    "ref": "155",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cuminum-cyminum-fruit-oil": {
+  "annex3": [
+   {
+    "ref": "156",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cuminum-cyminum-fruit-extract": {
+  "annex3": [
+   {
+    "ref": "156",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cuminum-cyminum-seed-oil": {
+  "annex3": [
+   {
+    "ref": "156",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cuminum-cyminum-seed-extract": {
+  "annex3": [
+   {
+    "ref": "156",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cuminum-cyminum-seed-powder": {
+  "annex3": [
+   {
+    "ref": "156",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "alpha-damascone": {
+  "annex3": [
+   {
+    "ref": "157",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "trans-rose-ketone-3": {
+  "annex3": [
+   {
+    "ref": "157",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cis-rose-ketone-2": {
+  "annex3": [
+   {
+    "ref": "157",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "trans-rose-ketone-2": {
+  "annex3": [
+   {
+    "ref": "157",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "trans-rose-ketone-5": {
+  "annex3": [
+   {
+    "ref": "159",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rose-ketone-5": {
+  "annex3": [
+   {
+    "ref": "164",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "trans-2-hexenal": {
+  "annex3": [
+   {
+    "ref": "166",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "perillaldehyde": {
+  "annex3": [
+   {
+    "ref": "169",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isobergamate": {
+  "annex3": [
+   {
+    "ref": "170",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "scentenal": {
+  "annex3": [
+   {
+    "ref": "171",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-methylnon-2-enenitrile": {
+  "annex3": [
+   {
+    "ref": "172",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "methyl-octine-carbonate": {
+  "annex3": [
+   {
+    "ref": "173",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "amylvinylcarbinyl-acetate": {
+  "annex3": [
+   {
+    "ref": "174",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-propylidenephthalide": {
+  "annex3": [
+   {
+    "ref": "175",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isocyclogeraniol": {
+  "annex3": [
+   {
+    "ref": "176",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "p-methylhydrocinnamic-aldehyde": {
+  "annex3": [
+   {
+    "ref": "179",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "liquidambar-orientalis-resin-extract": {
+  "annex3": [
+   {
+    "ref": "180",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "liquidambar-orientalis-balsam-oil": {
+  "annex3": [
+   {
+    "ref": "180",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "liquidambar-styraciflua-oil": {
+  "annex3": [
+   {
+    "ref": "181",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "liquidambar-styraciflua-balsam-extract": {
+  "annex3": [
+   {
+    "ref": "181",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acetyl-hexamethyl-tetralin": {
+  "annex3": [
+   {
+    "ref": "182",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "opoponax-oil": {
+  "annex3": [
+   {
+    "ref": "183",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "toluene": {
+  "annex3": [
+   {
+    "ref": "185",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "diethylene-glycol": {
+  "annex3": [
+   {
+    "ref": "186",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "butoxydiglycol": {
+  "annex3": [
+   {
+    "ref": "187",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "butoxyethanol": {
+  "annex3": [
+   {
+    "ref": "188",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-19140": {
+  "annex3": [
+   {
+    "ref": "189",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "44"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-yellow-23": {
+  "annex3": [
+   {
+    "ref": "189",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-yellow-23-aluminum-lake": {
+  "annex3": [
+   {
+    "ref": "189",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42090": {
+  "annex3": [
+   {
+    "ref": "190",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "63"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-blue-9": {
+  "annex3": [
+   {
+    "ref": "190",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-blue-9-ammonium-salt": {
+  "annex3": [
+   {
+    "ref": "190",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-blue-9-aluminum-lake": {
+  "annex3": [
+   {
+    "ref": "190",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-16035": {
+  "annex3": [
+   {
+    "ref": "191",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "32"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "curry-red": {
+  "annex3": [
+   {
+    "ref": "191",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-16255": {
+  "annex3": [
+   {
+    "ref": "192",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "35"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-red-18": {
+  "annex3": [
+   {
+    "ref": "192",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-red-18-aluminum-lake": {
+  "annex3": [
+   {
+    "ref": "192",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45100": {
+  "annex3": [
+   {
+    "ref": "193",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "71"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-red-52": {
+  "annex3": [
+   {
+    "ref": "193",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "glyoxal": {
+  "annex3": [
+   {
+    "ref": "194",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-62045": {
+  "annex3": [
+   {
+    "ref": "195",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "94"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-blue-62": {
+  "annex3": [
+   {
+    "ref": "195",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lippia-citriodora-absolute": {
+  "annex3": [
+   {
+    "ref": "196",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ethyl-lauroyl-arginate-hcl": {
+  "annex3": [
+   {
+    "ref": "197",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "58"
+  ],
+  "annex6": []
+ },
+ "n-n-bis-2-hydroxyethyl-p-phenylenediamine-sulfate": {
+  "annex3": [
+   {
+    "ref": "198",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-chlororesorcinol": {
+  "annex3": [
+   {
+    "ref": "199",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "tetraaminopyrimidine-sulfate": {
+  "annex3": [
+   {
+    "ref": "200",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-chloro-6-ethylamino-4-nitrophenol": {
+  "annex3": [
+   {
+    "ref": "201",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "6-methoxy-2-methylamino-3-aminopyridine-hcl": {
+  "annex3": [
+   {
+    "ref": "203",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxyethyl-p-phenylenediamine-sulfate": {
+  "annex3": [
+   {
+    "ref": "206",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "dihydroxyindole": {
+  "annex3": [
+   {
+    "ref": "207",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "5-amino-4-chloro-o-cresol-hcl": {
+  "annex3": [
+   {
+    "ref": "208",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "6-hydroxyindole": {
+  "annex3": [
+   {
+    "ref": "209",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isatin": {
+  "annex3": [
+   {
+    "ref": "210",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-amino-3-hydroxypyridine": {
+  "annex3": [
+   {
+    "ref": "211",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-acetoxy-2-methylnaphthalene": {
+  "annex3": [
+   {
+    "ref": "212",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-methyl-1-naphthol": {
+  "annex3": [
+   {
+    "ref": "213",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-yellow-1": {
+  "annex3": [
+   {
+    "ref": "214",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-amino-3-nitrophenol": {
+  "annex3": [
+   {
+    "ref": "215",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-7-naphthalenediol": {
+  "annex3": [
+   {
+    "ref": "216",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "m-aminophenol": {
+  "annex3": [
+   {
+    "ref": "217",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "m-aminophenol-hcl": {
+  "annex3": [
+   {
+    "ref": "217",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "m-aminophenol-sulfate": {
+  "annex3": [
+   {
+    "ref": "217",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-6-dihydroxy-3-4-dimethylpyridine": {
+  "annex3": [
+   {
+    "ref": "218",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-hydroxypropylamino-3-nitrophenol": {
+  "annex3": [
+   {
+    "ref": "219",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-blue-no-11": {
+  "annex3": [
+   {
+    "ref": "220",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxyethyl-2-nitro-p-toluidine": {
+  "annex3": [
+   {
+    "ref": "221",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "p-methylaminophenol": {
+  "annex3": [
+   {
+    "ref": "223",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-violet-no-2": {
+  "annex3": [
+   {
+    "ref": "224",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-blue-no-12": {
+  "annex3": [
+   {
+    "ref": "225",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-3-bis-2-4-diaminophenoxy-propane": {
+  "annex3": [
+   {
+    "ref": "226",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-3-bis-2-4-diaminophenoxy-propane-hcl": {
+  "annex3": [
+   {
+    "ref": "226",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-amino-2-4-dichlorophenol": {
+  "annex3": [
+   {
+    "ref": "227",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-amino-2-4-dichlorophenol-hcl": {
+  "annex3": [
+   {
+    "ref": "227",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "phenyl-methyl-pyrazolone": {
+  "annex3": [
+   {
+    "ref": "228",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxybenzomorpholine": {
+  "annex3": [
+   {
+    "ref": "230",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-10": {
+  "annex3": [
+   {
+    "ref": "231",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-6-dimethoxy-3-5-pyridinediamine-hcl": {
+  "annex3": [
+   {
+    "ref": "232",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-orange-no-2": {
+  "annex3": [
+   {
+    "ref": "233",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-violet-no-1": {
+  "annex3": [
+   {
+    "ref": "234",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-methylamino-4-nitrophenoxyethanol": {
+  "annex3": [
+   {
+    "ref": "235",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-hydroxyethylamino-5-nitroanisole": {
+  "annex3": [
+   {
+    "ref": "236",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-13": {
+  "annex3": [
+   {
+    "ref": "237",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-5-naphthalenediol": {
+  "annex3": [
+   {
+    "ref": "238",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxypropyl-bis-n-hydroxyethyl-p-phenylenediamine-hcl": {
+  "annex3": [
+   {
+    "ref": "239",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-nitro-o-phenylenediamine": {
+  "annex3": [
+   {
+    "ref": "240",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-amino-2-hydroxytoluene": {
+  "annex3": [
+   {
+    "ref": "241",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-4-diaminophenoxyethanol-hcl": {
+  "annex3": [
+   {
+    "ref": "242",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-4-diaminophenoxyethanol-sulfate": {
+  "annex3": [
+   {
+    "ref": "242",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-methylresorcinol": {
+  "annex3": [
+   {
+    "ref": "243",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-amino-m-cresol": {
+  "annex3": [
+   {
+    "ref": "244",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-amino-4-hydroxyethylaminoanisole": {
+  "annex3": [
+   {
+    "ref": "245",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-amino-4-hydroxyethylaminoanisole-sulfate": {
+  "annex3": [
+   {
+    "ref": "245",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxyethyl-3-4-methylenedioxyaniline-hcl": {
+  "annex3": [
+   {
+    "ref": "246",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-blue-no-2": {
+  "annex3": [
+   {
+    "ref": "247",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-nitro-p-hydroxyethylaminophenol": {
+  "annex3": [
+   {
+    "ref": "248",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-nitrophenyl-aminoethylurea": {
+  "annex3": [
+   {
+    "ref": "249",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-10": {
+  "annex3": [
+   {
+    "ref": "250",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-11": {
+  "annex3": [
+   {
+    "ref": "250",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-7": {
+  "annex3": [
+   {
+    "ref": "251",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-amino-6-chloro-4-nitrophenol": {
+  "annex3": [
+   {
+    "ref": "252",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-4": {
+  "annex3": [
+   {
+    "ref": "253",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-17200": {
+  "annex3": [
+   {
+    "ref": "254",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "37"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-red-33": {
+  "annex3": [
+   {
+    "ref": "254",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-2": {
+  "annex3": [
+   {
+    "ref": "255",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-orange-no-1": {
+  "annex3": [
+   {
+    "ref": "256",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "laureth-9": {
+  "annex3": [
+   {
+    "ref": "257",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-1": {
+  "annex3": [
+   {
+    "ref": "258",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-9": {
+  "annex3": [
+   {
+    "ref": "259",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-7": {
+  "annex3": [
+   {
+    "ref": "260",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-13": {
+  "annex3": [
+   {
+    "ref": "261",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-yellow-57": {
+  "annex3": [
+   {
+    "ref": "262",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "disperse-black-9": {
+  "annex3": [
+   {
+    "ref": "263",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-blue-no-14": {
+  "annex3": [
+   {
+    "ref": "264",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "disperse-violet-1": {
+  "annex3": [
+   {
+    "ref": "265",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-3": {
+  "annex3": [
+   {
+    "ref": "266",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-red-76": {
+  "annex3": [
+   {
+    "ref": "267",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-red-51": {
+  "annex3": [
+   {
+    "ref": "268",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-amino-5-ethylphenol-hcl": {
+  "annex3": [
+   {
+    "ref": "269",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-red-92": {
+  "annex3": [
+   {
+    "ref": "270",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "p-aminophenol": {
+  "annex3": [
+   {
+    "ref": "272",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-hydroxyethyl-4-5-diamino-pyrazole-sulfate": {
+  "annex3": [
+   {
+    "ref": "273",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "4-formyl-1-methylquinolinium-p-toluenesulfonate": {
+  "annex3": [
+   {
+    "ref": "274",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-yellow-87": {
+  "annex3": [
+   {
+    "ref": "275",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-orange-31": {
+  "annex3": [
+   {
+    "ref": "276",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-violet-2": {
+  "annex3": [
+   {
+    "ref": "278",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "picramic-acid": {
+  "annex3": [
+   {
+    "ref": "280",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-picramate": {
+  "annex3": [
+   {
+    "ref": "280",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-nitro-5-glyceryl-methylaniline": {
+  "annex3": [
+   {
+    "ref": "281",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "5-amino-6-chloro-o-cresol": {
+  "annex3": [
+   {
+    "ref": "283",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-2-methylenebis-4-aminophenol-hcl": {
+  "annex3": [
+   {
+    "ref": "284",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-6-diaminopyridine": {
+  "annex3": [
+   {
+    "ref": "285",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cetrimonium-chloride": {
+  "annex3": [
+   {
+    "ref": "286",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "steartrimonium-chloride": {
+  "annex3": [
+   {
+    "ref": "286",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "behentrimonium-chloride": {
+  "annex3": [
+   {
+    "ref": "287",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "hc-blue-no-17": {
+  "annex3": [
+   {
+    "ref": "288",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-blue-no-15": {
+  "annex3": [
+   {
+    "ref": "289",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-green-25": {
+  "annex3": [
+   {
+    "ref": "290",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-violet-43": {
+  "annex3": [
+   {
+    "ref": "291",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-methoxymethyl-p-phenylenediamine": {
+  "annex3": [
+   {
+    "ref": "292",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-methoxymethyl-p-phenylenediamine-sulfate": {
+  "annex3": [
+   {
+    "ref": "292",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "disperse-red-17": {
+  "annex3": [
+   {
+    "ref": "294",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-black-1": {
+  "annex3": [
+   {
+    "ref": "295",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pigment-red-57": {
+  "annex3": [
+   {
+    "ref": "296",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ethoxydiglycol": {
+  "annex3": [
+   {
+    "ref": "297",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-17": {
+  "annex3": [
+   {
+    "ref": "298",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-17": {
+  "annex3": [
+   {
+    "ref": "299",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "1-hexyl-4-5-diamino-pyrazole-sulfate": {
+  "annex3": [
+   {
+    "ref": "300",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "2-5-6-triamino-4-pyrimidinol-sulfate": {
+  "annex3": [
+   {
+    "ref": "301",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxyethoxy-aminopyrazolopyridine-hcl": {
+  "annex3": [
+   {
+    "ref": "302",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "3-amino-2-6-dimethylphenol": {
+  "annex3": [
+   {
+    "ref": "303",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-brown-17": {
+  "annex3": [
+   {
+    "ref": "304",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "basic-blue-124": {
+  "annex3": [
+   {
+    "ref": "305",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "arachis-hypogaea-oil": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "arachis-hypogaea-seedcoat-extract": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "arachis-hypogaea-flour": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "arachis-hypogaea-fruit-extract": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "arachis-hypogaea-sprout-extract": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydrogenated-peanut-oil": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "peanut-acid": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "peanut-glycerides": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "peanut-oil-peg-6-esters": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "peanutamide-mea": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "peanutamide-mipa": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "potassium-peanutate": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-peanutamphoacetate": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-peanutate": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sulfated-peanut-oil": {
+  "annex3": [
+   {
+    "ref": "306",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydrolyzed-wheat-protein": {
+  "annex3": [
+   {
+    "ref": "307",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "tagetes-minuta-flower-oil": {
+  "annex3": [
+   {
+    "ref": "308",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "climbazole": {
+  "annex3": [
+   {
+    "ref": "310",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [
+   "32"
+  ],
+  "annex6": []
+ },
+ "furfural": {
+  "annex3": [
+   {
+    "ref": "312",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hema": {
+  "annex3": [
+   {
+    "ref": "313",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "di-hema-trimethylhexyl-dicarbamate": {
+  "annex3": [
+   {
+    "ref": "314",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "dimethylpiperazinium-aminopyrazolopyridine-hcl": {
+  "annex3": [
+   {
+    "ref": "315",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "methylimidazoliumpropyl-p-phenylenediamine-hcl": {
+  "annex3": [
+   {
+    "ref": "316",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-orange-no-6": {
+  "annex3": [
+   {
+    "ref": "317",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-orange-7": {
+  "annex3": [
+   {
+    "ref": "318",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "tetrabromophenol-blue": {
+  "annex3": [
+   {
+    "ref": "319",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "indigofera-tinctoria-leaf-extract": {
+  "annex3": [
+   {
+    "ref": "320",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "indigofera-tinctoria-extract": {
+  "annex3": [
+   {
+    "ref": "320",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "titanium-dioxide": {
+  "annex3": [
+   {
+    "ref": "321",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [
+   "143"
+  ],
+  "annex5": [],
+  "annex6": [
+   "27",
+   "27a"
+  ]
+ },
+ "dihydroxyacetone": {
+  "annex3": [
+   {
+    "ref": "322",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "methyl-n-methylanthranilate": {
+  "annex3": [
+   {
+    "ref": "323",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "methyl-salicylate": {
+  "annex3": [
+   {
+    "ref": "324",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "bht": {
+  "annex3": [
+   {
+    "ref": "325",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-yellow-3": {
+  "annex3": [
+   {
+    "ref": "326",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "acetyl-cedrene": {
+  "annex3": [
+   {
+    "ref": "327",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "amyl-salicylate": {
+  "annex3": [
+   {
+    "ref": "328",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "anethole": {
+  "annex3": [
+   {
+    "ref": "329",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "benzaldehyde": {
+  "annex3": [
+   {
+    "ref": "330",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "camphor": {
+  "annex3": [
+   {
+    "ref": "331",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "beta-caryophyllene": {
+  "annex3": [
+   {
+    "ref": "332",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "carvone": {
+  "annex3": [
+   {
+    "ref": "333",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "dimethyl-phenethyl-acetate": {
+  "annex3": [
+   {
+    "ref": "334",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hexadecanolactone": {
+  "annex3": [
+   {
+    "ref": "335",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hexamethylindanopyran": {
+  "annex3": [
+   {
+    "ref": "336",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "linalyl-acetate": {
+  "annex3": [
+   {
+    "ref": "337",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "menthol": {
+  "annex3": [
+   {
+    "ref": "338",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "trimethylcyclopentenyl-methylisopentenol": {
+  "annex3": [
+   {
+    "ref": "339",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "salicylaldehyde": {
+  "annex3": [
+   {
+    "ref": "340",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "santalol": {
+  "annex3": [
+   {
+    "ref": "341",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "sclareol": {
+  "annex3": [
+   {
+    "ref": "342",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "terpineol": {
+  "annex3": [
+   {
+    "ref": "343",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "tetramethyl-acetyloctahydronaphthalenes": {
+  "annex3": [
+   {
+    "ref": "344",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "trimethylbenzenepropanol": {
+  "annex3": [
+   {
+    "ref": "345",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "vanillin": {
+  "annex3": [
+   {
+    "ref": "346",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cananga-odorata-flower-oil": {
+  "annex3": [
+   {
+    "ref": "347",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cananga-odorata-flower-extract": {
+  "annex3": [
+   {
+    "ref": "347",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cinnamomum-cassia-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "348",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cinnamomum-zeylanicum-bark-oil": {
+  "annex3": [
+   {
+    "ref": "349",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-aurantium-amara-flower-oil": {
+  "annex3": [
+   {
+    "ref": "350",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-aurantium-dulcis-flower-oil": {
+  "annex3": [
+   {
+    "ref": "350",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-aurantium-amara-peel-oil": {
+  "annex3": [
+   {
+    "ref": "351",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-aurantium-dulcis-peel-oil": {
+  "annex3": [
+   {
+    "ref": "351",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-sinensis-peel-oil": {
+  "annex3": [
+   {
+    "ref": "351",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-aurantium-bergamia-peel-oil": {
+  "annex3": [
+   {
+    "ref": "352",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "citrus-limon-peel-oil": {
+  "annex3": [
+   {
+    "ref": "353",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cymbopogon-schoenanthus-oil": {
+  "annex3": [
+   {
+    "ref": "354",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cymbopogon-flexuosus-oil": {
+  "annex3": [
+   {
+    "ref": "354",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "cymbopogon-citratus-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "354",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eucalyptus-globulus-oil": {
+  "annex3": [
+   {
+    "ref": "355",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eucalyptus-globulus-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "355",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eucalyptus-globulus-leaf-twig-oil": {
+  "annex3": [
+   {
+    "ref": "355",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eucalyptus-globulus-leaf": {
+  "annex3": [
+   {
+    "ref": "355",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eugenia-caryophyllus-oil": {
+  "annex3": [
+   {
+    "ref": "356",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eugenia-caryophyllus-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "356",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eugenia-caryophyllus-flower-oil": {
+  "annex3": [
+   {
+    "ref": "356",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eugenia-caryophyllus-stem-oil": {
+  "annex3": [
+   {
+    "ref": "356",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eugenia-caryophyllus-bud-oil": {
+  "annex3": [
+   {
+    "ref": "356",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "jasminum-grandiflorum-flower-extract": {
+  "annex3": [
+   {
+    "ref": "357",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "jasminum-officinale-oil": {
+  "annex3": [
+   {
+    "ref": "357",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "jasminum-officinale-flower-extract": {
+  "annex3": [
+   {
+    "ref": "357",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "juniperus-virginiana-oil": {
+  "annex3": [
+   {
+    "ref": "358",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "juniperus-virginiana-wood-oil": {
+  "annex3": [
+   {
+    "ref": "358",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "laurus-nobilis-oil": {
+  "annex3": [
+   {
+    "ref": "359",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "laurus-nobilis-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "359",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lavandula-hybrida-oil": {
+  "annex3": [
+   {
+    "ref": "360",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lavandula-hybrida-extract": {
+  "annex3": [
+   {
+    "ref": "360",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lavandula-hybrida-flower-extract": {
+  "annex3": [
+   {
+    "ref": "360",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lavandula-intermedia-oil": {
+  "annex3": [
+   {
+    "ref": "360",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lavandula-angustifolia-oil": {
+  "annex3": [
+   {
+    "ref": "360",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "lavandula-angustifolia-flower": {
+  "annex3": [
+   {
+    "ref": "360",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "mentha-piperita-oil": {
+  "annex3": [
+   {
+    "ref": "361",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "mentha-viridis-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "362",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "narcissus-poeticus-extract": {
+  "annex3": [
+   {
+    "ref": "363",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "narcissus-pseudonarcissus-flower-extract": {
+  "annex3": [
+   {
+    "ref": "363",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "narcissus-jonquilla-extract": {
+  "annex3": [
+   {
+    "ref": "363",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "narcissus-tazetta-extract": {
+  "annex3": [
+   {
+    "ref": "363",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pelargonium-graveolens-oil": {
+  "annex3": [
+   {
+    "ref": "364",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pelargonium-graveolens-flower-oil": {
+  "annex3": [
+   {
+    "ref": "364",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pelargonium-graveolens-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "364",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pogostemon-cablin-oil": {
+  "annex3": [
+   {
+    "ref": "365",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pogostemon-cablin-leaf-oil": {
+  "annex3": [
+   {
+    "ref": "365",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-damascena-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-damascena-flower-extract": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-alba-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-alba-flower-extract": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-canina-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-centifolia-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-centifolia-flower-extract": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-gallica-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-moschata-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "rosa-rugosa-flower-oil": {
+  "annex3": [
+   {
+    "ref": "366",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "santalum-album-oil": {
+  "annex3": [
+   {
+    "ref": "367",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "eugenyl-acetate": {
+  "annex3": [
+   {
+    "ref": "368",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "geranyl-acetate": {
+  "annex3": [
+   {
+    "ref": "369",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "isoeugenyl-acetate": {
+  "annex3": [
+   {
+    "ref": "370",
+    "allergen": true,
+    "restricted": false
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "pinene": {
+  "annex3": [
+   {
+    "ref": "371",
+    "allergen": true,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxyapatite": {
+  "annex3": [
+   {
+    "ref": "372",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "genistein": {
+  "annex3": [
+   {
+    "ref": "373",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "daidzein": {
+  "annex3": [
+   {
+    "ref": "374",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "kojic-acid": {
+  "annex3": [
+   {
+    "ref": "375",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "retinol": {
+  "annex3": [
+   {
+    "ref": "376",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "retinyl-acetate": {
+  "annex3": [
+   {
+    "ref": "376",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "retinyl-palmitate": {
+  "annex3": [
+   {
+    "ref": "376",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "alpha-arbutin": {
+  "annex3": [
+   {
+    "ref": "377",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "arbutin": {
+  "annex3": [
+   {
+    "ref": "378",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "silver": {
+  "annex3": [
+   {
+    "ref": "379",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hexyl-salicylate": {
+  "annex3": [
+   {
+    "ref": "380",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-blue-no-18": {
+  "annex3": [
+   {
+    "ref": "383",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hydroxypropyl-p-phenylenediamine": {
+  "annex3": [
+   {
+    "ref": "384",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-yellow-no-16": {
+  "annex3": [
+   {
+    "ref": "385",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "hc-red-no-18": {
+  "annex3": [
+   {
+    "ref": "386",
+    "allergen": false,
+    "restricted": true
+   }
+  ],
+  "annex4": [],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-10006": {
+  "annex3": [],
+  "annex4": [
+   "1"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-10020": {
+  "annex3": [],
+  "annex4": [
+   "2"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-10316": {
+  "annex3": [],
+  "annex4": [
+   "3"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-11680": {
+  "annex3": [],
+  "annex4": [
+   "4"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-11710": {
+  "annex3": [],
+  "annex4": [
+   "5"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-11725": {
+  "annex3": [],
+  "annex4": [
+   "6"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-11920": {
+  "annex3": [],
+  "annex4": [
+   "7"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12010": {
+  "annex3": [],
+  "annex4": [
+   "8"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12085": {
+  "annex3": [],
+  "annex4": [
+   "9"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12120": {
+  "annex3": [],
+  "annex4": [
+   "10"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12370": {
+  "annex3": [],
+  "annex4": [
+   "11"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12420": {
+  "annex3": [],
+  "annex4": [
+   "12"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12480": {
+  "annex3": [],
+  "annex4": [
+   "13"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12490": {
+  "annex3": [],
+  "annex4": [
+   "14"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-12700": {
+  "annex3": [],
+  "annex4": [
+   "15"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-13015": {
+  "annex3": [],
+  "annex4": [
+   "16"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-14270": {
+  "annex3": [],
+  "annex4": [
+   "17"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-14700": {
+  "annex3": [],
+  "annex4": [
+   "18"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-14720": {
+  "annex3": [],
+  "annex4": [
+   "19"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-14815": {
+  "annex3": [],
+  "annex4": [
+   "20"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15510": {
+  "annex3": [],
+  "annex4": [
+   "21"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15525": {
+  "annex3": [],
+  "annex4": [
+   "22"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15580": {
+  "annex3": [],
+  "annex4": [
+   "23"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15620": {
+  "annex3": [],
+  "annex4": [
+   "24"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15630": {
+  "annex3": [],
+  "annex4": [
+   "25"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15800": {
+  "annex3": [],
+  "annex4": [
+   "26"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15850": {
+  "annex3": [],
+  "annex4": [
+   "27"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15865": {
+  "annex3": [],
+  "annex4": [
+   "28"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15880": {
+  "annex3": [],
+  "annex4": [
+   "29"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15980": {
+  "annex3": [],
+  "annex4": [
+   "30"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-15985": {
+  "annex3": [],
+  "annex4": [
+   "31"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-16185": {
+  "annex3": [],
+  "annex4": [
+   "33"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-16230": {
+  "annex3": [],
+  "annex4": [
+   "34"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-16290": {
+  "annex3": [],
+  "annex4": [
+   "36"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-18050": {
+  "annex3": [],
+  "annex4": [
+   "38"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-18130": {
+  "annex3": [],
+  "annex4": [
+   "39"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-18690": {
+  "annex3": [],
+  "annex4": [
+   "40"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-18736": {
+  "annex3": [],
+  "annex4": [
+   "41"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-18820": {
+  "annex3": [],
+  "annex4": [
+   "42"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-18965": {
+  "annex3": [],
+  "annex4": [
+   "43"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-20040": {
+  "annex3": [],
+  "annex4": [
+   "45"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-20470": {
+  "annex3": [],
+  "annex4": [
+   "46"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-21100": {
+  "annex3": [],
+  "annex4": [
+   "47"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-21108": {
+  "annex3": [],
+  "annex4": [
+   "48"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-21230": {
+  "annex3": [],
+  "annex4": [
+   "49"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-24790": {
+  "annex3": [],
+  "annex4": [
+   "50"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-26100": {
+  "annex3": [],
+  "annex4": [
+   "51"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-27755": {
+  "annex3": [],
+  "annex4": [
+   "52"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-28440": {
+  "annex3": [],
+  "annex4": [
+   "53"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-40215": {
+  "annex3": [],
+  "annex4": [
+   "54"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "beta-carotene": {
+  "annex3": [],
+  "annex4": [
+   "55"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-40800": {
+  "annex3": [],
+  "annex4": [
+   "55"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-40820": {
+  "annex3": [],
+  "annex4": [
+   "56"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-40825": {
+  "annex3": [],
+  "annex4": [
+   "57"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-40850": {
+  "annex3": [],
+  "annex4": [
+   "58"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42045": {
+  "annex3": [],
+  "annex4": [
+   "59"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42051": {
+  "annex3": [],
+  "annex4": [
+   "60"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42053": {
+  "annex3": [],
+  "annex4": [
+   "61"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42080": {
+  "annex3": [],
+  "annex4": [
+   "62"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42100": {
+  "annex3": [],
+  "annex4": [
+   "64"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42170": {
+  "annex3": [],
+  "annex4": [
+   "65"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42510": {
+  "annex3": [],
+  "annex4": [
+   "66"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42520": {
+  "annex3": [],
+  "annex4": [
+   "67"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-42735": {
+  "annex3": [],
+  "annex4": [
+   "68"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-44045": {
+  "annex3": [],
+  "annex4": [
+   "69"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-44090": {
+  "annex3": [],
+  "annex4": [
+   "70"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45190": {
+  "annex3": [],
+  "annex4": [
+   "72"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45220": {
+  "annex3": [],
+  "annex4": [
+   "73"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45350": {
+  "annex3": [],
+  "annex4": [
+   "74"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45370": {
+  "annex3": [],
+  "annex4": [
+   "75"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45380": {
+  "annex3": [],
+  "annex4": [
+   "76"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45396": {
+  "annex3": [],
+  "annex4": [
+   "77"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45405": {
+  "annex3": [],
+  "annex4": [
+   "78"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45410": {
+  "annex3": [],
+  "annex4": [
+   "79"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-45430": {
+  "annex3": [],
+  "annex4": [
+   "80"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-47000": {
+  "annex3": [],
+  "annex4": [
+   "81"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-47005": {
+  "annex3": [],
+  "annex4": [
+   "82"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-50325": {
+  "annex3": [],
+  "annex4": [
+   "83"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-50420": {
+  "annex3": [],
+  "annex4": [
+   "84"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-51319": {
+  "annex3": [],
+  "annex4": [
+   "85"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-58000": {
+  "annex3": [],
+  "annex4": [
+   "86"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-59040": {
+  "annex3": [],
+  "annex4": [
+   "87"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-60724": {
+  "annex3": [],
+  "annex4": [
+   "88"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-60725": {
+  "annex3": [],
+  "annex4": [
+   "89"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-60730": {
+  "annex3": [],
+  "annex4": [
+   "90"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-61565": {
+  "annex3": [],
+  "annex4": [
+   "91"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-61570": {
+  "annex3": [],
+  "annex4": [
+   "92"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-61585": {
+  "annex3": [],
+  "annex4": [
+   "93"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-69800": {
+  "annex3": [],
+  "annex4": [
+   "95"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-69825": {
+  "annex3": [],
+  "annex4": [
+   "96"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-71105": {
+  "annex3": [],
+  "annex4": [
+   "97"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-73000": {
+  "annex3": [],
+  "annex4": [
+   "98"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-73015": {
+  "annex3": [],
+  "annex4": [
+   "99"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-73360": {
+  "annex3": [],
+  "annex4": [
+   "100"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-73385": {
+  "annex3": [],
+  "annex4": [
+   "101"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-73900": {
+  "annex3": [],
+  "annex4": [
+   "102"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-73915": {
+  "annex3": [],
+  "annex4": [
+   "103"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-74100": {
+  "annex3": [],
+  "annex4": [
+   "104"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-74160": {
+  "annex3": [],
+  "annex4": [
+   "105"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-74180": {
+  "annex3": [],
+  "annex4": [
+   "106"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-74260": {
+  "annex3": [],
+  "annex4": [
+   "107"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75100": {
+  "annex3": [],
+  "annex4": [
+   "108"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75120": {
+  "annex3": [],
+  "annex4": [
+   "109"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "lycopene": {
+  "annex3": [],
+  "annex4": [
+   "110"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75125": {
+  "annex3": [],
+  "annex4": [
+   "110"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75130": {
+  "annex3": [],
+  "annex4": [
+   "111"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75135": {
+  "annex3": [],
+  "annex4": [
+   "112"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75170": {
+  "annex3": [],
+  "annex4": [
+   "113"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75300": {
+  "annex3": [],
+  "annex4": [
+   "114"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75470": {
+  "annex3": [],
+  "annex4": [
+   "115"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-75810": {
+  "annex3": [],
+  "annex4": [
+   "116"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77000": {
+  "annex3": [],
+  "annex4": [
+   "117"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77002": {
+  "annex3": [],
+  "annex4": [
+   "118"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "mica": {
+  "annex3": [],
+  "annex4": [
+   "119"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77004": {
+  "annex3": [],
+  "annex4": [
+   "119"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77007": {
+  "annex3": [],
+  "annex4": [
+   "120"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77015": {
+  "annex3": [],
+  "annex4": [
+   "121"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "barium-sulfate": {
+  "annex3": [],
+  "annex4": [
+   "122"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77120": {
+  "annex3": [],
+  "annex4": [
+   "122"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77163": {
+  "annex3": [],
+  "annex4": [
+   "123"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "calcium-carbonate": {
+  "annex3": [],
+  "annex4": [
+   "124"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77220": {
+  "annex3": [],
+  "annex4": [
+   "124"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "calcium-sulfate": {
+  "annex3": [],
+  "annex4": [
+   "125"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77231": {
+  "annex3": [],
+  "annex4": [
+   "125"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "carbon-black": {
+  "annex3": [],
+  "annex4": [
+   "126",
+   "126a"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77266": {
+  "annex3": [],
+  "annex4": [
+   "126"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "charcoal": {
+  "annex3": [],
+  "annex4": [
+   "127"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "carbon": {
+  "annex3": [],
+  "annex4": [
+   "127"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77267": {
+  "annex3": [],
+  "annex4": [
+   "127"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77288": {
+  "annex3": [],
+  "annex4": [
+   "129"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77289": {
+  "annex3": [],
+  "annex4": [
+   "130"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "cobalt-aluminum-oxide": {
+  "annex3": [],
+  "annex4": [
+   "131"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77346": {
+  "annex3": [],
+  "annex4": [
+   "131"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "copper": {
+  "annex3": [],
+  "annex4": [
+   "132"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77400": {
+  "annex3": [],
+  "annex4": [
+   "132"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "gold": {
+  "annex3": [],
+  "annex4": [
+   "133"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77480": {
+  "annex3": [],
+  "annex4": [
+   "133"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77489": {
+  "annex3": [],
+  "annex4": [
+   "134"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77491": {
+  "annex3": [],
+  "annex4": [
+   "135"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77492": {
+  "annex3": [],
+  "annex4": [
+   "136"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77499": {
+  "annex3": [],
+  "annex4": [
+   "137"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77510": {
+  "annex3": [],
+  "annex4": [
+   "138"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "magnesium-carbonate": {
+  "annex3": [],
+  "annex4": [
+   "139"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77713": {
+  "annex3": [],
+  "annex4": [
+   "139"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77742": {
+  "annex3": [],
+  "annex4": [
+   "140"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77745": {
+  "annex3": [],
+  "annex4": [
+   "141"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77820": {
+  "annex3": [],
+  "annex4": [
+   "142"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "ci-77891": {
+  "annex3": [],
+  "annex4": [
+   "143"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-oxide": {
+  "annex3": [],
+  "annex4": [
+   "144"
+  ],
+  "annex5": [],
+  "annex6": [
+   "30",
+   "30a"
+  ]
+ },
+ "ci-77947": {
+  "annex3": [],
+  "annex4": [
+   "144"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "riboflavin": {
+  "annex3": [],
+  "annex4": [
+   "145"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "lactoflavin": {
+  "annex3": [],
+  "annex4": [
+   "145"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "caramel": {
+  "annex3": [],
+  "annex4": [
+   "146"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "capsanthin-capsorubin": {
+  "annex3": [],
+  "annex4": [
+   "147"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "beetroot-red": {
+  "annex3": [],
+  "annex4": [
+   "148"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "anthocyanins": {
+  "annex3": [],
+  "annex4": [
+   "149"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc": {
+  "annex3": [],
+  "annex4": [
+   "150"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "aluminum-stearate": {
+  "annex3": [],
+  "annex4": [
+   "150"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "zinc-stearate": {
+  "annex3": [],
+  "annex4": [
+   "150"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "magnesium-stearate": {
+  "annex3": [],
+  "annex4": [
+   "150"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "calcium-stearate": {
+  "annex3": [],
+  "annex4": [
+   "150"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "bromothymol-blue": {
+  "annex3": [],
+  "annex4": [
+   "151"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "bromocresol-green": {
+  "annex3": [],
+  "annex4": [
+   "152"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "acid-red-195": {
+  "annex3": [],
+  "annex4": [
+   "153"
+  ],
+  "annex5": [],
+  "annex6": []
+ },
+ "sodium-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1"
+  ],
+  "annex6": []
+ },
+ "ammonium-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "calcium-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "potassium-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "magnesium-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "mea-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "methyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "ethyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "propyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "butyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "isobutyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "isopropyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "phenyl-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "1a"
+  ],
+  "annex6": []
+ },
+ "propionic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "2"
+  ],
+  "annex6": []
+ },
+ "ammonium-propionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "2"
+  ],
+  "annex6": []
+ },
+ "calcium-propionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "2"
+  ],
+  "annex6": []
+ },
+ "magnesium-propionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "2"
+  ],
+  "annex6": []
+ },
+ "potassium-propionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "2"
+  ],
+  "annex6": []
+ },
+ "sodium-propionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "2"
+  ],
+  "annex6": []
+ },
+ "calcium-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "magnesium-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "mea-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "sodium-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "potassium-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "tea-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "3"
+  ],
+  "annex6": []
+ },
+ "sorbic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "4"
+  ],
+  "annex6": []
+ },
+ "calcium-sorbate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "4"
+  ],
+  "annex6": []
+ },
+ "sodium-sorbate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "4"
+  ],
+  "annex6": []
+ },
+ "potassium-sorbate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "4"
+  ],
+  "annex6": []
+ },
+ "o-phenylphenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "7"
+  ],
+  "annex6": []
+ },
+ "sodium-o-phenylphenate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "7"
+  ],
+  "annex6": []
+ },
+ "sodium-sulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "ammonium-bisulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "ammonium-sulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "potassium-sulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "sodium-bisulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "sodium-metabisulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "potassium-metabisulfite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "9"
+  ],
+  "annex6": []
+ },
+ "chlorobutanol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "11"
+  ],
+  "annex6": []
+ },
+ "4-hydroxybenzoic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "methylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "potassium-ethylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "potassium-paraben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "sodium-methylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "sodium-ethylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "ethylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "sodium-paraben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "potassium-methylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "calcium-paraben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12"
+  ],
+  "annex6": []
+ },
+ "butylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12a"
+  ],
+  "annex6": []
+ },
+ "propylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12a"
+  ],
+  "annex6": []
+ },
+ "sodium-propylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12a"
+  ],
+  "annex6": []
+ },
+ "sodium-butylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12a"
+  ],
+  "annex6": []
+ },
+ "potassium-butylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12a"
+  ],
+  "annex6": []
+ },
+ "potassium-propylparaben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "12a"
+  ],
+  "annex6": []
+ },
+ "dehydroacetic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "13"
+  ],
+  "annex6": []
+ },
+ "sodium-dehydroacetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "13"
+  ],
+  "annex6": []
+ },
+ "formic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "14"
+  ],
+  "annex6": []
+ },
+ "sodium-formate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "14"
+  ],
+  "annex6": []
+ },
+ "dibromohexamidine-isethionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "15"
+  ],
+  "annex6": []
+ },
+ "thimerosal": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "16"
+  ],
+  "annex6": []
+ },
+ "phenyl-mercuric-acetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "17"
+  ],
+  "annex6": []
+ },
+ "phenyl-mercuric-benzoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "17"
+  ],
+  "annex6": []
+ },
+ "undecylenic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "18"
+  ],
+  "annex6": []
+ },
+ "potassium-undecylenate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "18"
+  ],
+  "annex6": []
+ },
+ "sodium-undecylenate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "18"
+  ],
+  "annex6": []
+ },
+ "calcium-undecylenate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "18"
+  ],
+  "annex6": []
+ },
+ "tea-undecylenate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "18"
+  ],
+  "annex6": []
+ },
+ "mea-undecylenate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "18"
+  ],
+  "annex6": []
+ },
+ "hexetidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "19"
+  ],
+  "annex6": []
+ },
+ "5-bromo-5-nitro-1-3-dioxane": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "20"
+  ],
+  "annex6": []
+ },
+ "2-bromo-2-nitropropane-1-3-diol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "21"
+  ],
+  "annex6": []
+ },
+ "dichlorobenzyl-alcohol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "22"
+  ],
+  "annex6": []
+ },
+ "p-chloro-m-cresol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "24"
+  ],
+  "annex6": []
+ },
+ "triclosan": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "25"
+  ],
+  "annex6": []
+ },
+ "chloroxylenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "26"
+  ],
+  "annex6": []
+ },
+ "imidazolidinyl-urea": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "27"
+  ],
+  "annex6": []
+ },
+ "polyaminopropyl-biguanide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "28"
+  ],
+  "annex6": []
+ },
+ "phenoxyethanol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "29"
+  ],
+  "annex6": []
+ },
+ "methenamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "30"
+  ],
+  "annex6": []
+ },
+ "dmdm-hydantoin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "33"
+  ],
+  "annex6": []
+ },
+ "piroctone-olamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "35"
+  ],
+  "annex6": []
+ },
+ "bromochlorophene": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "37"
+  ],
+  "annex6": []
+ },
+ "o-cymen-5-ol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "38"
+  ],
+  "annex6": []
+ },
+ "methylchloroisothiazolinone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "39"
+  ],
+  "annex6": []
+ },
+ "methylisothiazolinone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "39",
+   "57"
+  ],
+  "annex6": []
+ },
+ "chlorhexidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "42"
+  ],
+  "annex6": []
+ },
+ "chlorhexidine-diacetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "42"
+  ],
+  "annex6": []
+ },
+ "chlorhexidine-digluconate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "42"
+  ],
+  "annex6": []
+ },
+ "chlorhexidine-dihydrochloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "42"
+  ],
+  "annex6": []
+ },
+ "cetrimonium-bromide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "laurtrimonium-bromide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "laurtrimonium-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "steartrimonium-bromide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "44"
+  ],
+  "annex6": []
+ },
+ "dimethyl-oxazolidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "45"
+  ],
+  "annex6": []
+ },
+ "diazolidinyl-urea": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "46"
+  ],
+  "annex6": []
+ },
+ "hexamidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "47"
+  ],
+  "annex6": []
+ },
+ "hexamidine-diisethionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "47"
+  ],
+  "annex6": []
+ },
+ "hexamidine-paraben": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "47"
+  ],
+  "annex6": []
+ },
+ "glutaral": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "48"
+  ],
+  "annex6": []
+ },
+ "7-ethylbicyclooxazolidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "49"
+  ],
+  "annex6": []
+ },
+ "chlorphenesin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "50"
+  ],
+  "annex6": []
+ },
+ "sodium-hydroxymethylglycinate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "51"
+  ],
+  "annex6": [],
+  "annex2": [
+   "1669"
+  ]
+ },
+ "silver-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "52"
+  ],
+  "annex6": []
+ },
+ "benzethonium-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "53"
+  ],
+  "annex6": []
+ },
+ "benzylhemiformal": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "55"
+  ],
+  "annex6": []
+ },
+ "iodopropynyl-butylcarbamate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "56"
+  ],
+  "annex6": []
+ },
+ "citric-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "59"
+  ],
+  "annex6": []
+ },
+ "silver-citrate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "59"
+  ],
+  "annex6": []
+ },
+ "hydroxyethoxyphenyl-butanone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [
+   "60"
+  ],
+  "annex6": []
+ },
+ "camphor-benzalkonium-methosulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "2"
+  ]
+ },
+ "homosalate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "3"
+  ]
+ },
+ "benzophenone-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "4"
+  ]
+ },
+ "phenylbenzimidazole-sulfonic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "6"
+  ]
+ },
+ "terephthalylidene-dicamphor-sulfonic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "7"
+  ]
+ },
+ "butyl-methoxydibenzoylmethane": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "8"
+  ]
+ },
+ "benzylidene-camphor-sulfonic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "9"
+  ]
+ },
+ "octocrylene": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "10"
+  ]
+ },
+ "polyacrylamidomethyl-benzylidene-camphor": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "11"
+  ]
+ },
+ "ethylhexyl-methoxycinnamate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "12"
+  ]
+ },
+ "peg-25-paba": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "13"
+  ]
+ },
+ "isoamyl-p-methoxycinnamate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "14"
+  ]
+ },
+ "ethylhexyl-triazone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "15"
+  ]
+ },
+ "drometrizole-trisiloxane": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "16"
+  ]
+ },
+ "diethylhexyl-butamido-triazone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "17"
+  ]
+ },
+ "ethylhexyl-salicylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "20"
+  ]
+ },
+ "ethylhexyl-dimethyl-paba": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "21"
+  ]
+ },
+ "benzophenone-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "22"
+  ]
+ },
+ "benzophenone-5": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "22"
+  ]
+ },
+ "methylene-bis-benzotriazolyl-tetramethylbutylphenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "23"
+  ]
+ },
+ "disodium-phenyl-dibenzimidazole-tetrasulfonate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "24"
+  ]
+ },
+ "bis-ethylhexyloxyphenol-methoxyphenyl-triazine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "25"
+  ]
+ },
+ "polysilicone-15": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "26"
+  ]
+ },
+ "manganese-dioxide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "27a"
+  ]
+ },
+ "tris-biphenyl-triazine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "29"
+  ]
+ },
+ "phenylene-bis-diphenyltriazine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "31"
+  ]
+ },
+ "methoxypropylamino-cyclohexenylidene-ethoxyethylcyanoacetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "32"
+  ]
+ },
+ "bis-diethylaminohydroxybenzoyl-benzoyl-piperazine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [
+   "33"
+  ]
+ },
+ "1-2-4-benzenetriacetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1254"
+  ]
+ },
+ "1-7-naphthalenediol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1228"
+  ]
+ },
+ "2-3-naphthalenediol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1213"
+  ]
+ },
+ "2-4-diamino-5-methylphenetole-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1227"
+  ]
+ },
+ "2-4-diamino-5-methylphenoxyethanol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1314"
+  ]
+ },
+ "2-4-diamino-5-methylphenoxyethanol-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1314"
+  ]
+ },
+ "2-4-diaminodiphenylamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1214"
+  ]
+ },
+ "2-6-bis-2-hydroxyethoxy-3-5-pyridinediamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1215"
+  ]
+ },
+ "2-amino-3-nitrophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1317"
+  ]
+ },
+ "2-amino-4-nitrophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "383"
+  ]
+ },
+ "2-amino-4-nitrophenol-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "383"
+  ]
+ },
+ "2-amino-5-nitrophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "384"
+  ]
+ },
+ "2-aminomethyl-p-aminophenol-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1230"
+  ]
+ },
+ "2-chloro-5-nitro-n-hydroxyethyl-p-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1318"
+  ]
+ },
+ "2-methoxymethyl-p-aminophenol-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1216"
+  ]
+ },
+ "2-naphthol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "241"
+  ]
+ },
+ "2-nitro-n-hydroxyethyl-p-anisidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1287"
+  ]
+ },
+ "2-nitro-p-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1319"
+  ]
+ },
+ "2-nitro-p-phenylenediamine-dihydrochloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1319"
+  ]
+ },
+ "2-nitro-p-phenylenediamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1319"
+  ]
+ },
+ "3-4-diaminobenzoic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1229"
+  ]
+ },
+ "3-4-methylenedioxyaniline": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1248"
+  ]
+ },
+ "3-4-methylenedioxyphenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1247"
+  ]
+ },
+ "3-nitro-4-aminophenoxyethanol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1250"
+  ]
+ },
+ "3-nitro-p-cresol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "250"
+  ]
+ },
+ "4-4-diaminodiphenylamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1309"
+  ]
+ },
+ "4-4-diaminodiphenylamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1309"
+  ]
+ },
+ "4-4-isopropylidenediphenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1176"
+  ]
+ },
+ "4-5-diamino-1-4-chlorophenyl-methyl-1h-pyrazole-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1218"
+  ]
+ },
+ "4-5-diamino-1-methylpyrazole-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1217"
+  ]
+ },
+ "4-6-bis-2-hydroxyethoxy-m-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1307"
+  ]
+ },
+ "4-6-bis-2-hydroxyethoxy-m-phenylenediamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1307"
+  ]
+ },
+ "4-amino-2-nitrophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "412"
+  ]
+ },
+ "4-chloro-2-aminophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1219"
+  ]
+ },
+ "4-ethoxy-m-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "406"
+  ]
+ },
+ "4-ethoxy-m-phenylenediamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "406"
+  ]
+ },
+ "4-hydroxyindole": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1220"
+  ]
+ },
+ "4-methoxytoluene-2-5-diamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1221"
+  ]
+ },
+ "4-methylbenzylidene-camphor": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1703"
+  ]
+ },
+ "4-nitroguaiacol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1251"
+  ]
+ },
+ "4-nitro-m-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1282"
+  ]
+ },
+ "4-nitro-m-phenylenediamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1282"
+  ]
+ },
+ "5-amino-2-6-dimethoxy-3-hydroxypyridine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1308"
+  ]
+ },
+ "5-amino-4-fluoro-2-methylphenol-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1222"
+  ]
+ },
+ "6-aminocaproic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "7"
+  ]
+ },
+ "6-amino-o-cresol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1315"
+  ]
+ },
+ "6-methoxy-2-3-pyridinediamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1212"
+  ]
+ },
+ "6-nitro-o-toluidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1235"
+  ]
+ },
+ "acid-black-131": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1252"
+  ]
+ },
+ "acid-black-52": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1323"
+  ]
+ },
+ "acid-brown-13": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1258"
+  ]
+ },
+ "acid-orange-24": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1232"
+  ]
+ },
+ "acid-orange-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1280"
+  ]
+ },
+ "acid-red-35": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1295"
+  ]
+ },
+ "acid-red-73": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1233"
+  ]
+ },
+ "acid-yellow-36": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "387"
+  ]
+ },
+ "adipic-acid-dihydrazide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "200"
+  ]
+ },
+ "aluminum-laccate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1279"
+  ]
+ },
+ "aminoguanidine-bicarbonate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "201"
+  ]
+ },
+ "aminoguanidine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "201"
+  ]
+ },
+ "ammi-majus-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "35"
+  ]
+ },
+ "ammonium-hexafluorophosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "191"
+  ]
+ },
+ "antimony-potassium-tartrate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "40"
+  ]
+ },
+ "apocynum-cannabinum-root-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "41"
+  ]
+ },
+ "ascorbic-acid-orange-citrus-limon-citrus-aurantifolia-polypeptides": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "358"
+  ]
+ },
+ "barium-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "46"
+  ]
+ },
+ "barium-gluconate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "46"
+  ]
+ },
+ "barium-hexaferrite": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "46"
+  ]
+ },
+ "basic-blue-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1275"
+  ]
+ },
+ "basic-blue-41": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1261"
+  ]
+ },
+ "basic-blue-47": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1278"
+  ]
+ },
+ "basic-blue-6": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1276"
+  ]
+ },
+ "basic-blue-7": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1328"
+  ]
+ },
+ "basic-blue-9": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1306"
+  ]
+ },
+ "basic-brown-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1296"
+  ]
+ },
+ "basic-green-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1299"
+  ]
+ },
+ "basic-green-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1188"
+  ]
+ },
+ "basic-orange-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1294"
+  ]
+ },
+ "basic-orange-2": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1293"
+  ]
+ },
+ "basic-red-118": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1291"
+  ]
+ },
+ "basic-red-2": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1322"
+  ]
+ },
+ "basic-red-22": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1292"
+  ]
+ },
+ "basic-red-46": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1259"
+  ]
+ },
+ "basic-violet-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "388"
+  ]
+ },
+ "basic-violet-10": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "398"
+  ]
+ },
+ "basic-violet-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "380"
+  ]
+ },
+ "basic-violet-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1271"
+  ]
+ },
+ "basic-yellow-11": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1273"
+  ]
+ },
+ "basic-yellow-28": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1272"
+  ]
+ },
+ "bishydroxyethyl-biscetyl-malonamide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1243"
+  ]
+ },
+ "brain-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "brain-lipids": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "butyl-benzyl-phthalate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1152"
+  ]
+ },
+ "butylethanolamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "butylphenyl-methylpropional": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1666"
+  ]
+ },
+ "captan": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "370"
+  ]
+ },
+ "catalase": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "74"
+  ]
+ },
+ "cerebrosides": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "chloroform": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "366"
+  ]
+ },
+ "cholecalciferol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "335"
+  ]
+ },
+ "cholecalciferol-yeast-polypeptide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "335"
+  ]
+ },
+ "choline-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "168"
+  ]
+ },
+ "chromium": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "97"
+  ]
+ },
+ "ci-20170": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1232"
+  ]
+ },
+ "ci-27290": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1233"
+  ]
+ },
+ "citrus-reticulata-leaf-water": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "358"
+  ]
+ },
+ "coal-tar": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "420"
+  ]
+ },
+ "cobalt-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "453"
+  ]
+ },
+ "conium-maculatum-root-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "99"
+  ]
+ },
+ "cornyeabacterium-lipophilicus-prasterone-ferment-filtrate-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "37"
+  ]
+ },
+ "cyclamen-homoaldehyde": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "425"
+  ]
+ },
+ "cyclotetrasiloxane": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1388"
+  ]
+ },
+ "datura-stramonium-leaf-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "301"
+  ]
+ },
+ "datura-stramonium-powder": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "301"
+  ]
+ },
+ "d-dihydrogeraniol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "429"
+  ]
+ },
+ "dea-pg-oleate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-pg-propyl-peg-ppg-18-21-dimethicone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-c12-13-alkyl-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-c12-13-pareth-3-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-c12-15-alkyl-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-c8-18-perfluoroalkylethyl-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-ceteareth-2-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-cetyl-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-cetyl-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-cocoamphodipropionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-cyclocarboxypropyloleate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-dodecylbenzenesulfonate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-hydrolyzed-lecithin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-isostearate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-lauraminopropionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-laureth-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-lauryl-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-linoleate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-methoxycinnamate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-methyl-myristate-sulfonate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-myreth-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-myristate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-myristyl-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-oleth-10-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-oleth-20-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-oleth-3-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-oleth-5-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-peg-4-laurate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-polyperfluoroethoxymethoxy-peg-2-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dea-styrene-acrylates-dvb-copolymer": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "defined-cell-culture-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "168"
+  ]
+ },
+ "diallyloxyneohexyl-zirconium-tridecanoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "391"
+  ]
+ },
+ "dibutyl-phthalate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "675"
+  ]
+ },
+ "dicocamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "diethanolamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "diethanolamine-bisulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "diethylamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "diethylamine-laureth-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "diethylhexyl-phthalate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "677"
+  ]
+ },
+ "diethylhexylamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dihydrocoumarin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "427"
+  ]
+ },
+ "diisopropanolamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "diisopropylamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dimethoxydiglycol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "676"
+  ]
+ },
+ "diosgenin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "260"
+  ]
+ },
+ "diosmetin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "260"
+  ]
+ },
+ "dipa-hydrogenated-cocoate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dipa-lanolate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "dipa-myristate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "direct-black-51": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1266"
+  ]
+ },
+ "direct-red-23": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1269"
+  ]
+ },
+ "direct-red-80": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1270"
+  ]
+ },
+ "direct-red-81": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1267"
+  ]
+ },
+ "direct-violet-48": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1268"
+  ]
+ },
+ "direct-yellow-12": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1264"
+  ]
+ },
+ "disperse-blue-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "700"
+  ]
+ },
+ "disperse-blue-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1300"
+  ]
+ },
+ "disperse-blue-7": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1302"
+  ]
+ },
+ "disperse-brown-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1260"
+  ]
+ },
+ "disperse-orange-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1281"
+  ]
+ },
+ "disperse-red-11": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1301"
+  ]
+ },
+ "disperse-red-15": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1241"
+  ]
+ },
+ "disperse-violet-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1283"
+  ]
+ },
+ "dmso": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "338"
+  ]
+ },
+ "emerald": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "54"
+  ]
+ },
+ "ergocalciferol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "335"
+  ]
+ },
+ "estradiol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "260"
+  ]
+ },
+ "estratetraenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "260"
+  ]
+ },
+ "ethinylestradiol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "260"
+  ]
+ },
+ "ethoxyethanol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "666"
+  ]
+ },
+ "ethoxyethanol-acetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "673"
+  ]
+ },
+ "ethyl-acrylate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "435"
+  ]
+ },
+ "ethyl-tosylamide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "307"
+  ]
+ },
+ "ethyl-urocanate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "418"
+  ]
+ },
+ "ethylene-dichloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "125"
+  ]
+ },
+ "gold-acetylmethionate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "296"
+  ]
+ },
+ "gold-aspartate-glutamate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "296"
+  ]
+ },
+ "gold-chloride-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "296"
+  ]
+ },
+ "hair-keratin-amino-acids": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "hc-blue-no-10": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1326"
+  ]
+ },
+ "hc-blue-no-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1256"
+  ]
+ },
+ "hc-blue-no-5": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1255"
+  ]
+ },
+ "hc-blue-no-6": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1289"
+  ]
+ },
+ "hc-blue-no-8": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1303"
+  ]
+ },
+ "hc-blue-no-9": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1327"
+  ]
+ },
+ "hc-brown-no-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1298"
+  ]
+ },
+ "hc-brown-no-2": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1297"
+  ]
+ },
+ "hc-green-no-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1238"
+  ]
+ },
+ "hc-orange-no-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1237"
+  ]
+ },
+ "hc-red-no-8": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1239"
+  ]
+ },
+ "hc-red-no-9": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1305"
+  ]
+ },
+ "hc-yellow-no-11": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1236"
+  ]
+ },
+ "hc-yellow-no-12": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1325"
+  ]
+ },
+ "hc-yellow-no-5": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1285"
+  ]
+ },
+ "hc-yellow-no-6": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1324"
+  ]
+ },
+ "hc-yellow-no-8": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1304"
+  ]
+ },
+ "hexachlorophene": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "371"
+  ]
+ },
+ "hexane": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "999"
+  ]
+ },
+ "hexoxyethyl-diethylammonium-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "human-adipocyte-conditioned-media-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-adipose-stromal-cell-conditioned-media-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-amniotic-fluid-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-amniotic-fluid-cell-conditioned-media-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-bone-marrow-stem-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-cord-blood-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-endothelial-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-epithelial-cell-conditioned-media-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-fibroblast-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-fibroblast-human-keratinocyte-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-hair-follicle-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-keratinocytes": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-neural-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-neural-cell-culture-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-placental-enzymes": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-placental-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-placental-lipids": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-placental-protein": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-stem-cell-conditioned-media": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-umbilical-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "human-umbilical-serum-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "hydroabietyl-alcohol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "440"
+  ]
+ },
+ "hydrocortisone-acetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "300"
+  ]
+ },
+ "hydrolyzed-hair-keratin": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "hydrolyzed-human-adipose-stromal-cell-culture-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "hydrolyzed-human-placental-protein": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "hydrolyzed-saccharomyces-sodium-selenate-ferment-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "297"
+  ]
+ },
+ "hydroxycortisone-succinate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "300"
+  ]
+ },
+ "hydroxyethyl-2-6-dinitro-p-anisidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1320"
+  ]
+ },
+ "hydroxyethylaminomethyl-p-aminophenol-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1316"
+  ]
+ },
+ "hydroxyisohexyl-3-cyclohexene-carboxaldehyde": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1380"
+  ]
+ },
+ "hydroxypyridinone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1249"
+  ]
+ },
+ "iodine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "213"
+  ]
+ },
+ "iodine-trichloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "213"
+  ]
+ },
+ "laccaic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1279"
+  ]
+ },
+ "l-dihydrogeraniol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "429"
+  ]
+ },
+ "lead-acetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "289"
+  ]
+ },
+ "lidocaine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "399"
+  ]
+ },
+ "lobelia-inflata": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "218"
+  ]
+ },
+ "lobelia-inflata-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "218"
+  ]
+ },
+ "mafenide-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "307"
+  ]
+ },
+ "marrow-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "marrow-lipids": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "mea-iodine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "213"
+  ]
+ },
+ "mercuric-oxide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "221"
+  ]
+ },
+ "methoxydiglycol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1000"
+  ]
+ },
+ "methoxyethanol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "665"
+  ]
+ },
+ "methoxyethanol-acetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "672"
+  ]
+ },
+ "methyl-acetamide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "745"
+  ]
+ },
+ "minoxidil": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "372"
+  ]
+ },
+ "mixed-isopropanolamines": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "mixed-isopropanolamines-lanolate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "mixed-isopropanolamines-lauryl-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "mixed-isopropanolamines-myristate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "411"
+  ]
+ },
+ "morpholine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "344"
+  ]
+ },
+ "morpholine-oleate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "344"
+  ]
+ },
+ "morpholine-stearate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "344"
+  ]
+ },
+ "m-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1204"
+  ]
+ },
+ "m-phenylenediamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1204"
+  ]
+ },
+ "n-n-diethyl-m-aminophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1223"
+  ]
+ },
+ "n-n-diethyl-m-aminophenol-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1223"
+  ]
+ },
+ "n-n-diethyl-p-phenylenediamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1311"
+  ]
+ },
+ "n-n-diethyltoluene-2-5-diamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1310"
+  ]
+ },
+ "n-n-dimethyl-2-6-pyridinediamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1224"
+  ]
+ },
+ "n-n-dimethyl-n-hydroxyethyl-3-nitro-p-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1288"
+  ]
+ },
+ "n-n-dimethyl-p-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1312"
+  ]
+ },
+ "n-n-dimethyl-p-phenylenediamine-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1312"
+  ]
+ },
+ "n-cyclopentyl-m-aminophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1225"
+  ]
+ },
+ "n-ethyl-3-nitro-paba": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1290"
+  ]
+ },
+ "neural-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "n-methoxyethyl-p-phenylenediamine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1226"
+  ]
+ },
+ "n-methyl-3-nitro-p-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1284"
+  ]
+ },
+ "nonoxynol-12-iodine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "213"
+  ]
+ },
+ "nonoxynol-9-iodine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "213"
+  ]
+ },
+ "o-aminophenol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1372"
+  ]
+ },
+ "o-aminophenol-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1372"
+  ]
+ },
+ "octopamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "21"
+  ]
+ },
+ "oxyquinoline": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "395"
+  ]
+ },
+ "oxyquinoline-sulfate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "395"
+  ]
+ },
+ "peg-3-2-2-di-p-phenylenediamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1234"
+  ]
+ },
+ "pentyl-dimethyl-paba": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "381"
+  ]
+ },
+ "phenolphthalein": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "417"
+  ]
+ },
+ "phenylacetonitrile": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "424"
+  ]
+ },
+ "phloroglucinol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1253"
+  ]
+ },
+ "phosphorus": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "279"
+  ]
+ },
+ "phytolacca-decandra-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "374"
+  ]
+ },
+ "phytolacca-decandra-root-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "374"
+  ]
+ },
+ "pigment-orange-5": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "397"
+  ]
+ },
+ "pigment-red-53": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "401"
+  ]
+ },
+ "pigment-yellow-12": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1263"
+  ]
+ },
+ "pigment-yellow-73": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1262"
+  ]
+ },
+ "polyurethane-18": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "201"
+  ]
+ },
+ "polyurethane-19": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "201"
+  ]
+ },
+ "potassium-bromate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "461"
+  ]
+ },
+ "p-phenetidine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1203"
+  ]
+ },
+ "pramoxine-hcl": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "405"
+  ]
+ },
+ "prasterone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "37"
+  ]
+ },
+ "pregnenolone-acetate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "300"
+  ]
+ },
+ "progesterone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "194"
+  ]
+ },
+ "pvp-iodine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "213"
+  ]
+ },
+ "pyrocatechol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "408"
+  ]
+ },
+ "pyrogallol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "409"
+  ]
+ },
+ "rauwolfia-serpentina-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "15"
+  ]
+ },
+ "retinoic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "375"
+  ]
+ },
+ "rh-oligopeptide-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-oligopeptide-2": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-10": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-11": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-12": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-13": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-14": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-15": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-16": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-17": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-18": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-19": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-2": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-22": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-25": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-26": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-27": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-4": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-5": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-6": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-7": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-7-hexapeptide-25": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-8": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "rh-polypeptide-9": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "416"
+  ]
+ },
+ "saccharomyces-fluoride-ferment": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "191"
+  ]
+ },
+ "saccharomyces-gold-ferment": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "296"
+  ]
+ },
+ "saccharomyces-gold-ferment-lysate-filtrate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "296"
+  ]
+ },
+ "saccharomyces-selenium-ferment": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "297"
+  ]
+ },
+ "saccharomyces-zinc-magnesium-calcium-germanium-selenium-ferment": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "297"
+  ]
+ },
+ "selenium-aspartate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "297"
+  ]
+ },
+ "selenium-glycine-soja-sprout-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "297"
+  ]
+ },
+ "sodium-pyrithione": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "369"
+  ]
+ },
+ "sodium-sulfanilate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1257"
+  ]
+ },
+ "solanum-nigrum-fruit-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "298"
+  ]
+ },
+ "solvent-black-3": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1265"
+  ]
+ },
+ "solvent-black-5": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1274"
+  ]
+ },
+ "solvent-blue-35": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "389"
+  ]
+ },
+ "solvent-red-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1231"
+  ]
+ },
+ "solvent-red-24": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "379"
+  ]
+ },
+ "solvent-red-49-1": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "398"
+  ]
+ },
+ "solvent-yellow-44": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1277"
+  ]
+ },
+ "spinal-cord-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "spinal-cord-lipids": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "spinal-lipid-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "spironolactone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "4"
+  ]
+ },
+ "spleen-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "spleen-hydrolysate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "419"
+  ]
+ },
+ "stearic-hydrazide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "200"
+  ]
+ },
+ "strontium-nitrate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "403"
+  ]
+ },
+ "tagetes-erecta-flower-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1658"
+  ]
+ },
+ "tagetes-erecta-flower-oil": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1658"
+  ]
+ },
+ "testosterone": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "37"
+  ]
+ },
+ "tetrahydro-6-nitroquinoxaline": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1240"
+  ]
+ },
+ "tetramethyl-decynediol": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "16"
+  ]
+ },
+ "thiourea": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "321"
+  ]
+ },
+ "thiram": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "162"
+  ]
+ },
+ "toluene-2-6-diamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "413"
+  ]
+ },
+ "toluene-3-4-diamine": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1313"
+  ]
+ },
+ "tosylamide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "307"
+  ]
+ },
+ "tricresyl-phosphate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "277"
+  ]
+ },
+ "urginea-maritima-tuber-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "330"
+  ]
+ },
+ "urocanic-acid": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "418"
+  ]
+ },
+ "veratrum-oxysepalum-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "333"
+  ]
+ },
+ "veratrum-oxysepalum-root-extract": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "333"
+  ]
+ },
+ "vinyl-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "334"
+  ]
+ },
+ "zinc-pyrithione": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "1670"
+  ]
+ },
+ "zirconium-chlorohydrate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "391"
+  ]
+ },
+ "zirconium-dioxide": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "391"
+  ]
+ },
+ "zirconium-powder": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "391"
+  ]
+ },
+ "zirconium-silicate": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "391"
+  ]
+ },
+ "zirconyl-chloride": {
+  "annex3": [],
+  "annex4": [],
+  "annex5": [],
+  "annex6": [],
+  "annex2": [
+   "391"
+  ]
+ }
+}

@@ -1,0 +1,36 @@
+#2b  Thioglycolic acid esters
+#8  N-substituted derivatives of p-Phenylenediamine and their salts; N-substituted derivatives
+#9  Methylphenylenediamines, their N- substituted derivatives and their salts (1), with the ex
+#11  Dichlorophen
+#19  Moved or deleted
+#20  Moved or deleted
+#23  (a)  Alkali sulphides
+#37  3-(N-Hexadecyl-N-2-hydroxyethylammonio)propylbis(2-hydroxyethyl) ammonium difluoride
+#38  N,N′,N′-Tris(polyoxyethylene)-N-hexadecylpropylenediamine dihydrofluoride
+#39  9-Octadecen-1-amine hydrofluoride
+#47  3-Pyridinemethanol hydrofluoride
+#50  Aluminium zirconium chloride hydroxide complexes
+#51  Bis(8-hydroxyquinolinium) sulphate
+#55  Moved or deleted
+#60  Fatty acid dialkylamides and dialkanolamides
+#61  Monoalkylamines, monoalkanolamines and their salts
+#62  Trialkylamines, trialkanolamines and their salts
+#66  Polyacrylamides
+#95  Hydroquinone methylether/Mequinol
+#99  Inorganic sulfites and bisulfites (11)
+#177  2-Hexylidene cyclopentanone
+#178  Methyl heptadienone; 6-Methyl-3,5-heptadien-2-one
+#184  Opopanax chironium resin
+#202  See 226
+#204  2,3-Dihydro-1H-indole-5,6-diol and its hydrobromide salt (17)
+#205  See 219
+#222  1-Hydroxy-2-beta-hydroxyethylamino-4,6-dinitrobenzene
+#229  5-[(2-Hydroxyethyl)amino]-o-cresol
+#271  Mixture of (1), (2) & (3) in dispersing agent (lignosulphate):
+#277  2,6-Pyridinediamine, 3-(3-pyridinylazo)
+#279  2,3-Diamino-6,7-dihydro-1H,5H-pyrazolo[1,2-a] Pyrazol-1-one dimethanesulfonate
+#282  1-Propanaminium, 3-[[9,10-dihydro-4-(methylamino)-9,10-dioxo-1-anthracenyl] amino]-N,N-dim
+#293  1-N-Methylmorpholiniumpropylamino-4-hydroxyanthraquinone, methyl sulfate
+#309  Tagetes patula flower extract (26)
+#381  Aluminium-containing ingredients with the exception of those listed in entries 34, 50, 189
+#382  Vetiveria zizanioides, ext., acetylated (46)

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INCI Engine - Akıllı Kozmetik İçerik Analizi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4F46E5;
+      --primary-hover: #4338CA;
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --safe: #10B981;
+      --safe-bg: #ECFDF5;
+      --restricted: #F59E0B;
+      --restricted-bg: #FFFBEB;
+      --banned: #EF4444;
+      --banned-bg: #FEF2F2;
+      --allergen: #EC4899;
+      --allergen-bg: #FDF2F8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 60px; }
+
+    header {
+      background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #4338CA 100%);
+      color: white;
+      padding: 36px 20px 48px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+    header p { font-size: 14px; opacity: 0.85; max-width: 600px; margin: 0 auto; line-height: 1.5; }
+
+    .container { max-width: 900px; margin: -24px auto 0; padding: 0 16px; }
+
+    .nav-tabs {
+      display: flex;
+      background: white;
+      padding: 6px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .search-box { position: relative; }
+    .search-input {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 15px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: var(--primary); }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 12px;
+    }
+    .btn:hover { background: var(--primary-hover); }
+
+    .product-list { display: grid; gap: 12px; margin-top: 16px; }
+    .product-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .product-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .product-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+    .product-info h4 { font-size: 15px; font-weight: 700; color: var(--text); }
+    .product-info p { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin: 16px 0 24px;
+    }
+    .stat-card {
+      padding: 12px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-card.safe { background: var(--safe-bg); border-color: var(--safe); color: #065F46; }
+    .stat-card.restricted { background: var(--restricted-bg); border-color: var(--restricted); color: #92400E; }
+    .stat-card.banned { background: var(--banned-bg); border-color: var(--banned); color: #991B1B; }
+    .stat-card.allergen { background: var(--allergen-bg); border-color: var(--allergen); color: #9D174D; }
+    .stat-val { font-size: 20px; font-weight: 800; }
+    .stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; margin-top: 2px; }
+
+    .ingredient-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      background: white;
+      border-left: 4px solid var(--safe);
+    }
+    .ingredient-card.banned { border-left-color: var(--banned); }
+    .ingredient-card.restricted { border-left-color: var(--restricted); }
+    .ingredient-card.allergen { border-left-color: var(--allergen); }
+
+    .ing-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .ing-name { font-size: 15px; font-weight: 700; }
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .badge.safe { background: var(--safe-bg); color: var(--safe); }
+    .badge.restricted { background: var(--restricted-bg); color: var(--restricted); }
+    .badge.banned { background: var(--banned-bg); color: var(--banned); }
+    .badge.allergen { background: var(--allergen-bg); color: var(--allergen); }
+
+    .ing-roles { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+    .role-pill {
+      font-size: 11px;
+      background: #EEF2FF;
+      color: #4338CA;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+    .ing-desc { font-size: 13px; color: #334155; line-height: 1.45; }
+
+    textarea.text-input {
+      width: 100%;
+      height: 140px;
+      padding: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      outline: none;
+      font-size: 14px;
+      resize: vertical;
+    }
+    textarea.text-input:focus { border-color: var(--primary); }
+
+    .loading { text-align: center; padding: 24px; color: var(--text-muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌿 INCI Engine</h1>
+    <p>Avrupa Birliği (EC 1223/2009) Regülasyon Destekli Akıllı Kozmetik İçerik Analiz Sistemi</p>
+  </header>
+
+  <div class="container">
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('search')">🔍 Ürün / Marka Ara</button>
+      <button class="tab-btn" onclick="switchTab('analyze')">📸 İçerik Listesi Tara (Metin/OCR)</button>
+    </div>
+
+    <!-- TAB 1: ÜRÜN ARAMA -->
+    <div id="tab-search" class="tab-content">
+      <div class="card">
+        <div class="search-box">
+          <input type="text" id="searchInput" class="search-input" placeholder="Ürün adı, marka veya barkod yazın (örn: Nivea, Flormar, Dove)..." onkeyup="handleSearch(event)">
+        </div>
+        <div id="searchResults" class="product-list"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: METİN / OCR ANALİZ -->
+    <div id="tab-analyze" class="tab-content" style="display: none;">
+      <div class="card">
+        <label style="display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px;">Kozmetik İçerik Listesini Yapıştırın:</label>
+        <textarea id="analyzeInput" class="text-input" placeholder="Aqua, Glycerin, Niacinamide, Phenoxyethanol, Limonene, Zinc Oxide..."></textarea>
+        <button class="btn" onclick="runTextAnalysis()">✨ İçerikleri Analiz Et</button>
+      </div>
+    </div>
+
+    <!-- ANALİZ SONUÇLARI GÖSTERİM ALANI -->
+    <div id="analysisOutput" style="display: none;"></div>
+  </div>
+
+  <script>
+    let searchTimeout = null;
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+      document.getElementById('analysisOutput').style.display = 'none';
+
+      if (tab === 'search') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('tab-search').style.display = 'block';
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('tab-analyze').style.display = 'block';
+      }
+    }
+
+    function handleSearch(e) {
+      clearTimeout(searchTimeout);
+      const query = e.target.value.trim();
+      if (query.length < 2) {
+        document.getElementById('searchResults').innerHTML = '';
+        return;
+      }
+      searchTimeout = setTimeout(() => executeSearch(query), 300);
+    }
+
+    async function executeSearch(query) {
+      const container = document.getElementById('searchResults');
+      container.innerHTML = '<div class="loading">Ürünler aranıyor...</div>';
+
+      try {
+        const res = await fetch(`/api/products/search?q=${encodeURIComponent(query)}&limit=10`);
+        const data = await res.json();
+
+        if (!data.products || !data.products.length) {
+          container.innerHTML = '<div class="loading">Eşleşen ürün bulunamadı.</div>';
+          return;
+        }
+
+        container.innerHTML = data.products.map(p => `
+          <div class="product-card" onclick="fetchProductDetail('${p.barcode}')">
+            ${p.image ? `<img src="${p.image}" class="product-thumb" alt="${p.name}">` : '<div class="product-thumb">🧴</div>'}
+            <div class="product-info" style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
+                <h4>${p.name}</h4>
+                ${p.has_ingredients ? '<span class="badge safe" style="font-size:10px; white-space:nowrap;">✓ İçerikler Hazır</span>' : '<span class="badge" style="font-size:10px; background:#F1F5F9; color:#64748B; white-space:nowrap;">📷 İçerik Yok</span>'}
+              </div>
+              <p>${p.brand} • Barkod: ${p.barcode}</p>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        container.innerHTML = '<div class="loading">Arama sırasında hata oluştu.</div>';
+      }
+    }
+
+    async function fetchProductDetail(barcode) {
+      const out = document.getElementById('analysisOutput');
+      out.style.display = 'block';
+      out.innerHTML = '<div class="card loading">Ürün analizi yükleniyor...</div>';
+      out.scrollIntoView({ behavior: 'smooth' });
+
+      try {
+        const res = await fetch(`/api/products/${barcode}`);
+        const p = await res.json();
+        renderAnalysisResult(p.name, p.brand, p.safety_summary, p.ingredients, p.barcode);
+      } catch (err) {
+        out.innerHTML = '<div class="card loading">Ürün detayları yüklenemedi.</div>';
+      }
+    }
+
+    async function runTextAnalysis() {
+      const text = document.getElementById('analyzeInput').value.trim();
+      if (!text) return alert('Lütfen bir içerik metni girin.');
+
+      const out = document.getElementById('analysisOutput');
+      out.style.display = 'block';
+      out.innerHTML = '<div class="card loading">İçerikler taranıyor...</div>';
+      out.scrollIntoView({ behavior: 'smooth' });
+
+      try {
+        const res = await fetch('/api/analyze', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        const data = await res.json();
+        renderAnalysisResult('Serbest Metin / Etiket Taraması', 'Özel Analiz', data.safety_summary, data.ingredients);
+      } catch (err) {
+        out.innerHTML = '<div class="card loading">Analiz yapılamadı.</div>';
+      }
+    }
+
+    function runInlineAnalysis() {
+      const text = document.getElementById('inlineAnalyzeInput').value.trim();
+      if (!text) return alert('Lütfen içerik listesini yapıştırın.');
+      document.getElementById('analyzeInput').value = text;
+      runTextAnalysis();
+    }
+
+    function renderAnalysisResult(title, brand, summary, ingredients, barcode) {
+      const out = document.getElementById('analysisOutput');
+      if (!summary || !ingredients || ingredients.length === 0) {
+        out.innerHTML = `
+          <div class="card" style="text-align: center; padding: 36px 20px;">
+            <div style="font-size: 44px; margin-bottom: 12px;">📷</div>
+            <h3 style="font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 4px;">${title}</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">${brand} • Barkod: ${barcode || '-'}</p>
+            <div style="background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 12px; padding: 18px; max-width: 620px; margin: 0 auto 10px;">
+              <p style="font-size: 13.5px; color: #334155; line-height: 1.5; margin-bottom: 12px;">
+                Bu ürün veritabanında kayıtlıdır ancak kutu üzerindeki içerik listesi henüz eklenmemiştir.
+                <br><b>Kutunun üzerindeki içerikleri buraya yapıştırarak hemen analiz edebilirsiniz:</b>
+              </p>
+              <textarea id="inlineAnalyzeInput" class="text-input" style="height: 110px; margin-bottom: 10px;" placeholder="Aqua, Glycerin, Niacinamide, Dimethicone, Phenoxyethanol..."></textarea>
+              <button class="btn" style="margin-top: 0; width: 100%;" onclick="runInlineAnalysis()">✨ Bu Ürünün İçeriklerini Hemen Analiz Et</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      out.innerHTML = `
+        <div class="card">
+          <h2 style="font-size: 20px; font-weight: 800; margin-bottom: 4px;">${title}</h2>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">${brand}</p>
+
+          <div class="summary-grid">
+            <div class="stat-card ${summary.is_clean ? 'safe' : 'banned'}">
+              <div class="stat-val">${summary.banned_count || 0}</div>
+              <div class="stat-label">🚫 Yasaklı (Ek II)</div>
+            </div>
+            <div class="stat-card ${summary.restricted_count ? 'restricted' : 'safe'}">
+              <div class="stat-val">${summary.restricted_count || 0}</div>
+              <div class="stat-label">⚠️ Kısıtlı (Ek III)</div>
+            </div>
+            <div class="stat-card ${summary.allergens_count ? 'allergen' : 'safe'}">
+              <div class="stat-val">${summary.allergens_count || 0}</div>
+              <div class="stat-label">🌸 Koku Alerjeni</div>
+            </div>
+            <div class="stat-card safe">
+              <div class="stat-val">${summary.preservatives_count || 0}</div>
+              <div class="stat-label">🛡️ Koruyucu</div>
+            </div>
+            <div class="stat-card safe">
+              <div class="stat-val">${summary.uv_filters_count || 0}</div>
+              <div class="stat-label">☀️ UV Filtresi</div>
+            </div>
+          </div>
+
+          <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 12px;">İçerik Detayları (${ingredients.length} Madde)</h3>
+          
+          <div class="ingredient-list">
+            ${ingredients.map(ing => {
+              const status = ing.status;
+              const badgeClass = status === 'banned' ? 'banned' : (status === 'restricted' ? 'restricted' : (status === 'allergen' ? 'allergen' : 'safe'));
+              const badgeText = status === 'banned' ? '🚫 Yasaklı' : (status === 'restricted' ? '⚠️ Kısıtlı' : (status === 'allergen' ? '🌸 Alerjen' : '🟢 Güvenli'));
+              
+              return `
+                <div class="ingredient-card ${status}">
+                  <div class="ing-header">
+                    <div>
+                      <span class="ing-name">${ing.inci_name}</span>
+                      ${ing.raw_name.toLowerCase() !== ing.inci_name.toLowerCase() ? `<span style="font-size: 12px; color: var(--text-muted);"> (${ing.raw_name})</span>` : ''}
+                    </div>
+                    <span class="badge ${badgeClass}">${badgeText}</span>
+                  </div>
+                  
+                  ${ing.functions_tr && ing.functions_tr.length ? `
+                    <div class="ing-roles">
+                      ${ing.functions_tr.map(f => `<span class="role-pill">${f}</span>`).join('')}
+                    </div>
+                  ` : ''}
+
+                  <p class="ing-desc">${ing.description_tr}</p>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
