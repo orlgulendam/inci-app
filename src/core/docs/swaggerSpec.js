@@ -226,6 +226,17 @@ const swaggerSpec = {
         }
       }
     },
+    "/profile/account": {
+      delete: {
+        tags: ["Kişiselleştirme"],
+        summary: "Kullanıcının hesabını ve tüm verilerini kalıcı olarak siler (Apple Guideline 5.1.1 Uyumlu)",
+        security: [{ bearerAuth: [] }],
+        responses: {
+          200: { description: "Hesap ve tüm veriler başarıyla silindi" },
+          401: { description: "Yetkisiz erişim" }
+        }
+      }
+    },
     "/profile/check-compatibility": {
       post: {
         tags: ["Kişiselleştirme"],

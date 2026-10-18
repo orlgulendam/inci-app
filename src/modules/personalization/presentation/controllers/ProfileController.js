@@ -52,6 +52,20 @@ class ProfileController {
       next(err);
     }
   };
+
+  deleteAccount = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const result = await this.profileService.deleteAccount(userId);
+      return res.status(200).json({
+        success: true,
+        data: result
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 module.exports = ProfileController;
+

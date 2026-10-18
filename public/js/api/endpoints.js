@@ -11,6 +11,8 @@ export const ENDPOINTS = {
   // Cilt Profili & Uyumluluk
   PROFILE_SKIN: "/api/v1/profile/skin",
   PROFILE_CHECK_COMPATIBILITY: "/api/v1/profile/check-compatibility",
+  PROFILE_DELETE_ACCOUNT: "/api/v1/profile/account",
+
 
   // İçerik Analizi & Katalog
   ANALYZE_RAW: "/api/v1/analyze",

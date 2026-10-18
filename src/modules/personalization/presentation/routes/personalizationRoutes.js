@@ -33,6 +33,9 @@ function createPersonalizationRoutes({
   // Korumalı Profil Uç Noktaları (JWT Zorunlu)
   router.get("/profile/skin", authMiddleware, profileController.getProfile);
   router.put("/profile/skin", authMiddleware, profileController.updateProfile);
+  // Apple App Store Guideline 5.1.1 Gereği Hesap Silme Uç Noktası
+  router.delete("/profile/account", authMiddleware, profileController.deleteAccount);
+
 
   // AI Danışmanlık ve Sohbet Uç Noktası (Token opsiyonel: Giriş yapmışsa profiliyle yanıtlar)
   if (chatController) {

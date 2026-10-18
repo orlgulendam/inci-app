@@ -137,7 +137,56 @@ export class ProfileWizardView {
 
     card.appendChild(footer);
     this.container.appendChild(card);
+
+    // Apple App Store Guideline 5.1.1 Uyumlu Hesap Silme Bölümü
+    const dangerCard = document.createElement("div");
+    dangerCard.className = "card";
+    dangerCard.style.maxWidth = "680px";
+    dangerCard.style.margin = "var(--space-3) auto";
+    dangerCard.style.border = "1px solid var(--color-danger-border)";
+    dangerCard.style.background = "#fff8f8";
+
+    const dangerBody = document.createElement("div");
+    dangerBody.className = "card-body";
+    dangerBody.style.display = "flex";
+    dangerBody.style.justifyContent = "space-between";
+    dangerBody.style.alignItems = "center";
+    dangerBody.style.flexWrap = "wrap";
+    dangerBody.style.gap = "var(--space-2)";
+
+    dangerBody.innerHTML = `
+      <div>
+        <strong style="color:var(--color-danger); font-size:var(--font-size-sm);">Hesap ve Kişisel Veri Yönetimi</strong>
+        <p style="font-size:var(--font-size-xs); color:var(--color-text-muted); margin:0;">
+          KVKK ve Apple App Store gereği tüm cilt verilerinizi ve hesabınızı istediğiniz an silebilirsiniz.
+        </p>
+      </div>
+    `;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.className = "btn btn-sm btn-danger";
+    deleteBtn.textContent = "Hesabımı ve Verilerimi Sil";
+    deleteBtn.onclick = async () => {
+      const confirmed = window.confirm("Hesabınızı ve kayıtlı tüm cilt profili verilerinizi kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.");
+      if (confirmed) {
+        try {
+          deleteBtn.disabled = true;
+          deleteBtn.textContent = "Siliniyor...";
+          await profileService.deleteAccount();
+          toast.success("Hesabınız ve tüm verileriniz başarıyla silindi.");
+          this.onNavigate("home");
+        } catch (err) {
+          toast.error(err.message);
+          deleteBtn.disabled = false;
+          deleteBtn.textContent = "Hesabımı ve Verilerimi Sil";
+        }
+      }
+    };
+    dangerBody.appendChild(deleteBtn);
+    dangerCard.appendChild(dangerBody);
+    this.container.appendChild(dangerCard);
   }
+
 
   // ADIM 1: Ad, Soyad ve Cilt Tipi
   renderStep1() {

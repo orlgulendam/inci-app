@@ -27,6 +27,11 @@ class IUserRepository {
   async updatePoints(userId, delta, session = null) {
     throw new Error("Method updatePoints() must be implemented.");
   }
+
+  async deleteById(id) {
+    throw new Error("Method deleteById() must be implemented.");
+  }
 }
 
 module.exports = IUserRepository;
+

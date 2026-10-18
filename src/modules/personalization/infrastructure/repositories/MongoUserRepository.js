@@ -169,6 +169,18 @@ class MongoUserRepository extends IUserRepository {
       throw err;
     }
   }
+
+  async deleteById(id) {
+    try {
+      const query = ObjectId.isValid(id) ? { _id: new ObjectId(id) } : { _id: id };
+      const res = await this.collection.deleteOne(query);
+      return res.deletedCount > 0;
+    } catch (err) {
+      logger.error(`Error deleting user: ${id}`, { error: err.message });
+      throw err;
+    }
+  }
 }
 
 module.exports = MongoUserRepository;
+

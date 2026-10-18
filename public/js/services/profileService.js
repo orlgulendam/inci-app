@@ -30,8 +30,12 @@ export class ProfileService {
         }
       });
     }
+  async deleteAccount() {
+    const res = await this.client.delete(ENDPOINTS.PROFILE_DELETE_ACCOUNT);
+    this.store.clearAuth();
     return res.data;
   }
 }
 
 export const profileService = new ProfileService();
+

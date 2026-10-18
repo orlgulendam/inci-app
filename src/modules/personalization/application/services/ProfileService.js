@@ -63,7 +63,20 @@ class ProfileService {
       skinProfile: user.skinProfile
     };
   }
+
+  async deleteAccount(userId) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) {
+      throw new NotFoundError("Kullanıcı bulunamadı.");
+    }
+
+    await this.userRepository.deleteById(userId);
+    return {
+      message: "Hesabınız ve tüm ilişkili verileriniz başarıyla kalıcı olarak silindi."
+    };
+  }
 }
 
 module.exports = ProfileService;
+
 
