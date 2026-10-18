@@ -2,6 +2,7 @@
 // Gerekçe: Kamera donanım erişimini, stream kaynaklarının kapatılmasını ve barkod tespit stratejisini tek bir güvenli arayüz arkasında toplamak için.
 import { NativeBarcodeStrategy } from "./NativeBarcodeStrategy.js";
 import { FallbackBarcodeStrategy } from "./FallbackBarcodeStrategy.js";
+import { CapacitorBarcodeStrategy } from "./CapacitorBarcodeStrategy.js";
 
 export class ScannerService {
   constructor() {
@@ -14,12 +15,22 @@ export class ScannerService {
 
   async resolveStrategy() {
     if (!this.strategy) {
+      // 1. Native Mobil (Capacitor) Önceliği
+      const capacitorStrategy = new CapacitorBarcodeStrategy();
+      if (await capacitorStrategy.isSupported()) {
+        this.strategy = capacitorStrategy;
+        return this.strategy;
+      }
+
+      // 2. Tarayıcı Yerleşik BarcodeDetector API'si
       const nativeStrategy = new NativeBarcodeStrategy();
       if (await nativeStrategy.isSupported()) {
         this.strategy = nativeStrategy;
-      } else {
-        this.strategy = new FallbackBarcodeStrategy();
+        return this.strategy;
       }
+
+      // 3. Yedek Tarayıcı Stratejisi
+      this.strategy = new FallbackBarcodeStrategy();
     }
     return this.strategy;
   }

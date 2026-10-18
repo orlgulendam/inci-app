@@ -1,0 +1,10 @@
+{
+  "appId": "app.inci.engine",
+  "appName": "INCI Engine",
+  "webDir": "public",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  }
+}

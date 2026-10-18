@@ -3,10 +3,21 @@
 
 class ApiClient {
   constructor({ baseUrl = "", timeoutMs = 12000, onUnauthorized = null } = {}) {
+    // Mobil / Capacitor WebView ortamında yerel sunucuya veya konfigüre edilen API'ye bağlanma desteği
+    if (!baseUrl) {
+      const isCapacitor = window.Capacitor !== undefined || window.location.protocol === "capacitor:";
+      if (isCapacitor) {
+        baseUrl = localStorage.getItem("inci_api_base_url") || "http://10.0.2.2:3000";
+      }
+    }
     this.baseUrl = baseUrl;
     this.timeoutMs = timeoutMs;
     this.onUnauthorized = onUnauthorized;
-    this.tokenGetter = () => sessionStorage.getItem("inci_token") || null;
+    this.tokenGetter = () => sessionStorage.getItem("inci_token") || localStorage.getItem("inci_token") || null;
+  }
+
+  setBaseUrl(url) {
+    this.baseUrl = url;
   }
 
   setTokenGetter(getter) {
