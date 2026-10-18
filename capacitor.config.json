@@ -1,10 +1,20 @@
 {
   "appId": "app.inci.engine",
-  "appName": "INCI Engine",
+  "appName": "skinbyinci",
   "webDir": "public",
   "bundledWebRuntime": false,
   "server": {
     "androidScheme": "https",
     "cleartext": true
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2500,
+      "launchAutoHide": true,
+      "backgroundColor": "#FCF1F5",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    }
   }
 }
