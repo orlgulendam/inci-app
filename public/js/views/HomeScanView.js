@@ -1,6 +1,6 @@
 // public/js/views/HomeScanView.js - Ana Sayfa ve Ürün Tarama Görünümü (SRP & Strategy)
 // Gerekçe: 3 tarama yöntemini (Canlı Kamera, Fotoğraf Çekme/Yükleme, Manuel Giriş) tek bir arayüzde birleştirmek ve sonuçları CardFactory ile sunmak için.
-import { scannerService } from "../scanner/ScannerService.js";
+import { ScannerService, scannerService } from "../scanner/ScannerService.js";
 import { scanService } from "../services/scanService.js";
 import { CardFactory } from "../components/CardFactory.js";
 import { toast } from "../components/Toast.js";
