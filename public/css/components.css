@@ -457,3 +457,163 @@
   background: #ffffff;
   border-top: 1px solid var(--color-border);
 }
+
+/* 11) skinbyinci Maskot Stilleri (Mascot Components) */
+.mascot-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--color-primary-300);
+  object-fit: cover;
+  background: var(--color-primary-50);
+  box-shadow: var(--shadow-sm);
+}
+
+.mascot-hero-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-4);
+  background: linear-gradient(180deg, #fce4ed 0%, #ffffff 100%);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+}
+
+.mascot-img-large {
+  width: 140px;
+  height: 140px;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+  filter: drop-shadow(0 6px 12px rgba(184, 50, 94, 0.2));
+  animation: floatMascot 3s ease-in-out infinite;
+}
+
+@keyframes floatMascot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Maskot Duygu Durumu Çerçevesi (4'lü Mod Gridinden Kırpma) */
+.mascot-sprite-box {
+  width: 110px;
+  height: 110px;
+  border-radius: var(--radius-full);
+  border: 3px solid var(--color-primary-400);
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto var(--space-3) auto;
+  box-shadow: 0 4px 10px rgba(199, 56, 102, 0.25);
+  background: #fce4ed;
+}
+
+.mascot-sprite-img {
+  width: 220px;
+  height: 220px;
+  max-width: none;
+  position: absolute;
+}
+
+/* Sol Üst: Tarama / Analiz Modu */
+.mascot-sprite-box.scanning .mascot-sprite-img {
+  top: 0;
+  left: 0;
+}
+
+/* Sağ Üst: Bilgilendirme / Asistan Modu */
+.mascot-sprite-box.explaining .mascot-sprite-img {
+  top: 0;
+  left: -110px;
+}
+
+/* Sol Alt: Uyarı / Risk Modu */
+.mascot-sprite-box.alert .mascot-sprite-img {
+  top: -110px;
+  left: 0;
+}
+
+/* Sağ Alt: Başarı / Mükemmel Uyum Modu */
+.mascot-sprite-box.success .mascot-sprite-img {
+  top: -110px;
+  left: -110px;
+}
+
+/* 12) Mobil Alt Navigasyon Çubuğu (Bottom Navigation Bar) */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: #ffffff;
+  border-top: 1.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 50;
+  box-shadow: 0 -4px 16px rgba(184, 50, 94, 0.08);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: #7d1c3b;
+  text-decoration: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+}
+
+.bottom-nav-item .nav-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  transition: transform var(--transition-fast);
+}
+
+.bottom-nav-item.active {
+  color: var(--color-primary-600);
+}
+
+.bottom-nav-item.active .nav-icon {
+  transform: scale(1.15);
+}
+
+.bottom-nav-item.center-action {
+  position: relative;
+  top: -10px;
+}
+
+.bottom-nav-item.center-action .nav-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-600);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(184, 50, 94, 0.35);
+  font-size: 1.5rem;
+  transition: transform var(--transition-fast);
+}
+
+.bottom-nav-item.center-action:active .nav-icon-circle {
+  transform: scale(0.92);
+}
+
+/* Ana içerik alanının alt bar altında kalmaması için boşluk */
+.app-container {
+  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+}
+

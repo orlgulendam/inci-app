@@ -88,58 +88,92 @@ class Application {
   }
 
   updateNavigation() {
-    if (!this.navContainer) return;
-    this.navContainer.innerHTML = "";
+    const bottomNav = document.getElementById("mobileBottomNav");
+    if (!bottomNav) return;
+    bottomNav.innerHTML = "";
 
     const isAuth = store.isAuthenticated();
     const isAdmin = store.isAdmin();
     const currentView = store.getState().currentView;
 
-    // 1. Ürün Tara
-    const scanLink = this.createNavLink("Ürün Tara", "home", currentView === "home");
-    this.navContainer.appendChild(scanLink);
+    // 1. Keşfet Tab
+    bottomNav.appendChild(this.createBottomNavItem({
+      label: "Keşfet",
+      icon: "🏠",
+      targetView: "home",
+      isActive: currentView === "home"
+    }));
 
-    // 2. AI Asistanı
-    const chatLink = this.createNavLink("AI Danışman", "chat", currentView === "chat");
-    this.navContainer.appendChild(chatLink);
-
-    // 3. Kullanıcı Durumuna Göre Linkler
-    if (isAuth) {
-      const profileLink = this.createNavLink("Cilt Profilim", "profile", currentView === "profile");
-      this.navContainer.appendChild(profileLink);
-
-      // Yalnızca Admin rolünde olanlara Yönetici linki gösterilir
-      if (isAdmin) {
-        const adminLink = this.createNavLink("🛡️ Yönetici", "admin", currentView === "admin");
-        adminLink.style.color = "var(--color-danger)";
-        this.navContainer.appendChild(adminLink);
+    // 2. Tara Tab (Merkezdeki Büyük Pembe Buton)
+    const scanTab = document.createElement("button");
+    scanTab.className = `bottom-nav-item center-action ${currentView === "scan" ? "active" : ""}`;
+    scanTab.setAttribute("aria-label", "Barkod Tara");
+    scanTab.innerHTML = `
+      <div class="nav-icon-circle">📷</div>
+      <span>Tara</span>
+    `;
+    scanTab.onclick = () => {
+      this.navigate("home");
+      // Eğer Home görünümündeyse doğrudan kamera modalını aç
+      if (this.currentViewInstance && typeof this.currentViewInstance.openCameraModal === "function") {
+        this.currentViewInstance.openCameraModal();
       }
+    };
+    bottomNav.appendChild(scanTab);
 
-      const logoutBtn = document.createElement("button");
-      logoutBtn.className = "btn btn-sm btn-outline";
-      logoutBtn.textContent = "Çıkış Yap";
-      logoutBtn.onclick = () => {
-        store.clearAuth();
-        toast.info("Oturum kapatıldı.");
-        this.navigate("home");
-      };
-      this.navContainer.appendChild(logoutBtn);
-    } else {
-      const authLink = this.createNavLink("Giriş / Kayıt", "auth", currentView === "auth" || currentView === "verify");
-      this.navContainer.appendChild(authLink);
+    // 3. Asistan Tab
+    bottomNav.appendChild(this.createBottomNavItem({
+      label: "Asistan",
+      icon: "💬",
+      targetView: "chat",
+      isActive: currentView === "chat"
+    }));
+
+    // 4. Profil Tab
+    bottomNav.appendChild(this.createBottomNavItem({
+      label: "Profil",
+      icon: "👤",
+      targetView: isAuth ? "profile" : "auth",
+      isActive: currentView === "profile" || currentView === "auth"
+    }));
+
+    // 5. Admin / Ayarlar Tab
+    bottomNav.appendChild(this.createBottomNavItem({
+      label: isAdmin ? "Admin" : "Ayarlar",
+      icon: isAdmin ? "🛡️" : "⚙️",
+      targetView: isAdmin ? "admin" : (isAuth ? "profile" : "auth"),
+      isActive: currentView === "admin"
+    }));
+
+    // Üst Header Hızlı Durum (Giriş/Çıkış rozeti)
+    const quickStatus = document.getElementById("headerQuickStatus");
+    if (quickStatus) {
+      quickStatus.innerHTML = "";
+      if (isAuth) {
+        const user = store.getState().user;
+        const badge = document.createElement("button");
+        badge.className = "btn btn-sm btn-outline";
+        badge.style.fontSize = "11px";
+        badge.textContent = `Çıkış (${user?.firstName || "Hesabım"})`;
+        badge.onclick = () => {
+          store.clearAuth();
+          toast.info("Oturum kapatıldı.");
+          this.navigate("home");
+        };
+        quickStatus.appendChild(badge);
+      }
     }
   }
 
-  createNavLink(label, targetView, isActive) {
-    const a = document.createElement("a");
-    a.href = `#${targetView}`;
-    a.className = `nav-link ${isActive ? "active" : ""}`;
-    a.textContent = label;
-    a.onclick = (e) => {
-      e.preventDefault();
-      this.navigate(targetView);
-    };
-    return a;
+  createBottomNavItem({ label, icon, targetView, isActive }) {
+    const btn = document.createElement("button");
+    btn.className = `bottom-nav-item ${isActive ? "active" : ""}`;
+    btn.innerHTML = `
+      <span class="nav-icon">${icon}</span>
+      <span>${label}</span>
+    `;
+    btn.onclick = () => this.navigate(targetView);
+    return btn;
   }
 }
 

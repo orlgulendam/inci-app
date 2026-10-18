@@ -1,25 +1,25 @@
 /* public/css/tokens.css - Tasarım Değişkenleri (Design Tokens) */
 /* WCAG AA (Minimum 4.5:1 kontrast) standartlarına tam uyumlu Pembe Dermokozmetik Teması */
 :root {
-  /* Marka Pembe Paleti (WCAG AA Uyumlu) */
-  --color-primary-50: #fdf2f8;
-  --color-primary-100: #fce7f3;
-  --color-primary-200: #fbcfe8;
-  --color-primary-300: #f472b6;
-  --color-primary-400: #ec4899;
-  --color-primary-500: #db2777; /* Ana Buton / Aksiyon */
-  --color-primary-600: #be185d; /* Vurgulu Metin / Başlık (Beyazda 4.7:1) */
-  --color-primary-700: #9d174d; /* Hover & Link */
-  --color-primary-800: #831843; /* Koyu Pembe Yazı (Pembe fonda 8.5:1) */
-  --color-primary-900: #500724;
+  /* skinbyinci Gül Kurusu ve Pudra Pembe Paleti (WCAG AA Uyumlu) */
+  --color-primary-50: #fdf2f6;
+  --color-primary-100: #fce4ed;
+  --color-primary-200: #f9c9dc;
+  --color-primary-300: #f49ec0;
+  --color-primary-400: #eb6899;
+  --color-primary-500: #c73866; /* Canlı Gül Kurusu */
+  --color-primary-600: #b8325e; /* Mockup Ana Vurgu Rengi */
+  --color-primary-700: #9c244c;
+  --color-primary-800: #7d1c3b;
+  --color-primary-900: #4a0c20;
 
-  /* Nötr Yüzey ve Gövde Renkleri */
-  --color-bg-app: #fdf4f9;
+  /* Nötr Yüzey ve Pudra Zemin */
+  --color-bg-app: #fcf1f5;       /* Mockup Açık Pudra Pembe */
   --color-surface-card: #ffffff;
   --color-surface-elevated: #ffffff;
-  --color-surface-soft: #fcf6f9;
-  --color-border: #f3d7e7;
-  --color-border-subtle: #f9e8f2;
+  --color-surface-soft: #faeaf0;
+  --color-border: #f0c5d5;
+  --color-border-subtle: #f8e1eb;
 
   /* Tipografi Renkleri */
   --color-text-main: #1e293b;   /* Çok yüksek kontrast (13.5:1) */

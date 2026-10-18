@@ -25,9 +25,12 @@ export class ChatView {
     const header = document.createElement("div");
     header.className = "card-header";
     header.innerHTML = `
-      <div>
-        <h2 class="card-title">✨ AI Dermokozmetik Asistanı</h2>
-        <span class="form-hint">Cilt profilinizle uyumlu kişiselleştirilmiş danışman</span>
+      <div style="display:flex; align-items:center; gap:var(--space-3);">
+        <img src="/assets/mascot/inci_mascot_shell.jpg" alt="AI Cilt Asistanı İnci" class="mascot-avatar" />
+        <div>
+          <h2 class="card-title" style="margin-bottom:0;">AI Cilt Asistanı İnci</h2>
+          <span class="form-hint" style="color:var(--color-success); font-weight:600;">● Çevrimiçi</span>
+        </div>
       </div>
       <span class="badge badge-info">Gemini Flash</span>
     `;

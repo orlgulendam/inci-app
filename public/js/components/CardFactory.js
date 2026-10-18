@@ -33,15 +33,17 @@ export class CardFactory {
     const score = Number(data.score !== undefined ? data.score : 85);
     const badge = document.createElement("span");
 
-    if (score >= 70) {
+    const hasAllergenWarning = data.matchedAllergens && data.matchedAllergens.length > 0;
+
+    if (score >= 70 && !hasAllergenWarning) {
       badge.className = "badge badge-success";
       badge.textContent = `Cildinize Uygun (%${score})`;
-    } else if (score >= 45) {
+    } else if (score >= 45 && !hasAllergenWarning) {
       badge.className = "badge badge-warning";
       badge.textContent = `Dikkat (%${score})`;
     } else {
       badge.className = "badge badge-danger";
-      badge.textContent = `Uyumsuz (%${score})`;
+      badge.textContent = hasAllergenWarning ? `Alerjen Riski (%${score})` : `Uyumsuz (%${score})`;
     }
     scoreBox.appendChild(badge);
     header.appendChild(scoreBox);
@@ -50,6 +52,19 @@ export class CardFactory {
     // Body: Analiz Ayrıntıları
     const body = document.createElement("div");
     body.className = "card-body";
+
+    // MASKOT DUYGU DURUMU (skinbyinci Mascot Integration)
+    const mascotBox = document.createElement("div");
+    const isSuccess = score >= 70 && !hasAllergenWarning;
+    mascotBox.className = `mascot-sprite-box ${isSuccess ? "success" : "alert"}`;
+    mascotBox.setAttribute("aria-label", isSuccess ? "Mükemmel Uyum Maskotu" : "Uyarı Risk Maskotu");
+
+    const spriteImg = document.createElement("img");
+    spriteImg.src = "/assets/mascot/inci_mascot_modes.jpg";
+    spriteImg.alt = isSuccess ? "skinbyinci Başarı Modu" : "skinbyinci Uyarı Modu";
+    spriteImg.className = "mascot-sprite-img";
+    mascotBox.appendChild(spriteImg);
+    body.appendChild(mascotBox);
 
     // 1. Alerjen ve Hassasiyet Uyarısı
     if (data.matchedAllergens && data.matchedAllergens.length > 0) {
@@ -164,9 +179,21 @@ export class CardFactory {
 
     const body = document.createElement("div");
     body.className = "card-body";
+    body.style.textAlign = "center";
+
+    // Tarama Modu Maskotu
+    const mascotBox = document.createElement("div");
+    mascotBox.className = "mascot-sprite-box scanning";
+    const spriteImg = document.createElement("img");
+    spriteImg.src = "/assets/mascot/inci_mascot_modes.jpg";
+    spriteImg.alt = "Analiz Ediyor...";
+    spriteImg.className = "mascot-sprite-img";
+    mascotBox.appendChild(spriteImg);
+    body.appendChild(mascotBox);
 
     const titleSkeleton = document.createElement("div");
     titleSkeleton.className = "skeleton skeleton-text short";
+    titleSkeleton.style.margin = "0 auto var(--space-3) auto";
     body.appendChild(titleSkeleton);
 
     const blockSkeleton = document.createElement("div");
@@ -176,10 +203,6 @@ export class CardFactory {
     const textSkeleton1 = document.createElement("div");
     textSkeleton1.className = "skeleton skeleton-text";
     body.appendChild(textSkeleton1);
-
-    const textSkeleton2 = document.createElement("div");
-    textSkeleton2.className = "skeleton skeleton-text short";
-    body.appendChild(textSkeleton2);
 
     card.appendChild(body);
     return card;

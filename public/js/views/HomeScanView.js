@@ -17,26 +17,32 @@ export class HomeScanView {
     const viewWrapper = document.createElement("div");
     viewWrapper.className = "home-scan-view";
 
-    // Hero / Başlık
-    const hero = document.createElement("section");
-    hero.style.textAlign = "center";
-    hero.style.marginBottom = "var(--space-6)";
+    // Hero / Başlık & Sevimli Maskot Kartı (skinbyinci Mascot Hero)
+    const heroCard = document.createElement("section");
+    heroCard.className = "mascot-hero-card";
+
+    const mascotImg = document.createElement("img");
+    mascotImg.src = "/assets/mascot/inci_mascot_shell.jpg";
+    mascotImg.alt = "AI Cilt Asistanı İnci";
+    mascotImg.className = "mascot-img-large";
+    heroCard.appendChild(mascotImg);
 
     const title = document.createElement("h1");
     title.style.color = "var(--color-primary-800)";
-    title.style.fontSize = "var(--font-size-2xl)";
+    title.style.fontSize = "var(--font-size-xl)";
     title.style.fontWeight = "800";
-    title.style.marginBottom = "var(--space-2)";
-    title.textContent = "Kozmetik İçerik & Cilt Uyumluluk Analizi";
-    hero.appendChild(title);
+    title.style.marginTop = "var(--space-2)";
+    title.style.marginBottom = "var(--space-1)";
+    title.textContent = "skinbyinci";
+    heroCard.appendChild(title);
 
     const subtitle = document.createElement("p");
     subtitle.style.color = "var(--color-text-muted)";
-    subtitle.style.maxWidth = "600px";
-    subtitle.style.margin = "0 auto";
-    subtitle.textContent = "Ürününüzün barkodunu tarayın veya fotoğrafını çekin; içerikleri cildinize, alerjenlerinize ve hedeflerinize göre analiz edelim.";
-    hero.appendChild(subtitle);
-    viewWrapper.appendChild(hero);
+    subtitle.style.maxWidth = "500px";
+    subtitle.style.fontSize = "var(--font-size-sm)";
+    subtitle.textContent = "Barkodu tara veya fotoğrafını çek; AI Cilt Asistanı İnci ürünün cildinize uyumunu saniyeler içinde analiz etsin!";
+    heroCard.appendChild(subtitle);
+    viewWrapper.appendChild(heroCard);
 
     // Tarama Seçenekleri Kartı (3 Yöntem Stratejisi)
     const scanCard = document.createElement("div");

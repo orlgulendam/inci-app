@@ -12,16 +12,15 @@
   <link rel="stylesheet" href="/css/components.css">
 </head>
 <body>
-  <!-- Üst Navigasyon Çubuğu -->
+  <!-- Üst Navigasyon Çubuğu (Minimal Header) -->
   <header class="app-header">
     <div class="header-content">
-      <a href="#home" class="brand-logo" aria-label="INCI Engine Ana Sayfa">
-        <span>🌸 INCI Engine</span>
+      <a href="#home" class="brand-logo" aria-label="skinbyinci Ana Sayfa">
+        <img src="/assets/mascot/inci_mascot_shell.jpg" alt="skinbyinci" class="mascot-avatar" style="width:32px; height:32px;" />
+        <span>skinbyinci</span>
         <span class="brand-badge">DermoAI</span>
       </a>
-      <nav id="navLinksContainer" class="header-nav" aria-label="Ana Menü">
-        <!-- JS tarafından dinamik oluşturulur -->
-      </nav>
+      <div id="headerQuickStatus"></div>
     </div>
   </header>
 
@@ -32,6 +31,12 @@
       <p style="color: var(--color-text-muted); margin-top: var(--space-2);">Uygulama yükleniyor...</p>
     </div>
   </main>
+
+  <!-- Sabit Mobil Alt Navigasyon Çubuğu (Bottom Navigation Bar) -->
+  <nav id="mobileBottomNav" class="mobile-bottom-nav" aria-label="Mobil Ana Menü">
+    <!-- JS tarafından dinamik oluşturulur -->
+  </nav>
+
 
   <!-- Alt Bilgi ve Sabit Tıbbi Uyarı Metni -->
   <footer class="app-footer">
