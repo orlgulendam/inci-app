@@ -30,6 +30,9 @@ export class ProfileService {
         }
       });
     }
+    return res.data;
+  }
+
   async deleteAccount() {
     const res = await this.client.delete(ENDPOINTS.PROFILE_DELETE_ACCOUNT);
     this.store.clearAuth();
