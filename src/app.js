@@ -27,6 +27,20 @@ app.use(requestLogger);
 // 3) Statik Dosyalar (PWA / Web UI)
 app.use(express.static(path.join(__dirname, "../public")));
 
+// 3.1) Swagger UI API Dökümantasyonu (/api/v1/docs)
+const config = require("./core/config/env");
+if (config.swagger.enabled) {
+  const swaggerUi = require("swagger-ui-express");
+  const swaggerSpec = require("./core/docs/swaggerSpec");
+  app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customSiteTitle: "INCI Engine API Dökümantasyonu",
+    swaggerOptions: {
+      persistAuthorization: true
+    }
+  }));
+}
+
+
 // 4) Health Check Uç Noktaları
 const healthHandler = async (req, res, next) => {
   try {

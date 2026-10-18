@@ -6,8 +6,8 @@ class AuthController {
 
   register = async (req, res, next) => {
     try {
-      const { email, password, role } = req.body;
-      const result = await this.authService.register({ email, password, role });
+      const { email, password, firstName, lastName, role } = req.body;
+      const result = await this.authService.register({ email, password, firstName, lastName, role });
       return res.status(201).json({
         success: true,
         data: result
@@ -29,6 +29,59 @@ class AuthController {
       next(err);
     }
   };
+
+  verifyEmail = async (req, res, next) => {
+    try {
+      const token = req.params.token || req.query.token || req.body?.token;
+      const result = await this.authService.verifyEmail(token);
+      return res.status(200).json({
+        success: true,
+        data: result
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  resendVerification = async (req, res, next) => {
+    try {
+      const { email } = req.body;
+      const result = await this.authService.resendVerification(email);
+      return res.status(200).json({
+        success: true,
+        data: result
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  forgotPassword = async (req, res, next) => {
+    try {
+      const { email } = req.body;
+      const result = await this.authService.forgotPassword(email);
+      return res.status(200).json({
+        success: true,
+        data: result
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  resetPassword = async (req, res, next) => {
+    try {
+      const { token, newPassword } = req.body;
+      const result = await this.authService.resetPassword({ token, newPassword });
+      return res.status(200).json({
+        success: true,
+        data: result
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 module.exports = AuthController;
+

@@ -12,7 +12,17 @@ class ProfileService {
     if (!user) {
       throw new NotFoundError("Kullanıcı bulunamadı.");
     }
-    return user.skinProfile;
+    return {
+      userId: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      fullName: user.getFullName(),
+      isEmailVerified: user.isEmailVerified,
+      points: user.points,
+      role: user.role,
+      skinProfile: user.skinProfile
+    };
   }
 
   async updateSkinProfile(userId, profileData) {
@@ -21,16 +31,39 @@ class ProfileService {
       throw new NotFoundError("Kullanıcı bulunamadı.");
     }
 
+    if (profileData.firstName !== undefined) {
+      user.firstName = profileData.firstName ? String(profileData.firstName).trim() : null;
+    }
+    if (profileData.lastName !== undefined) {
+      user.lastName = profileData.lastName ? String(profileData.lastName).trim() : null;
+    }
+
     // Yeni Değer Nesnesi oluştur
     user.skinProfile = new SkinProfile({
-      skinType: profileData.skinType || user.skinProfile.skinType,
-      conditions: profileData.conditions || user.skinProfile.conditions,
-      allergicIngredients: profileData.allergicIngredients || user.skinProfile.allergicIngredients
+      skinType: profileData.skinType !== undefined ? profileData.skinType : user.skinProfile.skinType,
+      conditions: profileData.conditions !== undefined ? profileData.conditions : user.skinProfile.conditions,
+      allergicIngredients: profileData.allergicIngredients !== undefined ? profileData.allergicIngredients : user.skinProfile.allergicIngredients,
+      frequentlyUsedProducts: profileData.frequentlyUsedProducts !== undefined ? profileData.frequentlyUsedProducts : user.skinProfile.frequentlyUsedProducts,
+      routineMedications: profileData.routineMedications !== undefined ? profileData.routineMedications : user.skinProfile.routineMedications,
+      dermatologistNotes: profileData.dermatologistNotes !== undefined ? profileData.dermatologistNotes : user.skinProfile.dermatologistNotes,
+      targetedBenefits: profileData.targetedBenefits !== undefined ? profileData.targetedBenefits : user.skinProfile.targetedBenefits
     });
 
     await this.userRepository.save(user);
-    return user.skinProfile;
+
+    return {
+      userId: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      fullName: user.getFullName(),
+      isEmailVerified: user.isEmailVerified,
+      points: user.points,
+      role: user.role,
+      skinProfile: user.skinProfile
+    };
   }
 }
 
 module.exports = ProfileService;
+

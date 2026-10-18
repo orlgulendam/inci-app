@@ -17,7 +17,13 @@ class MongoUserRepository extends IUserRepository {
       id: doc._id,
       email: doc.email,
       passwordHash: doc.password_hash,
+      firstName: doc.first_name || null,
+      lastName: doc.last_name || null,
       role: doc.role || "user",
+      isEmailVerified: !!doc.is_email_verified,
+      emailVerificationToken: doc.email_verification_token || null,
+      passwordResetToken: doc.password_reset_token || null,
+      passwordResetExpires: doc.password_reset_expires || null,
       points: doc.points || 0,
       skinProfile: new SkinProfile(doc.skin_profile || {}),
       createdAt: doc.created_at || new Date()
@@ -46,17 +52,94 @@ class MongoUserRepository extends IUserRepository {
     }
   }
 
+  async findByVerificationToken(token) {
+    try {
+      const doc = await this.collection.findOne({ email_verification_token: token });
+      return MongoUserRepository.toDomain(doc);
+    } catch (err) {
+      logger.error(`Error finding user by verification token`, { error: err.message });
+      return null;
+    }
+  }
+
+  async findByResetToken(token) {
+    try {
+      const doc = await this.collection.findOne({
+        password_reset_token: token,
+        password_reset_expires: { $gt: new Date() }
+      });
+      return MongoUserRepository.toDomain(doc);
+    } catch (err) {
+      logger.error(`Error finding user by reset token`, { error: err.message });
+      return null;
+    }
+  }
+
+  async findAllUsers({ page = 1, limit = 20, search = null } = {}) {
+    try {
+      const safeLimit = Math.min(100, Math.max(1, limit));
+      const skip = (Math.max(1, page) - 1) * safeLimit;
+
+      const filter = {};
+      if (search && search.trim().length > 0) {
+        const regex = new RegExp(search.trim(), "i");
+        filter.$or = [
+          { email: regex },
+          { first_name: regex },
+          { last_name: regex }
+        ];
+      }
+
+      const total = await this.collection.countDocuments(filter);
+      const docs = await this.collection
+        .find(filter, {
+          projection: {
+            password_hash: 0,
+            password_reset_token: 0
+          }
+        })
+        .sort({ created_at: -1 })
+        .skip(skip)
+        .limit(safeLimit)
+        .toArray();
+
+      return {
+        items: docs.map(MongoUserRepository.toDomain),
+        meta: {
+          total,
+          page,
+          limit: safeLimit,
+          totalPages: Math.ceil(total / safeLimit)
+        }
+      };
+    } catch (err) {
+      logger.error("Error listing users for admin", { error: err.message });
+      return { items: [], meta: { total: 0, page: 1, limit, totalPages: 0 } };
+    }
+  }
+
   async save(user) {
     try {
       const doc = {
         email: user.email,
         password_hash: user.passwordHash,
+        first_name: user.firstName,
+        last_name: user.lastName,
         role: user.role,
+        is_email_verified: user.isEmailVerified,
+        email_verification_token: user.emailVerificationToken,
+        password_reset_token: user.passwordResetToken,
+        password_reset_expires: user.passwordResetExpires,
         points: user.points,
         skin_profile: {
           skinType: user.skinProfile.skinType,
           conditions: user.skinProfile.conditions,
-          allergicIngredients: user.skinProfile.allergicIngredients
+          allergicIngredients: user.skinProfile.allergicIngredients,
+          frequentlyUsedProducts: user.skinProfile.frequentlyUsedProducts,
+          routineMedications: user.skinProfile.routineMedications,
+          dermatologistNotes: user.skinProfile.dermatologistNotes,
+          targetedBenefits: user.skinProfile.targetedBenefits,
+          completionPercentage: user.skinProfile.completionPercentage
         },
         updated_at: new Date()
       };
