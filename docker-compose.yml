@@ -1,0 +1,47 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: inci_mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: obf
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - inci_network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: inci_app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MONGO_URI=mongodb://mongodb:27017
+      - MONGO_DB_NAME=obf
+      - JWT_SECRET=inci_engine_secure_production_jwt_secret
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - inci_network
+
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  inci_network:
+    driver: bridge
