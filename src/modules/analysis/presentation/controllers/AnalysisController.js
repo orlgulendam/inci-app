@@ -1,6 +1,7 @@
 // src/modules/analysis/presentation/controllers/AnalysisController.js - Presentation Katmanı
 // Yalnızca HTTP isteklerini ve parametre doğrulamasını yönetir (SRP).
 const { ValidationError, NotFoundError } = require("../../../../core/errors/AppError");
+const { formatSuccessResponse } = require("../../../../core/utils/apiResponse");
 
 class AnalysisController {
   constructor(analysisService, ingredientRepository) {
@@ -39,14 +40,15 @@ class AnalysisController {
       }
 
       const results = await this.ingredientRepository.search(query, limit);
-      return res.status(200).json({
-        success: true,
-        data: results,
+      const response = formatSuccessResponse(results, {
         meta: {
           total: results.length,
           query
-        }
+        },
+        fields: req.query.fields
       });
+
+      return res.status(200).json(response);
     } catch (err) {
       next(err);
     }
@@ -61,10 +63,11 @@ class AnalysisController {
         throw new NotFoundError(`'${inciName}' adına sahip kimyasal sözlükte bulunamadı.`);
       }
 
-      return res.status(200).json({
-        success: true,
-        data: ingredient
+      const response = formatSuccessResponse(ingredient, {
+        fields: req.query.fields
       });
+
+      return res.status(200).json(response);
     } catch (err) {
       next(err);
     }

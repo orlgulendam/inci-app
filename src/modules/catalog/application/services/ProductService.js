@@ -40,8 +40,8 @@ class ProductService {
     return product;
   }
 
-  async search({ query, category, limit = 20, page = 1 }) {
-    return this.productRepository.search({ query, category, limit, page });
+  async search({ query, category, brand, sort, limit = 20, page = 1 }) {
+    return this.productRepository.search({ query, category, brand, sort, limit, page });
   }
 
   async createOrUpdate(data) {

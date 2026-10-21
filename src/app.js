@@ -76,7 +76,10 @@ const healthHandler = async (req, res, next) => {
 app.get("/health", healthHandler);
 app.get("/api/v1/health", healthHandler);
 
-// 5) Modül Router'ları
+// 5) Hız Sınırlama (Rate Limiting) & Modül Router'ları
+const { defaultRateLimiter } = require("./core/middlewares/rateLimiter");
+app.use("/api/v1", defaultRateLimiter);
+
 const initializeAnalysisModule = require("./modules/analysis");
 const initializeCatalogModule = require("./modules/catalog");
 const initializePersonalizationModule = require("./modules/personalization");

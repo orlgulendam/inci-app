@@ -41,6 +41,20 @@ const swaggerSpec = {
           }
         }
       },
+      TooManyRequestsError: {
+        type: "object",
+        properties: {
+          success: { type: "boolean", example: false },
+          error: {
+            type: "object",
+            properties: {
+              code: { type: "string", example: "TOO_MANY_REQUESTS" },
+              message: { type: "string", example: "Çok fazla istek gönderildi. Lütfen 45 saniye sonra tekrar deneyin." },
+              correlationId: { type: "string", example: "req-c8d7e6f5" }
+            }
+          }
+        }
+      },
       RegisterRequest: {
         type: "object",
         required: ["email", "password"],
@@ -278,36 +292,54 @@ const swaggerSpec = {
     "/products/{barcode}": {
       get: {
         tags: ["Ürün Kataloğu"],
-        summary: "Barkoda göre ürün detayını ve analiz edilmiş içerik listesini döner",
+        summary: "Barkoda göre ürün detayını ve analiz edilmiş içerik listesini döner (HTTP Cache & Sparse Fieldsets destekler)",
         parameters: [
-          { name: "barcode", in: "path", required: true, schema: { type: "string" } }
+          { name: "barcode", in: "path", required: true, schema: { type: "string" } },
+          { name: "fields", in: "query", schema: { type: "string", example: "barcode,productName,safetySummary" }, description: "Sparse Fieldsets: İstenen alanlar virgülle ayrılır" }
         ],
         responses: {
-          200: { description: "Ürün detayı" },
-          404: { description: "Ürün bulunamadı" }
+          200: {
+            description: "Ürün detayı",
+            headers: {
+              "Cache-Control": { schema: { type: "string", example: "public, max-age=3600" }, description: "İstemci ve CDN önbellek talimatı" },
+              "ETag": { schema: { type: "string" }, description: "Kaynak versiyon imzası (304 Not Modified için)" }
+            }
+          },
+          404: { description: "Ürün bulunamadı" },
+          429: { description: "İstek limiti aşıldı", content: { "application/json": { schema: { $ref: "#/components/schemas/TooManyRequestsError" } } } }
         }
       }
     },
     "/products/search": {
       get: {
         tags: ["Ürün Kataloğu"],
-        summary: "Ürün araması yapar (isim, marka)",
+        summary: "Gelişmiş ürün araması ve filtreleme (isim, marka, sıralama, sayfalama ve sparse fieldsets)",
         parameters: [
-          { name: "q", in: "query", schema: { type: "string" } },
+          { name: "q", in: "query", schema: { type: "string" }, description: "Metin araması (ürün adı, marka veya barkod)" },
+          { name: "category", in: "query", schema: { type: "string", example: "skincare" } },
+          { name: "brand", in: "query", schema: { type: "string", example: "The Purest Solutions" } },
+          { name: "sort", in: "query", schema: { type: "string", enum: ["safetyScore:desc", "safetyScore:asc", "name:asc", "name:desc"], example: "safetyScore:desc" } },
+          { name: "fields", in: "query", schema: { type: "string", example: "barcode,productName,safetySummary" } },
           { name: "page", in: "query", schema: { type: "integer", default: 1 } },
           { name: "limit", in: "query", schema: { type: "integer", default: 20 } }
         ],
         responses: {
-          200: { description: "Ürün listesi ve sayfalama meta verisi" }
+          200: { description: "Ürün listesi ve genişletilmiş sayfalama meta verisi (totalPages, hasNext, hasPrev)" },
+          429: { description: "İstek limiti aşıldı", content: { "application/json": { schema: { $ref: "#/components/schemas/TooManyRequestsError" } } } }
         }
       }
     },
     "/brands": {
       get: {
         tags: ["Ürün Kataloğu"],
-        summary: "Kayıtlı markaları ve ürün sayılarını listeler",
+        summary: "Kayıtlı markaları ve ürün sayılarını listeler (HTTP Cache)",
         responses: {
-          200: { description: "Marka listesi" }
+          200: {
+            description: "Marka listesi",
+            headers: {
+              "Cache-Control": { schema: { type: "string", example: "public, max-age=43200" } }
+            }
+          }
         }
       }
     },

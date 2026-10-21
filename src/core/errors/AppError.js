@@ -41,11 +41,18 @@ class ConflictError extends AppError {
   }
 }
 
+class TooManyRequestsError extends AppError {
+  constructor(message = "Çok fazla istek gönderildi. Lütfen daha sonra tekrar deneyin.", errorCode = "TOO_MANY_REQUESTS", details = null) {
+    super(message, 429, errorCode, details);
+  }
+}
+
 module.exports = {
   AppError,
   NotFoundError,
   ValidationError,
   UnauthorizedError,
   ForbiddenError,
-  ConflictError
+  ConflictError,
+  TooManyRequestsError
 };

@@ -77,14 +77,19 @@ class MongoProductRepository extends IProductRepository {
     }
   }
 
-  async search({ query, category, limit = 20, page = 1 }) {
+  async search({ query, category, brand, sort, limit = 20, page = 1 }) {
     try {
       const filter = {};
       const safeLimit = Math.min(50, Math.max(1, limit));
-      const skip = (Math.max(1, page) - 1) * safeLimit;
+      const safePage = Math.max(1, parseInt(page, 10) || 1);
+      const skip = (safePage - 1) * safeLimit;
 
       if (category && category !== "all") {
         filter.category = category;
+      }
+
+      if (brand && typeof brand === "string" && brand.trim().length > 0) {
+        filter.brand_name = new RegExp(brand.trim(), "i");
       }
 
       if (query && query.trim().length > 0) {
@@ -100,28 +105,46 @@ class MongoProductRepository extends IProductRepository {
         ];
       }
 
+      // Sıralama (Sort) Stratejisi
+      let sortCriteria = { updated_at: -1, _id: -1 };
+      if (sort === "safetyScore:desc" || sort === "-safetyScore") {
+        sortCriteria = { "safety_summary.safetyScore": -1, _id: -1 };
+      } else if (sort === "safetyScore:asc" || sort === "safetyScore") {
+        sortCriteria = { "safety_summary.safetyScore": 1, _id: -1 };
+      } else if (sort === "name:asc" || sort === "productName:asc") {
+        sortCriteria = { product_name: 1, _id: -1 };
+      } else if (sort === "name:desc" || sort === "productName:desc") {
+        sortCriteria = { product_name: -1, _id: -1 };
+      }
+
       const total = await this.collection.countDocuments(filter);
       const docs = await this.collection
         .find(filter)
-        .sort({ updated_at: -1, _id: -1 })
+        .sort(sortCriteria)
         .skip(skip)
         .limit(safeLimit)
         .toArray();
 
       const items = docs.map(MongoProductRepository.toDomain).filter(Boolean);
+      const totalPages = Math.ceil(total / safeLimit) || (total === 0 ? 0 : 1);
 
       return {
         items,
         meta: {
           total,
-          page,
+          page: safePage,
           limit: safeLimit,
-          totalPages: Math.ceil(total / safeLimit)
+          totalPages,
+          hasNext: safePage < totalPages,
+          hasPrev: safePage > 1 && safePage <= totalPages + 1
         }
       };
     } catch (err) {
       logger.error("Error searching products in repository", { error: err.message });
-      return { items: [], meta: { total: 0, page: 1, limit, totalPages: 0 } };
+      return {
+        items: [],
+        meta: { total: 0, page: 1, limit, totalPages: 0, hasNext: false, hasPrev: false }
+      };
     }
   }
 
