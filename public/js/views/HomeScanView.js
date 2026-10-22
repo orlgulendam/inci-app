@@ -3,6 +3,7 @@
 import { ScannerService, scannerService } from "../scanner/ScannerService.js";
 import { scanService } from "../services/scanService.js";
 import { communityService } from "../services/communityService.js";
+import { routineService } from "../services/routineService.js";
 import { store } from "../state/store.js";
 import { CardFactory } from "../components/CardFactory.js";
 import { toast } from "../components/Toast.js";
@@ -460,8 +461,10 @@ export class HomeScanView {
         matchedAllergens: result.matchedAllergens || [],
         flaggedIngredients: result.flaggedIngredients || [],
         beneficialIngredients: result.beneficialIngredients || [],
+        conflicts: result.conflicts || null,
         aiComment: result.analysisComment || result.summary,
-        onReportIssue: () => this.openReportIssueModal({ barcode, productName: result.product?.name })
+        onReportIssue: () => this.openReportIssueModal({ barcode, productName: result.product?.name }),
+        onAddToVanity: () => this.openAddToVanityModal({ productName: result.product?.name, brand: result.product?.brand })
       }));
     } catch (err) {
       this.resultsContainer.innerHTML = "";
@@ -718,7 +721,9 @@ export class HomeScanView {
         matchedAllergens: result.matchedAllergens || [],
         flaggedIngredients: result.flaggedIngredients || [],
         beneficialIngredients: result.beneficialIngredients || [],
-        aiComment: result.analysisComment || "Cilt profilinize göre bileşenlerin güvenlik oranları analiz edilmiştir."
+        conflicts: result.conflicts || null,
+        aiComment: result.analysisComment || "Cilt profilinize göre bileşenlerin güvenlik oranları analiz edilmiştir.",
+        onAddToVanity: () => this.openAddToVanityModal({ productName: "Kişisel Cilt Bakım Ürünü", brand: "" })
       }));
     } catch (err) {
       this.resultsContainer.innerHTML = "";
@@ -726,6 +731,96 @@ export class HomeScanView {
         CardFactory.createErrorCard(err.message, () => this.processRawIngredients(rawText))
       );
     }
+  }
+
+  /**
+   * Taranan ürünü kullanıcının dijital dolabına ekleme modalı (PAO / SKT Takibi)
+   */
+  openAddToVanityModal({ productName = "", brand = "" } = {}) {
+    if (!store.isAuthenticated()) {
+      toast.warning("Ürünü dijital dolabınıza eklemek ve SKT uyarıları almak için lütfen önce giriş yapınız.");
+      return;
+    }
+
+    const modalBackdrop = document.createElement("div");
+    modalBackdrop.className = "modal-backdrop";
+
+    const todayStr = new Date().toISOString().slice(0, 10);
+
+    modalBackdrop.innerHTML = `
+      <div class="modal-container" style="max-width: 440px;">
+        <div class="card-header">
+          <h3 class="card-title">🧴 Dijital Dolabıma Ekle</h3>
+          <button id="closeVanityModalBtn" class="btn btn-sm btn-outline">✕ Kapat</button>
+        </div>
+        <div class="card-body">
+          <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3);">
+            Ürününüzün açılış tarihini ve arkasındaki kavanoz simgesindeki kullanım süresini (PAO) girerek bozulma/bakteri alarmlarını başlatın.
+          </p>
+          <div class="form-group">
+            <label class="form-label">Ürün Adı *</label>
+            <input type="text" id="vanityProdName" class="form-input" value="${productName || ""}" placeholder="Örn: C Vitamini Serumu" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Marka</label>
+            <input type="text" id="vanityBrandName" class="form-input" value="${brand || ""}" placeholder="Örn: The Ordinary" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Açılış Tarihi</label>
+            <input type="date" id="vanityOpenedAt" class="form-input" value="${todayStr}" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Açıldıktan Sonra Kullanım Süresi (PAO)</label>
+            <select id="vanityPao" class="form-input">
+              <option value="3">3 Ay (3M - Taze formüller & C vitamini)</option>
+              <option value="6" selected>6 Ay (6M - Çoğu serum & temizleyici)</option>
+              <option value="12">12 Ay (12M - Güneş kremi & nemlendirici)</option>
+              <option value="24">24 Ay (24M - Kuru/pudra ürünler)</option>
+            </select>
+          </div>
+          <div style="margin-top: var(--space-4);">
+            <button id="saveVanityBtn" class="btn btn-primary" style="width: 100%; font-weight: 700;">
+              🧴 Dolabıma Kaydet ve Takip Et
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modalBackdrop);
+
+    modalBackdrop.querySelector("#closeVanityModalBtn").onclick = () => modalBackdrop.remove();
+
+    const saveBtn = modalBackdrop.querySelector("#saveVanityBtn");
+    saveBtn.onclick = async () => {
+      const name = modalBackdrop.querySelector("#vanityProdName").value.trim();
+      const bName = modalBackdrop.querySelector("#vanityBrandName").value.trim();
+      const openedAt = modalBackdrop.querySelector("#vanityOpenedAt").value;
+      const paoMonths = parseInt(modalBackdrop.querySelector("#vanityPao").value, 10);
+
+      if (!name) {
+        toast.warning("Lütfen ürün adını giriniz.");
+        return;
+      }
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Kaydediliyor...";
+
+      try {
+        await routineService.addVanityItem({
+          name,
+          brand: bName,
+          openedAt,
+          paoMonths
+        });
+        toast.success(`'${name}' dijital dolabınıza eklendi! SKT takibi başlatıldı.`);
+        modalBackdrop.remove();
+      } catch (err) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Tekrar Dene";
+        toast.error(err.message || "Dolaba eklenirken bir hata oluştu.");
+      }
+    };
   }
 
   destroy() {

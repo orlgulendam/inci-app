@@ -39,4 +39,20 @@ test("Frontend: Statik dosyalar ve SPA mimarisi Express üzerinden servis edilme
   assert.strictEqual(cardFactoryRes.status, 200);
   const cardFactoryJs = await cardFactoryRes.text();
   assert.ok(cardFactoryJs.includes("Bu bilgiler tıbbi tavsiye değildir, dermatoloğunuza danışın."), "CardFactory içinde sabit tıbbi uyarı bulunmalı.");
+
+  // 4. Yeni Oyunlaştırma & Rutin Bileşenleri
+  const chestModalRes = await fetch(`http://localhost:${port}/js/components/OysterChestModal.js`);
+  assert.strictEqual(chestModalRes.status, 200);
+  const chestJs = await chestModalRes.text();
+  assert.ok(chestJs.includes("OysterChestModal"), "İstiridye Sandığı modalı tanımlı olmalı.");
+
+  const shareModalRes = await fetch(`http://localhost:${port}/js/components/ShareCardModal.js`);
+  assert.strictEqual(shareModalRes.status, 200);
+  const shareJs = await shareModalRes.text();
+  assert.ok(shareJs.includes("ShareCardModal"), "Story Paylaşım Kartı modalı tanımlı olmalı.");
+
+  const routineServiceRes = await fetch(`http://localhost:${port}/js/services/routineService.js`);
+  assert.strictEqual(routineServiceRes.status, 200);
+  const routineJs = await routineServiceRes.text();
+  assert.ok(routineJs.includes("completeRoutineStep"), "Rutin tamamlama servisi tanımlı olmalı.");
 });

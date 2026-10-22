@@ -617,3 +617,21 @@
   padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
 }
 
+/* 13) Gamification & İstiridye Sandığı Animasyonları */
+@keyframes scaleUp {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes floatPulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.04); }
+}
+
+@keyframes pearlSparkle {
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.4); }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+}
+
+

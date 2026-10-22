@@ -2,6 +2,7 @@
 // Gerekçe: IIngredientRepository arayüzü ve RegulationRule stratejileri Dependency Injection ile enjekte edilir.
 const TokenizerService = require("./TokenizerService");
 const SafetyScore = require("../../domain/value-objects/SafetyScore");
+const IngredientConflictEngine = require("../../domain/services/IngredientConflictEngine");
 const {
   BannedIngredientRule,
   RestrictedIngredientRule,
@@ -12,7 +13,7 @@ const {
 } = require("../../domain/rules/RegulationRule");
 
 class AnalysisService {
-  constructor(ingredientRepository, rules = null) {
+  constructor(ingredientRepository, rules = null, conflictEngine = null) {
     this.ingredientRepository = ingredientRepository;
     this.rules = rules || [
       new BannedIngredientRule(),
@@ -22,6 +23,7 @@ class AnalysisService {
       new ColorantRule(),
       new UvFilterRule()
     ];
+    this.conflictEngine = conflictEngine || new IngredientConflictEngine();
   }
 
   async resolveToken(rawToken) {
@@ -123,6 +125,9 @@ class AnalysisService {
       unknownCount: unknown.length
     });
 
+    // Kimyasal Çakışma ve Bariyer Hasarı Analizi
+    const conflicts = this.conflictEngine.detectConflicts(tokens);
+
     return {
       summary: {
         totalIngredients: tokens.length,
@@ -131,8 +136,10 @@ class AnalysisService {
         score: safetyScore.score,
         status: safetyScore.status,
         isClean: safetyScore.isClean,
-        breakdown: safetyScore.breakdown
+        breakdown: safetyScore.breakdown,
+        conflictRisk: conflicts.overallRisk
       },
+      conflicts,
       flags,
       unknown,
       items: resolvedItems.map(it => {
@@ -157,6 +164,13 @@ class AnalysisService {
         };
       })
     };
+  }
+
+  /**
+   * İki ayrı ürün veya rutin içerikleri arasındaki kimyasal çakışmaları hesaplar
+   */
+  detectConflicts(inputA, inputB = null) {
+    return this.conflictEngine.detectConflicts(inputA, inputB);
   }
 }
 

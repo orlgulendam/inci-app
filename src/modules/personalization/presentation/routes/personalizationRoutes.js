@@ -36,6 +36,19 @@ function createPersonalizationRoutes({
   // Apple App Store Guideline 5.1.1 Gereği Hesap Silme Uç Noktası
   router.delete("/profile/account", authMiddleware, profileController.deleteAccount);
 
+  // Cilt Rutini Uç Noktaları (Sabah & Akşam)
+  router.get("/personalization/routine", authMiddleware, profileController.getRoutine);
+  router.put("/personalization/routine", authMiddleware, profileController.updateRoutine);
+  router.post("/personalization/routine/complete-step", authMiddleware, profileController.completeRoutine);
+
+  // Dijital Cilt Bakım Dolabı & PAO / SKT Uç Noktaları
+  router.get("/personalization/vanity", authMiddleware, profileController.getVanity);
+  router.post("/personalization/vanity", authMiddleware, profileController.addVanityItem);
+  router.delete("/personalization/vanity/:id", authMiddleware, profileController.removeVanityItem);
+
+  // 7 Günlük İnci İstiridyesi Sandığı (Mystery Loot Box)
+  router.post("/personalization/chest/claim", authMiddleware, profileController.claimOysterChest);
+
 
   // AI Danışmanlık ve Sohbet Uç Noktası (Token opsiyonel: Giriş yapmışsa profiliyle yanıtlar)
   if (chatController) {

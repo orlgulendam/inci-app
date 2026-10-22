@@ -86,6 +86,38 @@ export class CardFactory {
       body.appendChild(allergenBox);
     }
 
+    // 1.5 Kimyasal Çakışma ve Bariyer Uyarısı (Ingredient Conflict Alert)
+    if (data.conflicts && data.conflicts.hasConflicts) {
+      const conflictBox = document.createElement("div");
+      conflictBox.style.padding = "var(--space-3)";
+      const isHigh = data.conflicts.overallRisk === "HIGH";
+      conflictBox.style.background = isHigh ? "#FFF0F0" : "#FFFBEB";
+      conflictBox.style.border = `1px solid ${isHigh ? "#F87171" : "#FBBF24"}`;
+      conflictBox.style.borderRadius = "var(--radius-md)";
+      conflictBox.style.marginBottom = "var(--space-3)";
+
+      const conflictTitle = document.createElement("div");
+      conflictTitle.style.fontWeight = "700";
+      conflictTitle.style.fontSize = "13px";
+      conflictTitle.style.color = isHigh ? "#B91C1C" : "#B45309";
+      conflictTitle.innerHTML = `⚠️ Kimyasal Çakışma & Bariyer Alarmı (${data.conflicts.overallRisk} Risk):`;
+      conflictBox.appendChild(conflictTitle);
+
+      data.conflicts.conflicts.forEach((c) => {
+        const item = document.createElement("div");
+        item.style.fontSize = "12px";
+        item.style.marginTop = "4px";
+        item.style.color = "#374151";
+        item.innerHTML = `
+          <strong>${c.title}</strong> (${c.triggerA} ⚡ ${c.triggerB})<br/>
+          <span style="font-size: 11px; color: #6B7280;">${c.description}</span><br/>
+          <span style="font-size: 11px; color: #047857; font-weight: 600;">💡 Tavsiye: ${c.dermatologistAdvice}</span>
+        `;
+        conflictBox.appendChild(item);
+      });
+      body.appendChild(conflictBox);
+    }
+
     // 2. Riskli / Dikkat Edilmesi Gereken İçerikler
     if (data.flaggedIngredients && data.flaggedIngredients.length > 0) {
       const riskBox = document.createElement("div");
@@ -175,11 +207,32 @@ export class CardFactory {
     reportBox.style.flexWrap = "wrap";
     reportBox.style.gap = "var(--space-2)";
 
-    const reportPrompt = document.createElement("span");
-    reportPrompt.style.fontSize = "11px";
-    reportPrompt.style.color = "var(--color-text-muted)";
-    reportPrompt.textContent = "İçerikte bir eksiklik veya yanlışlık mı fark ettiniz?";
-    reportBox.appendChild(reportPrompt);
+    const actionsContainer = document.createElement("div");
+    actionsContainer.style.display = "flex";
+    actionsContainer.style.gap = "8px";
+    actionsContainer.style.flexWrap = "wrap";
+
+    // Dijital Dolaba Ekle Butonu
+    const vanityBtn = document.createElement("button");
+    vanityBtn.type = "button";
+    vanityBtn.className = "btn btn-secondary btn-sm";
+    vanityBtn.style.fontSize = "11px";
+    vanityBtn.style.padding = "4px 10px";
+    vanityBtn.innerHTML = "🧴 Dolabıma Ekle (SKT Takibi)";
+    vanityBtn.onclick = () => {
+      if (typeof data.onAddToVanity === "function") {
+        data.onAddToVanity();
+      } else {
+        window.dispatchEvent(new CustomEvent("add-to-vanity-requested", {
+          detail: {
+            barcode: data.barcode,
+            productName: data.productName,
+            brand: data.brand
+          }
+        }));
+      }
+    };
+    actionsContainer.appendChild(vanityBtn);
 
     const reportBtn = document.createElement("button");
     reportBtn.type = "button";
@@ -199,7 +252,9 @@ export class CardFactory {
         }));
       }
     };
-    reportBox.appendChild(reportBtn);
+    actionsContainer.appendChild(reportBtn);
+
+    reportBox.appendChild(actionsContainer);
     body.appendChild(reportBox);
 
     card.appendChild(body);

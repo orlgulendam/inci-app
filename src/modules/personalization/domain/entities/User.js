@@ -18,6 +18,11 @@ class User {
     lastScanDate = null,
     profileCompletedBonusClaimed = false,
     skinProfile = null,
+    routine = null,
+    routineHistory = null,
+    vanity = null,
+    badges = null,
+    openedChests = null,
     createdAt = new Date()
   }) {
     if (!email || !email.includes("@")) {
@@ -39,6 +44,11 @@ class User {
     this.lastScanDate = lastScanDate;
     this.profileCompletedBonusClaimed = !!profileCompletedBonusClaimed;
     this.skinProfile = skinProfile instanceof SkinProfile ? skinProfile : new SkinProfile(skinProfile || {});
+    this.routine = routine || { morning: [], evening: [] };
+    this.routineHistory = Array.isArray(routineHistory) ? routineHistory : [];
+    this.vanity = Array.isArray(vanity) ? vanity : [];
+    this.badges = Array.isArray(badges) ? badges : [];
+    this.openedChests = Array.isArray(openedChests) ? openedChests : [];
     this.createdAt = createdAt;
   }
 
@@ -145,6 +155,218 @@ class User {
   clearPasswordReset() {
     this.passwordResetToken = null;
     this.passwordResetExpires = null;
+  }
+
+  // --- CİLT RUTİNİ METOTLARI (Sabah & Akşam) ---
+
+  updateRoutine({ morning, evening }) {
+    if (morning && Array.isArray(morning)) {
+      this.routine.morning = morning;
+    }
+    if (evening && Array.isArray(evening)) {
+      this.routine.evening = evening;
+    }
+  }
+
+  getTodayRoutineStatus(now = new Date()) {
+    const todayStr = now.toISOString().slice(0, 10);
+    const log = this.routineHistory.find((r) => r.date === todayStr);
+    return {
+      date: todayStr,
+      morningCompleted: log ? !!log.morningCompleted : false,
+      eveningCompleted: log ? !!log.eveningCompleted : false,
+      morningCompletedAt: log ? log.morningCompletedAt : null,
+      eveningCompletedAt: log ? log.eveningCompletedAt : null
+    };
+  }
+
+  completeRoutine(routineType, now = new Date()) {
+    const validTypes = ["morning", "evening"];
+    if (!validTypes.includes(routineType)) {
+      throw new Error("Geçersiz rutin türü. 'morning' (Sabah) veya 'evening' (Akşam) olmalıdır.");
+    }
+
+    const todayStr = now.toISOString().slice(0, 10);
+    let todayLog = this.routineHistory.find((r) => r.date === todayStr);
+
+    if (!todayLog) {
+      todayLog = {
+        date: todayStr,
+        morningCompleted: false,
+        eveningCompleted: false,
+        morningCompletedAt: null,
+        eveningCompletedAt: null
+      };
+      this.routineHistory.push(todayLog);
+    }
+
+    const alreadyDoneKey = `${routineType}Completed`;
+    if (todayLog[alreadyDoneKey]) {
+      return {
+        status: "ALREADY_COMPLETED",
+        routineType,
+        pointsAwarded: 0,
+        bothCompletedBonus: false,
+        todayStatus: this.getTodayRoutineStatus(now)
+      };
+    }
+
+    todayLog[alreadyDoneKey] = true;
+    todayLog[`${routineType}CompletedAt`] = now.toISOString();
+
+    let pointsAwarded = 3; // Rutin başına +3 İnci
+    let bothCompletedBonus = false;
+
+    // Eğer her iki rutin (Sabah ve Akşam) tamamlandıysa +2 İnci gün sonu bonusu
+    if (todayLog.morningCompleted && todayLog.eveningCompleted) {
+      pointsAwarded += 2;
+      bothCompletedBonus = true;
+    }
+
+    this.addPoints(pointsAwarded);
+
+    return {
+      status: "COMPLETED",
+      routineType,
+      pointsAwarded,
+      bothCompletedBonus,
+      todayStatus: this.getTodayRoutineStatus(now)
+    };
+  }
+
+  // --- DİJİTAL DOLAP & PAO (SKT) METOTLARI ---
+
+  addVanityItem({ id = null, productId = null, name, brand = null, openedAt = new Date(), paoMonths = 12, notes = null }) {
+    if (!name || name.trim().length === 0) {
+      throw new Error("Ürün adı boş olamaz.");
+    }
+
+    const safePao = Math.max(1, parseInt(paoMonths, 10) || 12);
+    const openDate = openedAt ? new Date(openedAt) : new Date();
+
+    const newItem = {
+      id: id || `vanity_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`,
+      productId: productId || null,
+      name: name.trim(),
+      brand: brand ? brand.trim() : null,
+      openedAt: openDate.toISOString(),
+      paoMonths: safePao,
+      notes: notes ? notes.trim() : null
+    };
+
+    this.vanity.push(newItem);
+    return newItem;
+  }
+
+  removeVanityItem(itemId) {
+    const initialLen = this.vanity.length;
+    this.vanity = this.vanity.filter((item) => item.id !== String(itemId));
+    return this.vanity.length < initialLen;
+  }
+
+  getVanityItemsWithStatus(now = new Date()) {
+    const today = now.getTime();
+    const msPerDay = 1000 * 60 * 60 * 24;
+
+    return this.vanity.map((item) => {
+      const openedDate = new Date(item.openedAt);
+      const expiryDate = new Date(openedDate);
+      expiryDate.setMonth(expiryDate.getMonth() + item.paoMonths);
+
+      const totalLifetimeDays = Math.max(1, Math.round((expiryDate.getTime() - openedDate.getTime()) / msPerDay));
+      const daysRemaining = Math.round((expiryDate.getTime() - today) / msPerDay);
+      const percentRemaining = Math.max(0, Math.min(100, Math.round((daysRemaining / totalLifetimeDays) * 100)));
+
+      let status = "FRESH"; // FRESH | EXPIRING_SOON | EXPIRED
+      let statusTextTr = "Taze ve Güvenli";
+
+      if (daysRemaining <= 0) {
+        status = "EXPIRED";
+        statusTextTr = "Süresi Doldu! (Bakteri Riski)";
+      } else if (daysRemaining <= 30) {
+        status = "EXPIRING_SOON";
+        statusTextTr = "Son 30 Gün! Yakında Tüketiniz";
+      }
+
+      return {
+        ...item,
+        expiryDate: expiryDate.toISOString(),
+        daysRemaining,
+        percentRemaining,
+        status,
+        statusTextTr
+      };
+    });
+  }
+
+  // --- 7 GÜNLÜK İSTİRİDYE SANDIĞI (MYSTERY CHEST) ---
+
+  claimOysterChest(now = new Date()) {
+    if (this.streakCount < 7) {
+      throw new Error(`İstiridye sandığını açmak için en az 7 günlük seri gerekir. Mevcut seriniz: ${this.streakCount}`);
+    }
+
+    const currentMilestone = Math.floor(this.streakCount / 7) * 7;
+    if (this.openedChests.includes(currentMilestone)) {
+      throw new Error(`${currentMilestone}. Gün İstiridye Sandığını zaten açtınız! Bir sonraki sandık için serinizi koruyun.`);
+    }
+
+    // 25 ile 50 arası rastgele İnci ödülü
+    const randomBonus = Math.floor(Math.random() * 26) + 25; // 25..50
+    this.addPoints(randomBonus);
+    this.openedChests.push(currentMilestone);
+
+    // Seri kilometre taşı rozeti
+    let earnedBadge = null;
+    if (currentMilestone === 7 && !this.badges.includes("Haftalık Cilt Disiplini 🦪")) {
+      earnedBadge = "Haftalık Cilt Disiplini 🦪";
+    } else if (currentMilestone === 14 && !this.badges.includes("Derin Deniz Kaşifi 🌊")) {
+      earnedBadge = "Derin Deniz Kaşifi 🌊";
+    } else if (currentMilestone >= 21 && !this.badges.includes("Işıltılı İnci Kraliçesi 👑")) {
+      earnedBadge = "Işıltılı İnci Kraliçesi 👑";
+    }
+
+    if (earnedBadge) {
+      this.badges.push(earnedBadge);
+    }
+
+    return {
+      milestone: currentMilestone,
+      pointsAwarded: randomBonus,
+      totalPoints: this.points,
+      earnedBadge,
+      allBadges: this.badges
+    };
+  }
+
+  // --- CİLT BAKIM ÇANTASI TEMİZLİK SKORU (Share Card İçin) ---
+
+  calculateVanitySafetyScore() {
+    const items = this.getVanityItemsWithStatus();
+    if (items.length === 0) {
+      return { score: 100, label: "Tertemiz Başlangıç", expiredCount: 0, totalItems: 0 };
+    }
+
+    const expired = items.filter((i) => i.status === "EXPIRED").length;
+    const expiringSoon = items.filter((i) => i.status === "EXPIRING_SOON").length;
+
+    let score = 100;
+    score -= expired * 35; // Her süresi geçmiş ürün 35 puan kırar
+    score -= expiringSoon * 10;
+    score = Math.max(10, Math.min(100, score));
+
+    let label = "Kusursuz & Taze Rutin 🌟";
+    if (score < 50) label = "Acil Temizlik Gerekiyor ⚠️";
+    else if (score < 80) label = "Yenilenme Zamanı 🧴";
+
+    return {
+      score,
+      label,
+      totalItems: items.length,
+      freshCount: items.length - expired - expiringSoon,
+      expiringSoonCount: expiringSoon,
+      expiredCount: expired
+    };
   }
 }
 

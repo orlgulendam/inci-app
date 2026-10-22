@@ -76,6 +76,86 @@ class ProfileController {
       next(err);
     }
   };
+
+  // --- RUTİN UÇ NOKTALARI ---
+
+  getRoutine = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const data = await this.profileService.getRoutine(userId);
+      return res.status(200).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  updateRoutine = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const { morning, evening } = req.body;
+      const data = await this.profileService.updateRoutine(userId, { morning, evening });
+      return res.status(200).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  completeRoutine = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const { type } = req.body; // 'morning' | 'evening'
+      const data = await this.profileService.completeRoutine(userId, type);
+      return res.status(200).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  // --- DİJİTAL DOLAP UÇ NOKTALARI ---
+
+  getVanity = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const data = await this.profileService.getVanity(userId);
+      return res.status(200).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  addVanityItem = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const itemData = req.body;
+      const data = await this.profileService.addVanityItem(userId, itemData);
+      return res.status(201).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  removeVanityItem = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const itemId = req.params.id;
+      const data = await this.profileService.removeVanityItem(userId, itemId);
+      return res.status(200).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  // --- 7 GÜNLÜK İSTİRİDYE SANDIĞI UÇ NOKTASI ---
+
+  claimOysterChest = async (req, res, next) => {
+    try {
+      const userId = req.user.sub;
+      const data = await this.profileService.claimOysterChest(userId);
+      return res.status(200).json({ success: true, data });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 module.exports = ProfileController;

@@ -29,6 +29,11 @@ class MongoUserRepository extends IUserRepository {
       lastScanDate: doc.last_scan_date || null,
       profileCompletedBonusClaimed: !!doc.profile_completed_bonus_claimed,
       skinProfile: new SkinProfile(doc.skin_profile || {}),
+      routine: doc.routine || { morning: [], evening: [] },
+      routineHistory: Array.isArray(doc.routine_history) ? doc.routine_history : [],
+      vanity: Array.isArray(doc.vanity) ? doc.vanity : [],
+      badges: Array.isArray(doc.badges) ? doc.badges : [],
+      openedChests: Array.isArray(doc.opened_chests) ? doc.opened_chests : [],
       createdAt: doc.created_at || new Date()
     });
   }
@@ -137,6 +142,11 @@ class MongoUserRepository extends IUserRepository {
         streak_count: user.streakCount || 0,
         last_scan_date: user.lastScanDate || null,
         profile_completed_bonus_claimed: !!user.profileCompletedBonusClaimed,
+        routine: user.routine || { morning: [], evening: [] },
+        routine_history: user.routineHistory || [],
+        vanity: user.vanity || [],
+        badges: user.badges || [],
+        opened_chests: user.openedChests || [],
         skin_profile: {
           skinType: user.skinProfile.skinType,
           conditions: user.skinProfile.conditions,

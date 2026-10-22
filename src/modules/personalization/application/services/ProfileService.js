@@ -23,6 +23,8 @@ class ProfileService {
       streakCount: user.streakCount,
       lastScanDate: user.lastScanDate,
       profileCompletedBonusClaimed: user.profileCompletedBonusClaimed,
+      badges: user.badges || [],
+      openedChests: user.openedChests || [],
       role: user.role,
       skinProfile: user.skinProfile
     };
@@ -104,6 +106,94 @@ class ProfileService {
     return {
       message: "Hesabınız ve tüm ilişkili verileriniz başarıyla kalıcı olarak silindi."
     };
+  }
+
+  // --- CİLT RUTİNİ SERVİSİ ---
+
+  async getRoutine(userId, now = new Date()) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    return {
+      routine: user.routine || { morning: [], evening: [] },
+      todayStatus: user.getTodayRoutineStatus(now)
+    };
+  }
+
+  async updateRoutine(userId, { morning, evening }) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    user.updateRoutine({ morning, evening });
+    await this.userRepository.save(user);
+
+    return {
+      routine: user.routine,
+      todayStatus: user.getTodayRoutineStatus()
+    };
+  }
+
+  async completeRoutine(userId, routineType, now = new Date()) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    const result = user.completeRoutine(routineType, now);
+    await this.userRepository.save(user);
+
+    return {
+      ...result,
+      points: user.points
+    };
+  }
+
+  // --- DİJİTAL DOLAP SERVİSİ ---
+
+  async getVanity(userId, now = new Date()) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    const items = user.getVanityItemsWithStatus(now);
+    const safetyScore = user.calculateVanitySafetyScore();
+
+    return {
+      items,
+      safetyScore
+    };
+  }
+
+  async addVanityItem(userId, itemData) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    const newItem = user.addVanityItem(itemData);
+    await this.userRepository.save(user);
+
+    return newItem;
+  }
+
+  async removeVanityItem(userId, itemId) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    const removed = user.removeVanityItem(itemId);
+    if (!removed) {
+      throw new NotFoundError("Belirtilen dolap öğesi bulunamadı.");
+    }
+
+    await this.userRepository.save(user);
+    return { success: true, message: "Ürün dolaptan kaldırıldı." };
+  }
+
+  // --- 7 GÜNLÜK İSTİRİDYE SANDIĞI (MYSTERY CHEST) ---
+
+  async claimOysterChest(userId, now = new Date()) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
+
+    const result = user.claimOysterChest(now);
+    await this.userRepository.save(user);
+
+    return result;
   }
 }
 

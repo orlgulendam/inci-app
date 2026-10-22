@@ -16,9 +16,17 @@ export const ENDPOINTS = {
 
   // İçerik Analizi & Katalog
   ANALYZE_RAW: "/api/v1/analyze",
+  ANALYZE_CONFLICTS: "/api/v1/analyze/conflicts",
   PRODUCT_BY_BARCODE: (barcode) => `/api/v1/products/${encodeURIComponent(barcode)}`,
   PRODUCTS_SEARCH: "/api/v1/products/search",
   BRANDS: "/api/v1/brands",
+
+  // Rutin, Dijital Dolap ve Oyunlaştırma
+  ROUTINE: "/api/v1/personalization/routine",
+  ROUTINE_COMPLETE: "/api/v1/personalization/routine/complete-step",
+  VANITY: "/api/v1/personalization/vanity",
+  VANITY_ITEM: (id) => `/api/v1/personalization/vanity/${encodeURIComponent(id)}`,
+  CHEST_CLAIM: "/api/v1/personalization/chest/claim",
 
   // AI Danışmanlık
   CHAT: "/api/v1/chat",

@@ -8,6 +8,9 @@ function createAnalysisRoutes(analysisController) {
   // POST /api/v1/analyze (İşlemsel, önbelleklenemez)
   router.post("/analyze", analysisController.analyzeText);
 
+  // POST /api/v1/analyze/conflicts (Kimyasal çakışma ve bariyer alarmı)
+  router.post("/analyze/conflicts", analysisController.detectConflicts);
+
   // POST /api/v1/analyze/ocr (Görsel ambalaj metni okuma ve otomatik analiz)
   router.post("/analyze/ocr", analysisController.extractOcrText);
 

@@ -106,6 +106,25 @@ class AnalysisController {
       next(err);
     }
   };
+
+  detectConflicts = async (req, res, next) => {
+    try {
+      const { ingredientsA, ingredientsB, textA, textB } = req.body;
+      const inputA = ingredientsA || textA || "";
+      const inputB = ingredientsB || textB || null;
+
+      if (!inputA || (typeof inputA === "string" && inputA.trim().length < 2) && (!Array.isArray(inputA) || inputA.length === 0)) {
+        throw new ValidationError("Çakışma analizi için en az bir içerik listesi (ingredientsA / textA) gereklidir.", [
+          { field: "ingredientsA", message: "ingredientsA boş olamaz." }
+        ]);
+      }
+
+      const result = this.analysisService.detectConflicts(inputA, inputB);
+      return res.status(200).json(formatSuccessResponse(result));
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 module.exports = AnalysisController;
