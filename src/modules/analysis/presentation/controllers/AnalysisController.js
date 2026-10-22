@@ -2,11 +2,13 @@
 // Yalnızca HTTP isteklerini ve parametre doğrulamasını yönetir (SRP).
 const { ValidationError, NotFoundError } = require("../../../../core/errors/AppError");
 const { formatSuccessResponse } = require("../../../../core/utils/apiResponse");
+const GeminiVisionOcrService = require("../../infrastructure/ocr/GeminiVisionOcrService");
 
 class AnalysisController {
-  constructor(analysisService, ingredientRepository) {
+  constructor(analysisService, ingredientRepository, ocrService = null) {
     this.analysisService = analysisService;
     this.ingredientRepository = ingredientRepository;
+    this.ocrService = ocrService || new GeminiVisionOcrService();
   }
 
   analyzeText = async (req, res, next) => {
@@ -22,6 +24,38 @@ class AnalysisController {
       return res.status(200).json({
         success: true,
         data: result
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  extractOcrText = async (req, res, next) => {
+    try {
+      const image = req.body.image || req.body.base64Data || req.body.photo;
+      if (!image || typeof image !== "string" || image.trim().length < 20) {
+        throw new ValidationError("Analiz edilecek ambalaj görseli (base64 formatında) zorunludur.", [
+          { field: "image", message: "Geçerli bir base64 görsel verisi gönderilmelidir." }
+        ]);
+      }
+
+      const mimeType = req.body.mimeType || "image/jpeg";
+      const ocrResult = await this.ocrService.extractIngredientsFromImage({
+        base64Data: image,
+        mimeType
+      });
+
+      let analysisResult = null;
+      if (req.body.autoAnalyze && ocrResult.ingredientsText && ocrResult.ingredientsText.length >= 3) {
+        analysisResult = await this.analysisService.analyze(ocrResult.ingredientsText);
+      }
+
+      return res.status(200).json({
+        success: true,
+        data: {
+          ...ocrResult,
+          analysis: analysisResult
+        }
       });
     } catch (err) {
       next(err);

@@ -8,6 +8,9 @@ function createAnalysisRoutes(analysisController) {
   // POST /api/v1/analyze (İşlemsel, önbelleklenemez)
   router.post("/analyze", analysisController.analyzeText);
 
+  // POST /api/v1/analyze/ocr (Görsel ambalaj metni okuma ve otomatik analiz)
+  router.post("/analyze/ocr", analysisController.extractOcrText);
+
   // GET /api/v1/ingredients/search?q=niacinamide&fields=inci,cosingRefNo
   router.get(
     "/ingredients/search",

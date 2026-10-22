@@ -289,6 +289,32 @@ const swaggerSpec = {
         }
       }
     },
+    "/analyze/ocr": {
+      post: {
+        tags: ["İçerik Analizi"],
+        summary: "Kozmetik ambalaj görselinden (OCR) içerik listesini ve ürün bilgilerini ayıklar",
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                required: ["image"],
+                properties: {
+                  image: { type: "string", description: "Base64 formatında ambalaj görseli", example: "data:image/jpeg;base64,/9j/4AAQSkZJRg..." },
+                  mimeType: { type: "string", example: "image/jpeg" },
+                  autoAnalyze: { type: "boolean", example: true, description: "Metin çıkarıldıktan sonra doğrudan kimyasal analiz yapılsın mı" }
+                }
+              }
+            }
+          }
+        },
+        responses: {
+          200: { description: "Okunan içerik metni, tespit edilen marka/ürün ve isteğe bağlı tam analiz raporu" },
+          400: { description: "Geçersiz görsel verisi" }
+        }
+      }
+    },
     "/products/{barcode}": {
       get: {
         tags: ["Ürün Kataloğu"],

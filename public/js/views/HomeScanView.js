@@ -215,7 +215,31 @@ export class HomeScanView {
     modalFooter.className = "card-footer";
     modalFooter.style.fontSize = "var(--font-size-xs)";
     modalFooter.style.textAlign = "center";
-    modalFooter.textContent = "Lütfen ürün barkodunu kutucuğun içine hizalayınız. Kamera arka kamera olarak açılır.";
+    modalFooter.style.display = "flex";
+    modalFooter.style.flexDirection = "column";
+    modalFooter.style.gap = "var(--space-2)";
+
+    const ocrSnapBtn = document.createElement("button");
+    ocrSnapBtn.type = "button";
+    ocrSnapBtn.className = "btn btn-secondary btn-sm";
+    ocrSnapBtn.innerHTML = "📸 İçerik (INCI) Yazısını Fotoğrafla ve Oku (OCR)";
+    ocrSnapBtn.onclick = async () => {
+      const frameBlob = await scannerService.captureFrameFromVideo();
+      this.closeCameraModal();
+      if (frameBlob) {
+        toast.info("Kameradan kare alındı, içerik metni taranıyor...");
+        await this.processOcrImage(frameBlob);
+      } else {
+        toast.error("Kameradan görüntü alınamadı.");
+      }
+    };
+    modalFooter.appendChild(ocrSnapBtn);
+
+    const helpText = document.createElement("div");
+    helpText.style.color = "var(--color-text-subtle)";
+    helpText.textContent = "Barkodu kutucuğa hizalayın veya ambalaj üzerindeki 'Ingredients' yazısını çekmek için yukarıdaki butona basınız.";
+    modalFooter.appendChild(helpText);
+
     modalBox.appendChild(modalFooter);
 
     modalBackdrop.appendChild(modalBox);
@@ -265,13 +289,132 @@ export class HomeScanView {
           toast.success(`Görselden barkod tespit edildi: ${barcode}`);
           this.processBarcode(barcode);
         } else {
-          // Barkod bulunamadıysa fotoğraftan içerik aramaya veya serbest metne yönlendir
-          toast.info("Görselde barkod okunamadı. Lütfen barkod numarasını manuel giriniz veya içerik metnini yapıştırınız.");
+          // Barkod bulunamadıysa akıllı OCR motoru ambalajdaki metni okumaya geçer
+          toast.info("Barkod bulunamadı, ambalajdaki 'İçindekiler (INCI)' metni taranıyor...");
+          await this.processOcrImage(optimizedBlob);
         }
       };
     } catch (err) {
       toast.error(err.message);
     }
+  }
+
+  /**
+   * Görselden OCR ile içerik listesi ayıklar ve kullanıcıya önizleme sunar
+   */
+  async processOcrImage(imageSource) {
+    try {
+      this.resultsContainer.innerHTML = "";
+      this.resultsContainer.appendChild(CardFactory.createSkeletonCard());
+
+      const ocrResult = await scannerService.recognizeOcr(imageSource);
+
+      if (!ocrResult || !ocrResult.ingredientsText || ocrResult.ingredientsText.trim().length < 3) {
+        toast.warning(
+          ocrResult?.error ||
+          "Görselden net bir içerik listesi okunamadı. Lütfen ışığı ayarlayarak ambalajdaki 'Ingredients' kısmını daha yakından çekiniz veya metni manuel giriniz."
+        );
+        this.resultsContainer.innerHTML = "";
+        this.resultsContainer.appendChild(
+          CardFactory.createEmptyCard("Net bir içerik metni tespit edilemedi. Lütfen fotoğrafı tekrar çekiniz veya metni aşağıya yapıştırınız.")
+        );
+        return;
+      }
+
+      toast.success("Ambalaj metni başarıyla okundu!");
+      this.openOcrPreviewModal(ocrResult);
+    } catch (err) {
+      toast.error(`OCR İşlemi Başarısız: ${err.message}`);
+      this.resultsContainer.innerHTML = "";
+    }
+  }
+
+  /**
+   * OCR ile tespit edilen içerik metnini kullanıcıya onaylatan ve düzenleten modal
+   */
+  openOcrPreviewModal(ocrResult) {
+    const modalBackdrop = document.createElement("div");
+    modalBackdrop.className = "modal-backdrop";
+    modalBackdrop.id = "ocrPreviewModal";
+
+    const modalBox = document.createElement("div");
+    modalBox.className = "modal-container";
+    modalBox.style.maxWidth = "520px";
+
+    const modalHeader = document.createElement("div");
+    modalHeader.className = "card-header";
+    const headerTitle = document.createElement("h3");
+    headerTitle.className = "card-title";
+    headerTitle.innerHTML = "✨ Tespit Edilen İçerik Metni (OCR)";
+    modalHeader.appendChild(headerTitle);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "btn btn-sm btn-outline";
+    closeBtn.textContent = "✕ Kapat";
+    closeBtn.onclick = () => modalBackdrop.remove();
+    modalHeader.appendChild(closeBtn);
+    modalBox.appendChild(modalHeader);
+
+    const modalBody = document.createElement("div");
+    modalBody.className = "card-body";
+
+    // Ürün veya Marka tespiti varsa rozet olarak göster
+    if (ocrResult.detectedProductName || ocrResult.detectedBrand) {
+      const detectedInfo = document.createElement("div");
+      detectedInfo.style.marginBottom = "var(--space-3)";
+      detectedInfo.style.padding = "var(--space-2) var(--space-3)";
+      detectedInfo.style.background = "var(--color-primary-50)";
+      detectedInfo.style.borderRadius = "var(--radius-md)";
+      detectedInfo.style.fontSize = "var(--font-size-xs)";
+      detectedInfo.style.color = "var(--color-primary-800)";
+      detectedInfo.innerHTML = `🏷️ <strong>Tespit Edilen:</strong> ${ocrResult.detectedBrand || ""} ${ocrResult.detectedProductName || ""}`;
+      modalBody.appendChild(detectedInfo);
+    }
+
+    const description = document.createElement("p");
+    description.style.fontSize = "var(--font-size-xs)";
+    description.style.color = "var(--color-text-muted)";
+    description.style.marginBottom = "var(--space-2)";
+    description.textContent = "Ambalajdan okunan kimyasal bileşenler aşağıdadır. Yanlış okunan harf varsa düzeltebilir veya doğrudan analizi başlatabilirsiniz:";
+    modalBody.appendChild(description);
+
+    const textarea = document.createElement("textarea");
+    textarea.className = "form-textarea";
+    textarea.style.minHeight = "120px";
+    textarea.style.fontSize = "var(--font-size-sm)";
+    textarea.value = ocrResult.ingredientsText;
+    modalBody.appendChild(textarea);
+
+    const modalActions = document.createElement("div");
+    modalActions.style.display = "flex";
+    modalActions.style.gap = "var(--space-2)";
+    modalActions.style.marginTop = "var(--space-4)";
+
+    const analyzeBtn = document.createElement("button");
+    analyzeBtn.type = "button";
+    analyzeBtn.className = "btn btn-primary";
+    analyzeBtn.style.flex = "1";
+    analyzeBtn.innerHTML = "🧪 Bu İçerikleri Analiz Et";
+    analyzeBtn.onclick = () => {
+      const editedText = textarea.value.trim();
+      modalBackdrop.remove();
+      if (editedText) {
+        this.processRawIngredients(editedText);
+      }
+    };
+    modalActions.appendChild(analyzeBtn);
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.type = "button";
+    cancelBtn.className = "btn btn-outline";
+    cancelBtn.textContent = "İptal";
+    cancelBtn.onclick = () => modalBackdrop.remove();
+    modalActions.appendChild(cancelBtn);
+
+    modalBody.appendChild(modalActions);
+    modalBox.appendChild(modalBody);
+    modalBackdrop.appendChild(modalBox);
+    document.body.appendChild(modalBackdrop);
   }
 
   /**

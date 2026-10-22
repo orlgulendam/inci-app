@@ -1,8 +1,9 @@
 // public/js/scanner/ScannerService.js - Kamera ve Tarama Yaşam Döngüsü Yöneticisi (Facade Pattern)
-// Gerekçe: Kamera donanım erişimini, stream kaynaklarının kapatılmasını ve barkod tespit stratejisini tek bir güvenli arayüz arkasında toplamak için.
+// Gerekçe: Kamera donanım erişimini, stream kaynaklarının kapatılmasını, barkod ve OCR stratejilerini tek bir güvenli arayüz arkasında toplamak için.
 import { NativeBarcodeStrategy } from "./NativeBarcodeStrategy.js";
 import { FallbackBarcodeStrategy } from "./FallbackBarcodeStrategy.js";
 import { CapacitorBarcodeStrategy } from "./CapacitorBarcodeStrategy.js";
+import { CapacitorOcrStrategy } from "./CapacitorOcrStrategy.js";
 
 export class ScannerService {
   constructor() {
@@ -11,6 +12,7 @@ export class ScannerService {
     this.animationFrameId = null;
     this.isScanning = false;
     this.strategy = null;
+    this.ocrStrategy = new CapacitorOcrStrategy();
   }
 
   async resolveStrategy() {
@@ -130,6 +132,35 @@ export class ScannerService {
       this.videoElement.srcObject = null;
       this.videoElement = null;
     }
+  }
+
+  /**
+   * Aktif kamera vizöründen tek bir kareyi görsel (Blob) olarak dondurur
+   * @returns {Blob|null}
+   */
+  captureFrameFromVideo() {
+    if (!this.videoElement || this.videoElement.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) {
+      return null;
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = this.videoElement.videoWidth || 1280;
+    canvas.height = this.videoElement.videoHeight || 720;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(this.videoElement, 0, 0, canvas.width, canvas.height);
+
+    return new Promise((resolve) => {
+      canvas.toBlob((blob) => resolve(blob), "image/jpeg", 0.9);
+    });
+  }
+
+  /**
+   * Görsel kaynağından OCR ile içerik (INCI) metnini okur
+   * @param {Blob|File|HTMLImageElement|HTMLCanvasElement} imageSource
+   * @returns {Promise<{ ingredientsText: string, detectedProductName?: string, detectedBrand?: string, confidence?: string }>}
+   */
+  async recognizeOcr(imageSource) {
+    return this.ocrStrategy.recognize(imageSource);
   }
 
   /**
