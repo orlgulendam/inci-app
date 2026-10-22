@@ -98,8 +98,116 @@ export class HomeScanView {
     divider.style.textAlign = "center";
     divider.style.margin = "var(--space-4) 0";
     divider.style.position = "relative";
-    divider.innerHTML = `<span style="background:#fff; padding: 0 var(--space-3); color:var(--color-text-subtle); font-size:var(--font-size-xs); font-weight:600;">VEYA MANUEL GİRİŞ</span>`;
+    divider.innerHTML = `<span style="background:#fff; padding: 0 var(--space-3); color:var(--color-text-subtle); font-size:var(--font-size-xs); font-weight:600;">VEYA İSİM / BARKOD İLE ARAMA</span>`;
     scanBody.appendChild(divider);
+
+    // 1.5 ÜRÜN VEYA MARKA ADI İLE CANLI ARAMA (YENİ)
+    const nameSearchContainer = document.createElement("div");
+    nameSearchContainer.style.position = "relative";
+    nameSearchContainer.style.marginBottom = "var(--space-4)";
+
+    const nameSearchForm = document.createElement("form");
+    nameSearchForm.style.display = "flex";
+    nameSearchForm.style.gap = "var(--space-2)";
+
+    const nameInput = document.createElement("input");
+    nameInput.className = "form-input";
+    nameInput.placeholder = "🔍 Ürün veya Marka Adı (Örn: CeraVe, Effaclar, Garnier, Nemlendirici...)";
+    nameInput.setAttribute("aria-label", "Ürün veya Marka Adı");
+    nameSearchForm.appendChild(nameInput);
+
+    const nameSearchBtn = document.createElement("button");
+    nameSearchBtn.type = "submit";
+    nameSearchBtn.className = "btn btn-primary";
+    nameSearchBtn.innerHTML = "🔍 Ara";
+    nameSearchForm.appendChild(nameSearchBtn);
+    nameSearchContainer.appendChild(nameSearchForm);
+
+    // Canlı Arama Sonuçları Açılır Menüsü (Dropdown)
+    const searchDropdown = document.createElement("div");
+    searchDropdown.style.cssText = "display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1.5px solid var(--color-primary-light); border-radius: var(--radius-md); box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 100; max-height: 280px; overflow-y: auto; margin-top: 4px;";
+    nameSearchContainer.appendChild(searchDropdown);
+
+    let searchDebounceTimer = null;
+
+    const performSearch = async (query) => {
+      const q = query.trim();
+      if (q.length < 2) {
+        searchDropdown.style.display = "none";
+        searchDropdown.innerHTML = "";
+        return;
+      }
+
+      searchDropdown.style.display = "block";
+      searchDropdown.innerHTML = `<div style="padding: 10px; font-size: 12px; color: var(--color-text-muted); text-align: center;">Aranıyor: '${q}'...</div>`;
+
+      try {
+        const results = await scanService.searchProducts(q, 8);
+        if (!results || results.length === 0) {
+          searchDropdown.innerHTML = `
+            <div style="padding: 12px; font-size: 12px; color: var(--color-text-muted); text-align: center;">
+              '${q}' ile eşleşen ürün bulunamadı.<br/>
+              <span style="font-size: 11px; color: var(--color-primary);">Tüpün arkasındaki barkodu okutarak veya içerik metnini girerek analiz edebilirsiniz.</span>
+            </div>
+          `;
+          return;
+        }
+
+        searchDropdown.innerHTML = "";
+        results.forEach((prod) => {
+          const itemEl = document.createElement("div");
+          itemEl.style.cssText = "padding: 10px 12px; border-bottom: 1px solid var(--color-border); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.15s ease;";
+          itemEl.onmouseenter = () => (itemEl.style.background = "var(--color-primary-50)");
+          itemEl.onmouseleave = () => (itemEl.style.background = "transparent");
+
+          const pBrand = prod.brandName || prod.brand || "Marka Belirtilmemiş";
+          const pName = prod.productName || prod.name || "İsimsiz Ürün";
+
+          itemEl.innerHTML = `
+            <div style="flex: 1; padding-right: 8px;">
+              <strong style="color: var(--color-primary-dark); font-size: 13px;">${pName}</strong>
+              <div style="font-size: 11px; color: var(--color-text-muted);">${pBrand}</div>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 4px 8px;">Seç & Analiz Et ➔</button>
+          `;
+
+          itemEl.onclick = () => {
+            searchDropdown.style.display = "none";
+            nameInput.value = `${pBrand} - ${pName}`;
+            if (prod.barcode) {
+              this.processBarcode(prod.barcode);
+            } else if (prod.ingredientsText || prod.rawIngredientsText) {
+              this.processRawIngredients(prod.ingredientsText || prod.rawIngredientsText);
+            } else {
+              this.processBarcode(prod.barcode || pName);
+            }
+          };
+
+          searchDropdown.appendChild(itemEl);
+        });
+      } catch (err) {
+        searchDropdown.innerHTML = `<div style="padding: 10px; font-size: 12px; color: var(--color-danger); text-align: center;">Arama hatası: ${err.message}</div>`;
+      }
+    };
+
+    nameInput.oninput = (e) => {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => performSearch(e.target.value), 250);
+    };
+
+    nameSearchForm.onsubmit = (e) => {
+      e.preventDefault();
+      performSearch(nameInput.value);
+    };
+
+    // Dışarı tıklanınca açılır listeyi kapat
+    document.addEventListener("click", (e) => {
+      if (!nameSearchContainer.contains(e.target)) {
+        searchDropdown.style.display = "none";
+      }
+    });
+
+    scanBody.appendChild(nameSearchContainer);
 
     // 2. Manuel Barkod Giriş Formu
     const barcodeForm = document.createElement("form");

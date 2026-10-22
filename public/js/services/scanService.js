@@ -27,6 +27,11 @@ export class ScanService {
     const res = await this.client.post(ENDPOINTS.ANALYZE_RAW, { ingredientsText });
     return res.data;
   }
+
+  async searchProducts(query, limit = 10) {
+    const res = await this.client.get(`${ENDPOINTS.PRODUCTS_SEARCH}?q=${encodeURIComponent(query)}&limit=${limit}`);
+    return res.data;
+  }
 }
 
 export const scanService = new ScanService();
