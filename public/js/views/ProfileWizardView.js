@@ -9,6 +9,7 @@ export class ProfileWizardView {
     this.onNavigate = onNavigate;
     this.currentStep = 1;
     this.totalSteps = 4;
+    this.userPoints = 0;
 
     this.profileData = {
       firstName: "",
@@ -28,6 +29,7 @@ export class ProfileWizardView {
     try {
       const res = await profileService.getProfile();
       if (res) {
+        this.userPoints = res.points || 0;
         this.profileData.firstName = res.firstName || "";
         this.profileData.lastName = res.lastName || "";
         const p = res.skinProfile || {};
@@ -85,6 +87,43 @@ export class ProfileWizardView {
 
     const body = document.createElement("div");
     body.className = "card-body";
+
+    // Topluluk Puan & Rozet Göstergesi (Gamification Banner)
+    const points = this.userPoints || 0;
+    let badgeTitle = "Cilt Kaşifi 🥉";
+    let badgeColor = "#b45309";
+
+    if (points >= 500) {
+      badgeTitle = "Dermokozmetik Gurusu 🥇";
+      badgeColor = "#b8325e";
+    } else if (points >= 100) {
+      badgeTitle = "İçerik Dedektifi 🥈";
+      badgeColor = "#4b5563";
+    }
+
+    const gamificationBanner = document.createElement("div");
+    gamificationBanner.style.background = "linear-gradient(135deg, var(--color-primary-50), #fff)";
+    gamificationBanner.style.border = "1px solid var(--color-primary-200)";
+    gamificationBanner.style.borderRadius = "var(--radius-lg)";
+    gamificationBanner.style.padding = "var(--space-3) var(--space-4)";
+    gamificationBanner.style.marginBottom = "var(--space-4)";
+    gamificationBanner.style.display = "flex";
+    gamificationBanner.style.justifyContent = "space-between";
+    gamificationBanner.style.alignItems = "center";
+    gamificationBanner.style.flexWrap = "wrap";
+    gamificationBanner.style.gap = "var(--space-2)";
+
+    gamificationBanner.innerHTML = `
+      <div>
+        <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Topluluk Seviyeniz</div>
+        <div style="font-size: var(--font-size-md); font-weight: 800; color: ${badgeColor};">${badgeTitle}</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 600;">TOPLAM PUAN</div>
+        <div style="font-size: var(--font-size-lg); font-weight: 800; color: var(--color-primary-800);">🎁 ${points} Puan</div>
+      </div>
+    `;
+    body.appendChild(gamificationBanner);
 
     // Stepper Göstergesi
     const stepper = document.createElement("div");

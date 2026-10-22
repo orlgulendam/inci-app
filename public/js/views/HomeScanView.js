@@ -2,6 +2,8 @@
 // Gerekçe: 3 tarama yöntemini (Canlı Kamera, Fotoğraf Çekme/Yükleme, Manuel Giriş) tek bir arayüzde birleştirmek ve sonuçları CardFactory ile sunmak için.
 import { ScannerService, scannerService } from "../scanner/ScannerService.js";
 import { scanService } from "../services/scanService.js";
+import { communityService } from "../services/communityService.js";
+import { store } from "../state/store.js";
 import { CardFactory } from "../components/CardFactory.js";
 import { toast } from "../components/Toast.js";
 
@@ -387,13 +389,14 @@ export class HomeScanView {
 
     const modalActions = document.createElement("div");
     modalActions.style.display = "flex";
+    modalActions.style.flexWrap = "wrap";
     modalActions.style.gap = "var(--space-2)";
     modalActions.style.marginTop = "var(--space-4)";
 
     const analyzeBtn = document.createElement("button");
     analyzeBtn.type = "button";
     analyzeBtn.className = "btn btn-primary";
-    analyzeBtn.style.flex = "1";
+    analyzeBtn.style.flex = "1 1 180px";
     analyzeBtn.innerHTML = "🧪 Bu İçerikleri Analiz Et";
     analyzeBtn.onclick = () => {
       const editedText = textarea.value.trim();
@@ -403,6 +406,22 @@ export class HomeScanView {
       }
     };
     modalActions.appendChild(analyzeBtn);
+
+    const contributeBtn = document.createElement("button");
+    contributeBtn.type = "button";
+    contributeBtn.className = "btn btn-secondary";
+    contributeBtn.style.flex = "1 1 180px";
+    contributeBtn.innerHTML = "🤝 Bu Ürünü Sisteme Ekle (+50 Puan)";
+    contributeBtn.onclick = () => {
+      const editedText = textarea.value.trim();
+      modalBackdrop.remove();
+      this.openContributionModal({
+        productName: ocrResult.detectedProductName || "",
+        brandName: ocrResult.detectedBrand || "",
+        rawIngredientsText: editedText
+      });
+    };
+    modalActions.appendChild(contributeBtn);
 
     const cancelBtn = document.createElement("button");
     cancelBtn.type = "button";
@@ -439,13 +458,148 @@ export class HomeScanView {
       }));
     } catch (err) {
       this.resultsContainer.innerHTML = "";
-      this.resultsContainer.appendChild(
-        CardFactory.createErrorCard(
-          `'${barcode}' barkoduna ait ürün bulunamadı veya analiz edilemedi: ${err.message}`,
-          () => this.processBarcode(barcode)
-        )
-      );
+
+      const notFoundCard = document.createElement("div");
+      notFoundCard.className = "card";
+      notFoundCard.style.borderTop = "4px solid var(--color-primary-500)";
+      notFoundCard.style.textAlign = "center";
+      notFoundCard.style.padding = "var(--space-5)";
+
+      notFoundCard.innerHTML = `
+        <div style="font-size: 2.8rem; margin-bottom: var(--space-2);">✨</div>
+        <h3 style="color: var(--color-primary-800); margin-bottom: var(--space-2);">'${barcode}' Barkodu Henüz Kayıtlı Değil</h3>
+        <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); max-width: 440px; margin: 0 auto var(--space-4) auto;">
+          Bu ürünü topluluğumuzda ilk keşfeden sen olabilirsin! Ürünün adını ve içeriklerini sisteme ekle, <strong>50 Puan</strong> kazan.
+        </p>
+      `;
+
+      const addBtn = document.createElement("button");
+      addBtn.type = "button";
+      addBtn.className = "btn btn-primary";
+      addBtn.innerHTML = "➕ Bu Ürünü Sisteme Ekle (+50 Puan)";
+      addBtn.onclick = () => {
+        this.openContributionModal({ barcode });
+      };
+      notFoundCard.appendChild(addBtn);
+
+      this.resultsContainer.appendChild(notFoundCard);
     }
+  }
+
+  /**
+   * Topluluğa yeni ürün katkısı gönderme modalı (+50 Puan)
+   */
+  openContributionModal({ barcode = "", productName = "", brandName = "", rawIngredientsText = "" } = {}) {
+    if (!store.isAuthenticated()) {
+      toast.warning("Katkı göndermek ve 50 puan kazanmak için lütfen önce giriş yapınız.");
+      return;
+    }
+
+    const modalBackdrop = document.createElement("div");
+    modalBackdrop.className = "modal-backdrop";
+    modalBackdrop.id = "contributionModal";
+
+    const modalBox = document.createElement("div");
+    modalBox.className = "modal-container";
+    modalBox.style.maxWidth = "520px";
+
+    const modalHeader = document.createElement("div");
+    modalHeader.className = "card-header";
+    const headerTitle = document.createElement("h3");
+    headerTitle.className = "card-title";
+    headerTitle.innerHTML = "🎁 Ürün Katkısı Gönder (+50 Puan)";
+    modalHeader.appendChild(headerTitle);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "btn btn-sm btn-outline";
+    closeBtn.textContent = "✕ Kapat";
+    closeBtn.onclick = () => modalBackdrop.remove();
+    modalHeader.appendChild(closeBtn);
+    modalBox.appendChild(modalHeader);
+
+    const modalBody = document.createElement("div");
+    modalBody.className = "card-body";
+
+    const introText = document.createElement("p");
+    introText.style.fontSize = "var(--font-size-xs)";
+    introText.style.color = "var(--color-text-muted)";
+    introText.style.marginBottom = "var(--space-3)";
+    introText.textContent = "Girdiğiniz ürün moderatör onayından geçtikten sonra kalıcı olarak kataloğa eklenecek ve hesabınıza 50 Puan yüklenecektir.";
+    modalBody.appendChild(introText);
+
+    const form = document.createElement("form");
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const bcode = formBarcode.value.trim();
+      const pName = formPName.value.trim();
+      const bName = formBName.value.trim();
+      const ingText = formIng.value.trim();
+
+      if (!bcode || !pName) {
+        toast.warning("Barkod ve ürün adı zorunludur.");
+        return;
+      }
+
+      try {
+        toast.info("Katkınız gönderiliyor...");
+        await communityService.submitContribution({
+          barcode: bcode,
+          productName: pName,
+          brandName: bName || "Bilinmeyen Marka",
+          rawIngredientsText: ingText
+        });
+
+        modalBackdrop.remove();
+        toast.success("Tebrikler! Katkınız moderatör onayına iletildi. Onaylandığında 50 puan hesabınıza eklenecek.");
+      } catch (err) {
+        toast.error(`Gönderim başarısız: ${err.message}`);
+      }
+    };
+
+    // Barkod Alanı
+    const formBarcode = document.createElement("input");
+    formBarcode.className = "form-input";
+    formBarcode.style.marginBottom = "var(--space-3)";
+    formBarcode.placeholder = "Barkod (8-14 hane)";
+    formBarcode.value = barcode || (Date.now().toString()); // Barkod yoksa geçici zaman kodu
+    form.appendChild(formBarcode);
+
+    // Marka Adı Alanı
+    const formBName = document.createElement("input");
+    formBName.className = "form-input";
+    formBName.style.marginBottom = "var(--space-3)";
+    formBName.placeholder = "Marka Adı (Örn: The Purest Solutions, CeraVe)";
+    formBName.value = brandName;
+    form.appendChild(formBName);
+
+    // Ürün Adı Alanı
+    const formPName = document.createElement("input");
+    formPName.className = "form-input";
+    formPName.style.marginBottom = "var(--space-3)";
+    formPName.placeholder = "Ürün Adı (Örn: Nemlendirici Bariyer Krem)";
+    formPName.value = productName;
+    form.appendChild(formPName);
+
+    // İçerik (INCI) Metni
+    const formIng = document.createElement("textarea");
+    formIng.className = "form-textarea";
+    formIng.style.minHeight = "90px";
+    formIng.style.marginBottom = "var(--space-3)";
+    formIng.placeholder = "İçerik (INCI) Listesi: Aqua, Glycerin, Niacinamide...";
+    formIng.value = rawIngredientsText;
+    form.appendChild(formIng);
+
+    const submitBtn = document.createElement("button");
+    submitBtn.type = "submit";
+    submitBtn.className = "btn btn-primary";
+    submitBtn.style.width = "100%";
+    submitBtn.innerHTML = "🚀 Katkıyı Gönder ve 50 Puan Kazan";
+    form.appendChild(submitBtn);
+
+    modalBody.appendChild(form);
+    modalBox.appendChild(modalBody);
+    modalBackdrop.appendChild(modalBox);
+    document.body.appendChild(modalBackdrop);
   }
 
   /**

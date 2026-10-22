@@ -23,6 +23,9 @@ export const ENDPOINTS = {
   // AI Danışmanlık
   CHAT: "/api/v1/chat",
 
+  // Topluluk Katkıları (Gamification)
+  COMMUNITY_CONTRIBUTIONS: "/api/v1/contributions",
+
   // Yönetici (Admin)
   ADMIN_USERS: "/api/v1/admin/users",
   ADMIN_SCAN_LOGS: "/api/v1/admin/scan-logs",
