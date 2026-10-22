@@ -63,10 +63,41 @@ flowchart TD
   * 🥈 **100 - 499 Puan:** *İçerik Dedektifi*
   * 🥇 **500+ Puan:** *Dermokozmetik Gurusu*
 
-### 2. Puan Kazanma Kuralları
-* Yeni ürün ambalajı / barkodu ekleme: **+50 Puan** (Moderatör onaylayınca MongoDB ACID transaction ile bakiye güncellenir).
-* Cilt profilini %100 tamamlama: **+30 Puan**.
-* Hatalı içerik düzeltme: **+20 Puan**.
+### 2. Puan & İnci Kazanma Kuralları
+
+| Eylem | Kazanılan Ödül | Kural ve İşleyiş |
+| :--- | :---: | :--- |
+| **Yeni Ürün Ambalajı / Barkodu Ekleme** | **+50 İnci** | Veritabanında olmayan ürünü ekleme. Moderatör onaylayınca MongoDB ACID transaction ile bakiye güncellenir. |
+| **Cilt Profilini %100 Tamamlama** | **+30 İnci** | Cilt tipi, alerjenler, rutin ürünleri ve hedefler eksiksiz doldurulduğunda tek seferlik hoş geldin teşviki. |
+| **Hatalı Bir İçeriği Düzeltme / Bildirme** | **+20 İnci** | Ürün kartındaki "⚠️ Hata Bildir" butonuyla bildirim gönderildiğinde moderatör onayıyla bakiye güncellenir. |
+| **Günlük Ürün Tarama (İnci Serisi - Streak)** | **+5 İnci / Gün** | Kullanıcının uygulamayı her gün açmasını sağlar. **Her gün taranmadığında seri sıfırlanır (bozulur)!** |
+
+---
+
+## Bölüm 3.1: "İnci Serisi" (Daily Streak) Matematiksel Mantığı
+
+Kullanıcının her gün düzenli tarama yapmasını sağlayan **Kayan Günlük Seri Motoru (`User.recordDailyScan`)**:
+
+```mermaid
+flowchart TD
+    Scan["Kullanıcı Ürün Tarar (Barkod veya OCR)"] --> Check{"Bugün Daha Önce Tarandı mı?"}
+    
+    Check -->|"Evet (Aynı Gün)"| SameDay["Seri Korunur, Mükerrer Puan Verilmez"]
+    Check -->|"Hayır (Farklı Gün)"| DiffCheck{"Son Taramadan Beri Kaç Gün Geçti?"}
+    
+    DiffCheck -->|"1 Gün Geçti (Dün Taranmış)"| Continued["🔥 Seri Devam Etti! (streakCount + 1) & +5 İnci"]
+    DiffCheck -->|"2 veya Daha Fazla Gün Geçti (Gün Atlandı)"| Reset["💔 Seri Bozuldu! (streakCount = 1) & +5 İnci"]
+    
+    Continued --> UI["Profilde Parlayan 7 Günlük İnci Dizilimi Güncellenir (🦪 🦪 ⚪ ...)"]
+    Reset --> UI
+```
+
+1. **Aynı Gün Tarama:** Kullanıcı aynı gün 5 ürün tararsa serisi artmaz, mükerrer puan verilmez (sömürü engellenir).
+2. **Dün Taranmışsa:** Seri 1 gün uzar (`streakCount += 1`), anında **+5 İnci** yüklenir ve kutlama tostu açılır:  
+   *`"🔥 Günlük İnci Serisi! +5 İnci kazandınız (3. Gün)"`*
+3. **1 Gün Atlanmışsa (Dün taranmamışsa):** Seri **kırılır/bozulur**, `streakCount = 1` değerine sıfırlanır ve kullanıcı uyarılır.
+4. **Profil Görselleştirmesi:** Profil sayfasında 7 günlük döngüsel parlayan inciler yer alır:  
+   `[🦪 🦪 🦪 ⚪ ⚪ ⚪ ⚪]` (İlk 3 gün toplanmış, kalan 4 gün boş).
 
 ---
 
