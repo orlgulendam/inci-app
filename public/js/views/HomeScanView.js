@@ -445,6 +445,12 @@ export class HomeScanView {
 
     try {
       const result = await scanService.checkBarcodeCompatibility(barcode);
+
+      // Streak puanı kazanıldıysa kullanıcıyı tebrik et
+      if (result.streak && result.streak.pointsAwarded > 0) {
+        toast.success(`🔥 Günlük İnci Serisi! +${result.streak.pointsAwarded} İnci kazandınız (${result.streak.streakCount}. Gün)`);
+      }
+
       this.resultsContainer.innerHTML = "";
       this.resultsContainer.appendChild(CardFactory.createCompatibilityCard({
         barcode,
@@ -454,7 +460,8 @@ export class HomeScanView {
         matchedAllergens: result.matchedAllergens || [],
         flaggedIngredients: result.flaggedIngredients || [],
         beneficialIngredients: result.beneficialIngredients || [],
-        aiComment: result.analysisComment || result.summary
+        aiComment: result.analysisComment || result.summary,
+        onReportIssue: () => this.openReportIssueModal({ barcode, productName: result.product?.name })
       }));
     } catch (err) {
       this.resultsContainer.innerHTML = "";
@@ -594,6 +601,99 @@ export class HomeScanView {
     submitBtn.className = "btn btn-primary";
     submitBtn.style.width = "100%";
     submitBtn.innerHTML = "🚀 Katkıyı Gönder ve 50 Puan Kazan";
+    form.appendChild(submitBtn);
+
+    modalBody.appendChild(form);
+    modalBox.appendChild(modalBody);
+    modalBackdrop.appendChild(modalBox);
+    document.body.appendChild(modalBackdrop);
+  }
+
+  /**
+   * Hatalı içerik bildirme modalı (+20 İnci)
+   */
+  openReportIssueModal({ barcode = "", productName = "" } = {}) {
+    if (!store.isAuthenticated()) {
+      toast.warning("Hatalı içerik bildirip 20 puan kazanmak için lütfen giriş yapınız.");
+      return;
+    }
+
+    const modalBackdrop = document.createElement("div");
+    modalBackdrop.className = "modal-backdrop";
+    modalBackdrop.id = "reportIssueModal";
+
+    const modalBox = document.createElement("div");
+    modalBox.className = "modal-container";
+    modalBox.style.maxWidth = "480px";
+
+    const modalHeader = document.createElement("div");
+    modalHeader.className = "card-header";
+    const headerTitle = document.createElement("h3");
+    headerTitle.className = "card-title";
+    headerTitle.innerHTML = "⚠️ Hatalı İçerik Bildir (+20 İnci)";
+    modalHeader.appendChild(headerTitle);
+
+    const closeBtn = document.createElement("button");
+    closeBtn.className = "btn btn-sm btn-outline";
+    closeBtn.textContent = "✕ Kapat";
+    closeBtn.onclick = () => modalBackdrop.remove();
+    modalHeader.appendChild(closeBtn);
+    modalBox.appendChild(modalHeader);
+
+    const modalBody = document.createElement("div");
+    modalBody.className = "card-body";
+
+    const form = document.createElement("form");
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const desc = descInput.value.trim();
+      const corr = corrInput.value.trim();
+
+      if (!desc) {
+        toast.warning("Lütfen tespit ettiğiniz hatayı açıklayınız.");
+        return;
+      }
+
+      try {
+        toast.info("Bildiriminiz iletiliyor...");
+        await communityService.reportIssue({
+          barcode: barcode || "MANUAL",
+          productName: productName || "Kayıtlı Ürün",
+          issueDescription: desc,
+          suggestedCorrection: corr
+        });
+        modalBackdrop.remove();
+        toast.success("Bildiriminiz alındı! İçerik düzeltildiğinde 20 İnci hesabınıza yüklenecektir.");
+      } catch (err) {
+        toast.error(`Bildirim gönderilemedi: ${err.message}`);
+      }
+    };
+
+    const infoP = document.createElement("p");
+    infoP.style.fontSize = "var(--font-size-xs)";
+    infoP.style.color = "var(--color-text-muted)";
+    infoP.style.marginBottom = "var(--space-3)";
+    infoP.textContent = `${productName || barcode} ürünü için tespit ettiğiniz eksik veya hatalı bileşeni belirtiniz. Moderatör onayladığında hesabınıza 20 İnci yüklenecektir.`;
+    form.appendChild(infoP);
+
+    const descInput = document.createElement("textarea");
+    descInput.className = "form-textarea";
+    descInput.style.minHeight = "80px";
+    descInput.style.marginBottom = "var(--space-3)";
+    descInput.placeholder = "Örnek: İçerik listesinde Parfüm yazmıyor ama kutunun arkasında Fragrance var...";
+    form.appendChild(descInput);
+
+    const corrInput = document.createElement("input");
+    corrInput.className = "form-input";
+    corrInput.style.marginBottom = "var(--space-3)";
+    corrInput.placeholder = "Doğru INCI ismi veya öneriniz (İsteğe bağlı)";
+    form.appendChild(corrInput);
+
+    const submitBtn = document.createElement("button");
+    submitBtn.type = "submit";
+    submitBtn.className = "btn btn-primary";
+    submitBtn.style.width = "100%";
+    submitBtn.innerHTML = "🚀 Bildirimi Gönder (+20 İnci)";
     form.appendChild(submitBtn);
 
     modalBody.appendChild(form);

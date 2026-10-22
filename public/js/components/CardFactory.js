@@ -164,6 +164,44 @@ export class CardFactory {
     disclaimer.innerHTML = `<span><strong>Önemli Uyarı:</strong> Bu bilgiler tıbbi tavsiye değildir, dermatoloğunuza danışın.</span>`;
     body.appendChild(disclaimer);
 
+    // 6. Hatalı İçerik Bildir (+20 İnci)
+    const reportBox = document.createElement("div");
+    reportBox.style.marginTop = "var(--space-3)";
+    reportBox.style.paddingTop = "var(--space-2)";
+    reportBox.style.borderTop = "1px dashed var(--color-border)";
+    reportBox.style.display = "flex";
+    reportBox.style.justifyContent = "space-between";
+    reportBox.style.alignItems = "center";
+    reportBox.style.flexWrap = "wrap";
+    reportBox.style.gap = "var(--space-2)";
+
+    const reportPrompt = document.createElement("span");
+    reportPrompt.style.fontSize = "11px";
+    reportPrompt.style.color = "var(--color-text-muted)";
+    reportPrompt.textContent = "İçerikte bir eksiklik veya yanlışlık mı fark ettiniz?";
+    reportBox.appendChild(reportPrompt);
+
+    const reportBtn = document.createElement("button");
+    reportBtn.type = "button";
+    reportBtn.className = "btn btn-outline btn-sm";
+    reportBtn.style.fontSize = "11px";
+    reportBtn.style.padding = "4px 10px";
+    reportBtn.innerHTML = "⚠️ Hata Bildir (+20 İnci)";
+    reportBtn.onclick = () => {
+      if (typeof data.onReportIssue === "function") {
+        data.onReportIssue();
+      } else {
+        window.dispatchEvent(new CustomEvent("report-product-issue", {
+          detail: {
+            barcode: data.barcode,
+            productName: data.productName
+          }
+        }));
+      }
+    };
+    reportBox.appendChild(reportBtn);
+    body.appendChild(reportBox);
+
     card.appendChild(body);
     return card;
   }

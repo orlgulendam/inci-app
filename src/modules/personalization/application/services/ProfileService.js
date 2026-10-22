@@ -20,6 +20,9 @@ class ProfileService {
       fullName: user.getFullName(),
       isEmailVerified: user.isEmailVerified,
       points: user.points,
+      streakCount: user.streakCount,
+      lastScanDate: user.lastScanDate,
+      profileCompletedBonusClaimed: user.profileCompletedBonusClaimed,
       role: user.role,
       skinProfile: user.skinProfile
     };
@@ -49,6 +52,9 @@ class ProfileService {
       targetedBenefits: profileData.targetedBenefits !== undefined ? profileData.targetedBenefits : user.skinProfile.targetedBenefits
     });
 
+    // Profil ilk defa %100 doldurulduğunda +30 puan ödülü ver
+    const bonusAwarded = user.claimProfileCompletionBonus();
+
     await this.userRepository.save(user);
 
     return {
@@ -59,8 +65,32 @@ class ProfileService {
       fullName: user.getFullName(),
       isEmailVerified: user.isEmailVerified,
       points: user.points,
+      streakCount: user.streakCount,
+      lastScanDate: user.lastScanDate,
+      bonusAwarded,
       role: user.role,
       skinProfile: user.skinProfile
+    };
+  }
+
+  /**
+   * Kullanıcının günlük taramasını kaydeder ve İnci Serisini (Streak) günceller
+   * @param {string} userId
+   * @param {Date} [now=new Date()]
+   */
+  async recordDailyScan(userId, now = new Date()) {
+    const user = await this.userRepository.findById(userId);
+    if (!user) return null;
+
+    const streakResult = user.recordDailyScan(now);
+    await this.userRepository.save(user);
+
+    return {
+      userId: user.id,
+      points: user.points,
+      streakCount: user.streakCount,
+      lastScanDate: user.lastScanDate,
+      ...streakResult
     };
   }
 

@@ -21,6 +21,19 @@ export class CommunityService {
     const res = await this.client.post(ENDPOINTS.COMMUNITY_CONTRIBUTIONS, data);
     return res.data;
   }
+
+  /**
+   * Hatalı bir içerik bildirimi gönderir (+20 puan potansiyeli)
+   * @param {Object} data
+   * @param {string} data.barcode
+   * @param {string} [data.productName]
+   * @param {string} data.issueDescription
+   * @param {string} [data.suggestedCorrection]
+   */
+  async reportIssue(data) {
+    const res = await this.client.post("/api/v1/community/report-issue", data);
+    return res.data;
+  }
 }
 
 export const communityService = new CommunityService();

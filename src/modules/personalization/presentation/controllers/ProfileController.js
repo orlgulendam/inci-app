@@ -44,9 +44,20 @@ class ProfileController {
         inlineProfile
       });
 
+      // Oturumu açık kullanıcı için günlük İnci Serisini (Daily Streak) kaydet
+      let streakInfo = null;
+      if (userId) {
+        try {
+          streakInfo = await this.profileService.recordDailyScan(userId);
+        } catch (_) {}
+      }
+
       return res.status(200).json({
         success: true,
-        data: result
+        data: {
+          ...result,
+          streak: streakInfo
+        }
       });
     } catch (err) {
       next(err);

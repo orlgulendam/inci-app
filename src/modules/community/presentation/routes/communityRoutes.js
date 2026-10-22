@@ -16,6 +16,9 @@ function createCommunityRoutes(contributionController, authMiddleware = null) {
   router.post("/contributions/:id/approve", contributionController.approve);
   router.post("/contributions/:id/reject", contributionController.reject);
 
+  // Hatalı İçerik Bildirme (+20 Puan)
+  router.post("/community/report-issue", contributionController.reportIssue);
+
   return router;
 }
 

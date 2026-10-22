@@ -10,6 +10,9 @@ export class ProfileWizardView {
     this.currentStep = 1;
     this.totalSteps = 4;
     this.userPoints = 0;
+    this.streakCount = 0;
+    this.lastScanDate = null;
+    this.profileCompletedBonusClaimed = false;
 
     this.profileData = {
       firstName: "",
@@ -30,6 +33,9 @@ export class ProfileWizardView {
       const res = await profileService.getProfile();
       if (res) {
         this.userPoints = res.points || 0;
+        this.streakCount = res.streakCount || 0;
+        this.lastScanDate = res.lastScanDate || null;
+        this.profileCompletedBonusClaimed = res.profileCompletedBonusClaimed || false;
         this.profileData.firstName = res.firstName || "";
         this.profileData.lastName = res.lastName || "";
         const p = res.skinProfile || {};
@@ -90,6 +96,7 @@ export class ProfileWizardView {
 
     // Topluluk Puan & Rozet Göstergesi (Gamification Banner)
     const points = this.userPoints || 0;
+    const streak = this.streakCount || 0;
     let badgeTitle = "Cilt Kaşifi 🥉";
     let badgeColor = "#b45309";
 
@@ -101,26 +108,62 @@ export class ProfileWizardView {
       badgeColor = "#4b5563";
     }
 
+    // 7 Günlük İnci Dizilimi Hesapla
+    const cycleDay = (streak % 7 === 0 && streak > 0) ? 7 : (streak % 7);
+    let pearlsHtml = "";
+    for (let i = 1; i <= 7; i++) {
+      if (i <= cycleDay) {
+        pearlsHtml += `<span style="font-size: 1.35rem; margin: 0 3px; display: inline-block; filter: drop-shadow(0 2px 4px rgba(184, 50, 94, 0.3));" title="${i}. Gün İncisi Toplandı">🦪</span>`;
+      } else {
+        pearlsHtml += `<span style="font-size: 1.1rem; opacity: 0.35; margin: 0 3px; display: inline-block;" title="${i}. Gün">⚪</span>`;
+      }
+    }
+
     const gamificationBanner = document.createElement("div");
     gamificationBanner.style.background = "linear-gradient(135deg, var(--color-primary-50), #fff)";
     gamificationBanner.style.border = "1px solid var(--color-primary-200)";
     gamificationBanner.style.borderRadius = "var(--radius-lg)";
     gamificationBanner.style.padding = "var(--space-3) var(--space-4)";
     gamificationBanner.style.marginBottom = "var(--space-4)";
-    gamificationBanner.style.display = "flex";
-    gamificationBanner.style.justifyContent = "space-between";
-    gamificationBanner.style.alignItems = "center";
-    gamificationBanner.style.flexWrap = "wrap";
-    gamificationBanner.style.gap = "var(--space-2)";
+    gamificationBanner.style.boxShadow = "var(--shadow-sm)";
 
     gamificationBanner.innerHTML = `
-      <div>
-        <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Topluluk Seviyeniz</div>
-        <div style="font-size: var(--font-size-md); font-weight: 800; color: ${badgeColor};">${badgeTitle}</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-2);">
+        <div>
+          <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 600; text-transform: uppercase;">Topluluk Rütbeniz</div>
+          <div style="font-size: var(--font-size-md); font-weight: 800; color: ${badgeColor};">${badgeTitle}</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 600;">TOPLANAN İNCİLER</div>
+          <div style="font-size: var(--font-size-lg); font-weight: 800; color: var(--color-primary-800);">🦪 ${points} İnci</div>
+        </div>
       </div>
-      <div style="text-align: right;">
-        <div style="font-size: var(--font-size-xs); color: var(--color-text-muted); font-weight: 600;">TOPLAM PUAN</div>
-        <div style="font-size: var(--font-size-lg); font-weight: 800; color: var(--color-primary-800);">🎁 ${points} Puan</div>
+
+      <!-- Günlük İnci Serisi (Streak) -->
+      <div style="margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px dashed var(--color-primary-200);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-2);">
+          <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-primary-800);">
+            🔥 Günlük İnci Serisi (Streak): ${streak} Gün
+          </span>
+          <span style="font-size: 11px; font-weight: 600; color: var(--color-primary-600); background: var(--color-primary-100); padding: 2px 8px; border-radius: 12px;">
+            Her Gün 1 Tarama = +5 İnci
+          </span>
+        </div>
+        <div style="display: flex; align-items: center; padding: 4px 0;">
+          ${pearlsHtml}
+        </div>
+        <p style="font-size: 11px; color: var(--color-text-muted); margin: 6px 0 0 0;">
+          ⚠️ Her gün en az 1 ürün taratmadığınızda inci seriniz bozulur ve sıfırlanır!
+        </p>
+      </div>
+
+      <!-- %100 Profil Tamamlama Bonusu -->
+      <div style="margin-top: var(--space-2); padding-top: var(--space-2); border-top: 1px solid var(--color-primary-100); font-size: 11px;">
+        ${
+          this.profileCompletedBonusClaimed
+            ? '<span style="color: #059669; font-weight: 600;">🎉 Cilt profilinizi %100 tamamladınız ve +30 İnci ödülünüzü aldınız!</span>'
+            : '<span style="color: var(--color-primary-700); font-weight: 600;">💡 Cilt profilinizi %100 doldurarak anında <strong>+30 İnci</strong> kazanabilirsiniz!</span>'
+        }
       </div>
     `;
     body.appendChild(gamificationBanner);

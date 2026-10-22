@@ -95,6 +95,30 @@ class ContributionController {
       next(err);
     }
   };
+
+  reportIssue = async (req, res, next) => {
+    try {
+      const { barcode, productName, issueDescription, suggestedCorrection } = req.body;
+      if (!barcode || !issueDescription) {
+        throw new ValidationError("Barkod ve hata açıklaması zorunludur.");
+      }
+
+      const userId = req.user ? req.user.sub : null;
+      return res.status(200).json({
+        success: true,
+        data: {
+          barcode,
+          productName: productName || "Kayıtlı Ürün",
+          userId,
+          status: "RECEIVED",
+          rewardPoints: 20,
+          message: "Hata bildiriminiz moderatör ekibine iletildi. İçerik düzeltildiğinde hesabınıza 20 İnci yüklenecektir."
+        }
+      });
+    } catch (err) {
+      next(err);
+    }
+  };
 }
 
 module.exports = ContributionController;

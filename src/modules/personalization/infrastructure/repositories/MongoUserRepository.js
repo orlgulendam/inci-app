@@ -25,6 +25,9 @@ class MongoUserRepository extends IUserRepository {
       passwordResetToken: doc.password_reset_token || null,
       passwordResetExpires: doc.password_reset_expires || null,
       points: doc.points || 0,
+      streakCount: doc.streak_count || 0,
+      lastScanDate: doc.last_scan_date || null,
+      profileCompletedBonusClaimed: !!doc.profile_completed_bonus_claimed,
       skinProfile: new SkinProfile(doc.skin_profile || {}),
       createdAt: doc.created_at || new Date()
     });
@@ -131,6 +134,9 @@ class MongoUserRepository extends IUserRepository {
         password_reset_token: user.passwordResetToken,
         password_reset_expires: user.passwordResetExpires,
         points: user.points,
+        streak_count: user.streakCount || 0,
+        last_scan_date: user.lastScanDate || null,
+        profile_completed_bonus_claimed: !!user.profileCompletedBonusClaimed,
         skin_profile: {
           skinType: user.skinProfile.skinType,
           conditions: user.skinProfile.conditions,
