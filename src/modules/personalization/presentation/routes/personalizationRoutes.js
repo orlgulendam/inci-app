@@ -20,15 +20,11 @@ function createPersonalizationRoutes({
   router.post("/auth/forgot-password", authController.forgotPassword);
   router.post("/auth/reset-password", authController.resetPassword);
 
-  // Cilt Uyumluluğu Testi (Açık veya Token ile)
-  router.post("/profile/check-compatibility", (req, res, next) => {
-    // İsteğe bağlı token kontrolü
-    const authHeader = req.headers.authorization;
-    if (authHeader && authHeader.startsWith("Bearer ")) {
-      return authMiddleware(req, res, next);
-    }
-    next();
-  }, profileController.checkCompatibility);
+  // Cilt Uyumluluğu Testi (Seçenek A: JWT ZORUNLU)
+  // Kişiselleştirilmiş uyumluluk analizi yalnızca giriş yapmış kullanıcılara açıktır.
+  // Misafir kullanıcılar genel güvenlik analizini /api/v1/products/:barcode ve
+  // /api/v1/analyze uç noktalarından alır.
+  router.post("/profile/check-compatibility", authMiddleware, profileController.checkCompatibility);
 
   // Korumalı Profil Uç Noktaları (JWT Zorunlu)
   router.get("/profile/skin", authMiddleware, profileController.getProfile);

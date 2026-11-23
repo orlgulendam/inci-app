@@ -29,13 +29,20 @@ export class CardFactory {
     header.appendChild(titleBox);
 
     // Skor / Rozet
+    // Skor YOKSA uydurulmaz. Önceden varsayılan 85 kullanıldığı için içerik verisi
+    // olmayan veya sözleşmesi uyuşmayan her ürün ekranda "Cildinize Uygun (%85)" görünüyordu.
     const scoreBox = document.createElement("div");
-    const score = Number(data.score !== undefined ? data.score : 85);
+    const hasScore = data.score !== undefined && data.score !== null && !Number.isNaN(Number(data.score));
+    const score = hasScore ? Number(data.score) : null;
     const badge = document.createElement("span");
 
     const hasAllergenWarning = data.matchedAllergens && data.matchedAllergens.length > 0;
 
-    if (score >= 70 && !hasAllergenWarning) {
+    if (!hasScore) {
+      badge.className = "badge badge-warning";
+      badge.textContent = "İçerik Verisi Eksik";
+      badge.title = "Bu ürünün INCI listesi bulunmadığı için uyumluluk skoru hesaplanamadı.";
+    } else if (score >= 70 && !hasAllergenWarning) {
       badge.className = "badge badge-success";
       badge.textContent = `Cildinize Uygun (%${score})`;
     } else if (score >= 45 && !hasAllergenWarning) {
@@ -55,7 +62,7 @@ export class CardFactory {
 
     // MASKOT DUYGU DURUMU (skinbyinci Mascot Integration)
     const mascotBox = document.createElement("div");
-    const isSuccess = score >= 70 && !hasAllergenWarning;
+    const isSuccess = hasScore && score >= 70 && !hasAllergenWarning;
     mascotBox.className = `mascot-sprite-box ${isSuccess ? "success" : "alert"}`;
     mascotBox.setAttribute("aria-label", isSuccess ? "Mükemmel Uyum Maskotu" : "Uyarı Risk Maskotu");
 

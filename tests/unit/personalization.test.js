@@ -111,7 +111,10 @@ test("Personalization: AuthService parola güvenliği (Bcrypt) ve JWT üretimini
 });
 
 // 3. HTTP Entegrasyon Testleri
-test("Personalization: POST /api/v1/profile/check-compatibility serbest içerik için uyumluluk raporu dönmeli", async () => {
+// Seçenek A politikası: kişiselleştirilmiş uyumluluk analizi giriş gerektirir.
+// Misafir istekler artık sessizce uydurma bir "hassas cilt" profiliyle
+// 100 puanlık sahte rapor üretmek yerine 401 döner.
+test("Personalization: POST /api/v1/profile/check-compatibility misafir istekte 401 UNAUTHORIZED dönmeli", async () => {
   const server = app.listen(3092);
   try {
     const res = await fetch("http://localhost:3092/api/v1/profile/check-compatibility", {
@@ -126,11 +129,10 @@ test("Personalization: POST /api/v1/profile/check-compatibility serbest içerik 
       })
     });
 
-    assert.equal(res.status, 200);
+    assert.equal(res.status, 401);
     const body = await res.json();
-    assert.equal(body.success, true);
-    assert.equal(body.data.evaluation.isCompatible, true);
-    assert.equal(body.data.evaluation.riskLevel, "LOW");
+    assert.equal(body.success, false);
+    assert.equal(body.error.code, "UNAUTHORIZED");
   } finally {
     server.close();
   }

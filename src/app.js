@@ -90,7 +90,8 @@ const catalogModule = initializeCatalogModule({
   analysisFacade: analysisModule.facade
 });
 const personalizationModule = initializePersonalizationModule({
-  catalogFacade: catalogModule.facade
+  catalogFacade: catalogModule.facade,
+  analysisFacade: analysisModule.facade
 });
 const communityModule = initializeCommunityModule({
   catalogFacade: catalogModule.facade,

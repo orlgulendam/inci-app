@@ -62,34 +62,48 @@ export class HomeScanView {
     const scanBody = document.createElement("div");
     scanBody.className = "card-body";
 
-    // 1. Canlı Kamera & Fotoğraf Çekme Butonları
+    // 1. Canlı Kamera & Fotoğraf Çekme Butonları (3 Akıllı Tarama Modu)
     const actionGrid = document.createElement("div");
     actionGrid.style.display = "grid";
-    actionGrid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
-    actionGrid.style.gap = "var(--space-3)";
-    actionGrid.style.marginBottom = "var(--space-5)";
+    actionGrid.style.gridTemplateColumns = "repeat(auto-fit, minmax(180px, 1fr))";
+    actionGrid.style.gap = "var(--space-2)";
+    actionGrid.style.marginBottom = "var(--space-4)";
 
-    // Kamera Butonu
+    // 1) Barkod & QR Kod Canlı Kamera Butonu
     const cameraBtn = document.createElement("button");
     cameraBtn.className = "btn btn-primary";
-    cameraBtn.innerHTML = `<span>📷 Canlı Kamera ile Tara</span>`;
+    cameraBtn.innerHTML = `<span>📷 Barkod / QR Tara</span>`;
     cameraBtn.onclick = () => this.openCameraModal();
     actionGrid.appendChild(cameraBtn);
 
-    // Fotoğraf Çek / Yükle Butonu & Gizli Input
-    const fileLabel = document.createElement("label");
-    fileLabel.className = "btn btn-secondary";
-    fileLabel.style.cursor = "pointer";
-    fileLabel.innerHTML = `<span>🖼️ Fotoğraf Çek / Yükle</span>`;
+    // 2) Makyaj / Ambalaj Ön Yüzünü Çekme Butonu
+    const frontLabel = document.createElement("label");
+    frontLabel.className = "btn btn-secondary";
+    frontLabel.style.cursor = "pointer";
+    frontLabel.innerHTML = `<span>✨ Ön Yüzü Tanı</span>`;
 
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.setAttribute("capture", "environment");
-    fileInput.style.display = "none";
-    fileInput.onchange = (e) => this.handleImageUpload(e);
-    fileLabel.appendChild(fileInput);
-    actionGrid.appendChild(fileLabel);
+    const frontInput = document.createElement("input");
+    frontInput.type = "file";
+    frontInput.accept = "image/*";
+    frontInput.setAttribute("capture", "environment");
+    frontInput.style.display = "none";
+    frontInput.onchange = (e) => this.handleImageUpload(e);
+    frontLabel.appendChild(frontInput);
+    actionGrid.appendChild(frontLabel);
+
+    // 3) Arka Yüz INCI Fotoğrafı Yükleme Butonu
+    const ocrLabel = document.createElement("label");
+    ocrLabel.className = "btn btn-outline";
+    ocrLabel.style.cursor = "pointer";
+    ocrLabel.innerHTML = `<span>🧪 INCI Metnini Çek</span>`;
+
+    const ocrInput = document.createElement("input");
+    ocrInput.type = "file";
+    ocrInput.accept = "image/*";
+    ocrInput.style.display = "none";
+    ocrInput.onchange = (e) => this.handleImageUpload(e);
+    ocrLabel.appendChild(ocrInput);
+    actionGrid.appendChild(ocrLabel);
 
     scanBody.appendChild(actionGrid);
 
@@ -411,7 +425,7 @@ export class HomeScanView {
   }
 
   /**
-   * Görselden OCR ile içerik listesi ayıklar ve kullanıcıya önizleme sunar
+   * Görselden OCR ile içerik listesi ayıklar veya ön yüz tespitiyle veritabanında arama yapar
    */
   async processOcrImage(imageSource) {
     try {
@@ -420,24 +434,264 @@ export class HomeScanView {
 
       const ocrResult = await scannerService.recognizeOcr(imageSource);
 
-      if (!ocrResult || !ocrResult.ingredientsText || ocrResult.ingredientsText.trim().length < 3) {
-        toast.warning(
-          ocrResult?.error ||
-          "Görselden net bir içerik listesi okunamadı. Lütfen ışığı ayarlayarak ambalajdaki 'Ingredients' kısmını daha yakından çekiniz veya metni manuel giriniz."
-        );
-        this.resultsContainer.innerHTML = "";
-        this.resultsContainer.appendChild(
-          CardFactory.createEmptyCard("Net bir içerik metni tespit edilemedi. Lütfen fotoğrafı tekrar çekiniz veya metni aşağıya yapıştırınız.")
-        );
+      // 1. DURUM: Arka yüz veya doğrudan kimyasal içerik (INCI) listesi okundu
+      if (ocrResult && ocrResult.ingredientsText && ocrResult.ingredientsText.trim().length >= 10) {
+        toast.success("Ambalaj içerik (INCI) metni başarıyla okundu!");
+        this.openOcrPreviewModal(ocrResult);
         return;
       }
 
-      toast.success("Ambalaj metni başarıyla okundu!");
-      this.openOcrPreviewModal(ocrResult);
+      // 2. DURUM: Ön yüz taraması (Marka veya Ürün Adı tespit edildi)
+      const detectedBrand = (ocrResult?.detectedBrand || "").trim();
+      const detectedName = (ocrResult?.detectedProductName || "").trim();
+      const detectedCategory = (ocrResult?.detectedCategory || "").trim();
+      const detectedShade = (ocrResult?.detectedShade || "").trim();
+
+      if (detectedBrand || detectedName) {
+        const searchQuery = `${detectedBrand} ${detectedName}`.trim();
+        toast.info(`✨ Ön yüz algılandı: ${searchQuery}. Veritabanında aranıyor...`);
+
+        try {
+          const results = await scanService.searchProducts(searchQuery, 6);
+          const items = Array.isArray(results) ? results : (results?.items || []);
+
+          if (items.length > 0) {
+            toast.success(`🎉 ${items.length} eşleşen ürün bulundu!`);
+            this.renderFrontCoverMatches({
+              detectedBrand,
+              detectedName,
+              detectedCategory,
+              detectedShade,
+              items
+            });
+            return;
+          }
+        } catch (searchErr) {
+          console.warn("Katalog aramasında hata:", searchErr);
+        }
+
+        // Ön yüz okundu ama katalogda eşleşen bulunamadı
+        this.renderFrontCoverNotFound({
+          detectedBrand,
+          detectedName,
+          detectedCategory,
+          detectedShade
+        });
+        return;
+      }
+
+      // 3. DURUM: Ne içerik ne de marka/ürün adı okunamadı
+      toast.warning(
+        ocrResult?.error ||
+        "Görselden net bir marka, ürün adı veya içerik listesi okunamadı. Lütfen ışığı ayarlayarak ambalajın ön yüzünü veya 'Ingredients' kısmını tekrar çekiniz."
+      );
+      this.resultsContainer.innerHTML = "";
+      this.resultsContainer.appendChild(
+        CardFactory.createEmptyCard("Net bir ürün veya içerik metni tespit edilemedi. Lütfen ürünün ön yüzünü ya da arka 'Ingredients' kısmını daha net çekerek tekrar deneyiniz.")
+      );
     } catch (err) {
-      toast.error(`OCR İşlemi Başarısız: ${err.message}`);
+      toast.error(`OCR / Tarama İşlemi Başarısız: ${err.message}`);
       this.resultsContainer.innerHTML = "";
     }
+  }
+
+  /**
+   * Ön yüz taramasında katalogla eşleşen ürünleri sonuç alanında listeler
+   */
+  /**
+   * Ön yüz taramasında kutusu atılmış şişeyi teyit eden akıllı onay kartı ve alternatif eşleşmeler
+   */
+  renderFrontCoverMatches({ detectedBrand, detectedName, detectedCategory, detectedShade, items }) {
+    this.resultsContainer.innerHTML = "";
+
+    const bestItem = items[0];
+    const bestBrand = bestItem.brandName || bestItem.brand || detectedBrand;
+    const bestName = bestItem.productName || bestItem.name || detectedName;
+    const bestBarcode = bestItem.barcode || bestItem.code;
+    const bestImg = bestItem.imageUrl || bestItem.image_front_small_url || bestItem.image_front_url;
+
+    // 1. Öne Çıkan "Elinizdeki Ürün Bu mu?" Onay Kartı
+    const confirmCard = document.createElement("div");
+    confirmCard.className = "card";
+    confirmCard.style.cssText = "border: 2px solid var(--color-primary-400); background: linear-gradient(180deg, #fdf4f7 0%, #ffffff 100%); padding: var(--space-5); border-radius: var(--radius-lg); text-align: center; margin-bottom: var(--space-4); box-shadow: 0 4px 16px rgba(190, 24, 93, 0.08);";
+
+    const badgeText = [detectedCategory || bestItem.category, detectedShade].filter(Boolean).join(" • ");
+
+    const bestImgHtml = bestImg
+      ? `<img src="${bestImg}" alt="${bestName}" style="width: 64px; height: 64px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--color-border); flex-shrink: 0;" onerror="this.onerror=null; this.src='/assets/mascot/inci_mascot_shell.jpg';" />`
+      : `<div style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: #fee2e2; border-radius: var(--radius-md); font-size: 2rem; flex-shrink: 0;">🧴</div>`;
+
+    confirmCard.innerHTML = `
+      <div style="font-size: 2.2rem; margin-bottom: 6px;">✨🧴</div>
+      <h3 style="color: var(--color-primary-900); font-size: var(--font-size-lg); margin-bottom: 4px; font-weight: 700;">
+        Şişe Ön Yüzü Algılandı
+      </h3>
+      <p style="color: var(--color-text-muted); font-size: var(--font-size-xs); margin-bottom: var(--space-3);">
+        Kutusu atılmış ürününüzü veritabanımızla eşleştirdik. Elinizdeki ürün bu mu?
+      </p>
+
+      <div style="display: flex; align-items: center; justify-content: flex-start; gap: 14px; background: #ffffff; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--color-primary-200); margin: 0 auto var(--space-4) auto; max-width: 480px; text-align: left;">
+        ${bestImgHtml}
+        <div style="flex: 1; min-width: 0;">
+          <div style="font-size: var(--font-size-xs); color: var(--color-primary-600); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${bestBrand}</div>
+          <strong style="color: var(--color-text-main); font-size: var(--font-size-sm); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${bestName}</strong>
+          ${badgeText ? `<div style="margin-top: 4px;"><span class="badge" style="background: var(--color-primary-50); color: var(--color-primary-700); font-size: 10px;">${badgeText}</span></div>` : ""}
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2);">
+        <button type="button" class="btn btn-primary" id="btnConfirmBestMatch" style="padding: 10px 20px; font-weight: 600;">
+          ✅ Evet, Ürünü Analiz Et
+        </button>
+        ${items.length > 1 ? `
+        <button type="button" class="btn btn-outline" id="btnToggleOtherMatches" style="padding: 10px 16px;">
+          🔄 Diğer Eşleşmeleri Göster (${items.length - 1})
+        </button>` : `
+        <button type="button" class="btn btn-outline" id="btnScanAgain" style="padding: 10px 16px;">
+          📸 Farklı Çekim Yap
+        </button>`}
+      </div>
+    `;
+
+    // "Evet, Ürünü Analiz Et" tıklandığında doğrudan INCI analizine geç
+    confirmCard.querySelector("#btnConfirmBestMatch").onclick = () => {
+      toast.success("Ürün doğrulandı, cilt analiziniz açılıyor...");
+      if (bestBarcode) {
+        this.processBarcode(bestBarcode);
+      } else if (bestItem.rawIngredientsText || bestItem.ingredientsText) {
+        this.processRawIngredients(bestItem.rawIngredientsText || bestItem.ingredientsText);
+      } else {
+        this.processBarcode(bestName);
+      }
+    };
+
+    if (confirmCard.querySelector("#btnScanAgain")) {
+      confirmCard.querySelector("#btnScanAgain").onclick = () => this.openCameraModal();
+    }
+
+    this.resultsContainer.appendChild(confirmCard);
+
+    // 2. Alternatif Eşleşmeler Listesi (Varsayılan olarak kapalı veya butona basınca açılır)
+    if (items.length > 1) {
+      const altContainer = document.createElement("div");
+      altContainer.id = "altMatchesList";
+      altContainer.style.display = "none";
+      altContainer.style.marginBottom = "var(--space-4)";
+
+      const altTitle = document.createElement("h4");
+      altTitle.style.cssText = "font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-2);";
+      altTitle.textContent = "Diğer Olası Eşleşmeler:";
+      altContainer.appendChild(altTitle);
+
+      const list = document.createElement("div");
+      list.style.display = "flex";
+      list.style.flexDirection = "column";
+      list.style.gap = "var(--space-2)";
+
+      items.slice(1).forEach((item) => {
+        const itemRow = document.createElement("div");
+        itemRow.style.cssText = "padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center; background: var(--color-surface);";
+
+        const brand = item.brandName || item.brand || detectedBrand;
+        const name = item.productName || item.name || detectedName;
+        const barcode = item.barcode || item.code;
+        const itemImg = item.imageUrl || item.image_front_small_url || item.image_front_url;
+
+        const imgHtml = itemImg
+          ? `<img src="${itemImg}" alt="${name}" style="width: 42px; height: 42px; object-fit: cover; border-radius: var(--radius-sm); margin-right: 12px; flex-shrink: 0;" onerror="this.onerror=null; this.src='/assets/mascot/inci_mascot_shell.jpg';" />`
+          : `<div style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--color-primary-50); border-radius: var(--radius-sm); font-size: 1.3rem; margin-right: 12px; flex-shrink: 0;">💄</div>`;
+
+        itemRow.innerHTML = `
+          <div style="display: flex; align-items: center; flex: 1; padding-right: 10px;">
+            ${imgHtml}
+            <div>
+              <strong style="color: var(--color-primary-800); font-size: var(--font-size-sm); display: block;">${name}</strong>
+              <div style="font-size: var(--font-size-xs); color: var(--color-text-muted);">${brand}</div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-sm btn-primary">Seç & Analiz Et</button>
+        `;
+
+        itemRow.querySelector("button").onclick = () => {
+          if (barcode) {
+            this.processBarcode(barcode);
+          } else if (item.rawIngredientsText || item.ingredientsText) {
+            this.processRawIngredients(item.rawIngredientsText || item.ingredientsText);
+          } else {
+            this.processBarcode(name);
+          }
+        };
+
+        list.appendChild(itemRow);
+      });
+
+      altContainer.appendChild(list);
+      this.resultsContainer.appendChild(altContainer);
+
+      const toggleBtn = confirmCard.querySelector("#btnToggleOtherMatches");
+      if (toggleBtn) {
+        toggleBtn.onclick = () => {
+          const isHidden = altContainer.style.display === "none";
+          altContainer.style.display = isHidden ? "block" : "none";
+          toggleBtn.textContent = isHidden ? "▲ Gizle" : `🔄 Diğer Eşleşmeleri Göster (${items.length - 1})`;
+        };
+      }
+    }
+  }
+
+  /**
+   * Ön yüz tespit edildiğinde ancak ürün veritabanında henüz bulunmadığında gösterilen akıllı yönlendirme kartı
+   */
+  renderFrontCoverNotFound({ detectedBrand, detectedName, detectedCategory, detectedShade }) {
+    this.resultsContainer.innerHTML = "";
+
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.cssText = "border-top: 4px solid var(--color-accent, #eab308); text-align: center; padding: var(--space-5);";
+
+    const badgeText = [detectedCategory, detectedShade].filter(Boolean).join(" • ");
+
+    card.innerHTML = `
+      <div style="font-size: 2.8rem; margin-bottom: var(--space-2);">🏷️</div>
+      <h3 style="color: var(--color-primary-800); margin-bottom: var(--space-1);">
+        '${detectedBrand} ${detectedName}' Tespit Edildi
+      </h3>
+      ${badgeText ? `<div style="margin-bottom: var(--space-2);"><span class="badge" style="background: var(--color-primary-50); color: var(--color-primary-700);">${badgeText}</span></div>` : ""}
+      <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); max-width: 480px; margin: 0 auto var(--space-4) auto; line-height: 1.5;">
+        Ürünün ön yüzünü başarıyla tanıdık, ancak bu ürün henüz veritabanımızda kayıtlı değil. 
+        Makyaj malzemelerinin kimyasal formül analizi için ambalajın <strong>arka yüzündeki 'Ingredients' kısmını</strong> veya <strong>barkodunu</strong> taratabilirsiniz.
+      </p>
+    `;
+
+    const actions = document.createElement("div");
+    actions.style.display = "flex";
+    actions.style.flexWrap = "wrap";
+    actions.style.justifyContent = "center";
+    actions.style.gap = "var(--space-2)";
+
+    const scanBackBtn = document.createElement("button");
+    scanBackBtn.type = "button";
+    scanBackBtn.className = "btn btn-primary";
+    scanBackBtn.innerHTML = "📸 Arka Yüzü (İçerikleri) Tara";
+    scanBackBtn.onclick = () => {
+      this.openCameraModal();
+    };
+    actions.appendChild(scanBackBtn);
+
+    const contributeBtn = document.createElement("button");
+    contributeBtn.type = "button";
+    contributeBtn.className = "btn btn-secondary";
+    contributeBtn.innerHTML = "🤝 Bu Ürünü İlk Ekleyen Sen Ol (+50 Puan)";
+    contributeBtn.onclick = () => {
+      this.openContributionModal({
+        brandName: detectedBrand,
+        productName: [detectedName, detectedShade].filter(Boolean).join(" ")
+      });
+    };
+    actions.appendChild(contributeBtn);
+
+    card.appendChild(actions);
+    this.resultsContainer.appendChild(card);
   }
 
   /**
@@ -546,6 +800,95 @@ export class HomeScanView {
   }
 
   /**
+   * Misafir kullanıcı veya içerik verisi olmayan ürün için genel güvenlik kartı.
+   * Kişiselleştirilmiş skor YERİNE EC 1223/2009 genel analizini gösterir ve
+   * giriş yapmaya yönlendirir (Seçenek A).
+   */
+  createGuestSafetyCard({ barcode = null, productName, brand = null, safety = null, ingredients = [], insufficientMessage = null }) {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const header = document.createElement("div");
+    header.className = "card-header";
+
+    const titleBox = document.createElement("div");
+    const title = document.createElement("h3");
+    title.className = "card-title";
+    title.textContent = productName || (barcode ? `Barkod: ${barcode}` : "Ürün İçerik Analizi");
+    titleBox.appendChild(title);
+    if (brand) {
+      const brandSpan = document.createElement("div");
+      brandSpan.className = "form-hint";
+      brandSpan.textContent = `Marka: ${brand}`;
+      titleBox.appendChild(brandSpan);
+    }
+    header.appendChild(titleBox);
+
+    const badge = document.createElement("span");
+    if (safety && typeof safety.score === "number") {
+      const sc = safety.score;
+      badge.className = sc >= 80 ? "badge badge-success" : sc >= 50 ? "badge badge-warning" : "badge badge-danger";
+      badge.textContent = `Genel Güvenlik: %${sc}`;
+    } else {
+      badge.className = "badge badge-warning";
+      badge.textContent = "İçerik Verisi Eksik";
+    }
+    header.appendChild(badge);
+    card.appendChild(header);
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+
+    if (insufficientMessage || !safety) {
+      const info = document.createElement("p");
+      info.style.cssText = "font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-3);";
+      info.textContent = insufficientMessage || "Bu ürünün içerik (INCI) listesi veritabanımızda bulunmuyor; güvenlik skoru hesaplanamıyor.";
+      body.appendChild(info);
+    } else {
+      const summary = document.createElement("p");
+      summary.style.cssText = "font-size: var(--font-size-sm); color: var(--color-text); margin-bottom: var(--space-3);";
+      summary.textContent = `EC No 1223/2009 kapsamında ${safety.totalIngredients} bileşen incelendi. Durum: ${safety.status}.`;
+      body.appendChild(summary);
+
+      const flagged = ingredients.filter(i => i.badges && (i.badges.isBanned || i.badges.isRestricted || i.badges.isAllergen));
+      if (flagged.length > 0) {
+        const list = document.createElement("ul");
+        list.style.cssText = "font-size: 12px; color: var(--color-text-muted); padding-left: 18px; margin-bottom: var(--space-3);";
+        for (const f of flagged.slice(0, 8)) {
+          const li = document.createElement("li");
+          const tags = [];
+          if (f.badges.isBanned) tags.push("Yasaklı");
+          if (f.badges.isRestricted) tags.push("Kısıtlı");
+          if (f.badges.isAllergen) tags.push("Alerjen");
+          li.textContent = `${f.inciName} — ${tags.join(", ")}`;
+          list.appendChild(li);
+        }
+        body.appendChild(list);
+      }
+    }
+
+    // Giriş yapmaya yönlendirme (yalnızca misafir kullanıcıya)
+    if (!store.isAuthenticated()) {
+      const cta = document.createElement("div");
+      cta.style.cssText = "background: #FFF0F4; border: 1px solid var(--color-primary-200); border-radius: var(--radius-md); padding: var(--space-3); text-align: center;";
+      const ctaText = document.createElement("p");
+      ctaText.style.cssText = "font-size: 13px; color: var(--color-primary-dark); margin: 0 0 var(--space-2) 0; font-weight: 600;";
+      ctaText.textContent = "✨ Cildinize özel uyumluluk skoru için giriş yapın";
+      cta.appendChild(ctaText);
+
+      const ctaBtn = document.createElement("button");
+      ctaBtn.className = "btn btn-primary";
+      ctaBtn.textContent = "Giriş Yap / Cilt Profili Oluştur";
+      ctaBtn.onclick = () => this.onNavigate("auth");
+      cta.appendChild(ctaBtn);
+      body.appendChild(cta);
+    }
+
+    card.appendChild(body);
+    return card;
+  }
+
+  /**
    * Barkod analizi gerçekleştirir
    */
   async processBarcode(barcode) {
@@ -553,6 +896,21 @@ export class HomeScanView {
     this.resultsContainer.appendChild(CardFactory.createSkeletonCard());
 
     try {
+      // Seçenek A: Kişiselleştirilmiş uyumluluk analizi giriş gerektirir.
+      // Misafir kullanıcıya genel EC 1223/2009 güvenlik raporu gösterilir.
+      if (!store.isAuthenticated()) {
+        const product = await scanService.getProductByBarcode(barcode);
+        this.resultsContainer.innerHTML = "";
+        this.resultsContainer.appendChild(this.createGuestSafetyCard({
+          barcode,
+          productName: product?.productName,
+          brand: product?.brandName,
+          safety: product?.safetySummary || null,
+          ingredients: product?.ingredients || []
+        }));
+        return;
+      }
+
       const result = await scanService.checkBarcodeCompatibility(barcode);
 
       // Streak puanı kazanıldıysa kullanıcıyı tebrik et
@@ -561,18 +919,35 @@ export class HomeScanView {
       }
 
       this.resultsContainer.innerHTML = "";
+
+      // İçerik listesi olmayan üründe sahte skor gösterilmez
+      if (result.hasIngredients === false) {
+        this.resultsContainer.appendChild(this.createGuestSafetyCard({
+          barcode,
+          productName: result.product?.productName,
+          brand: result.product?.brandName,
+          safety: null,
+          ingredients: [],
+          insufficientMessage: result.message
+        }));
+        return;
+      }
+
+      const compat = result.compatibility || {};
       this.resultsContainer.appendChild(CardFactory.createCompatibilityCard({
         barcode,
-        productName: result.product?.name,
-        brand: result.product?.brand,
-        score: result.compatibilityScore || 85,
-        matchedAllergens: result.matchedAllergens || [],
-        flaggedIngredients: result.flaggedIngredients || [],
-        beneficialIngredients: result.beneficialIngredients || [],
+        productName: result.product?.productName,
+        brand: result.product?.brandName,
+        score: compat.compatibilityScore,
+        matchedAllergens: compat.matchedAllergens || [],
+        flaggedIngredients: compat.flaggedIngredients || [],
+        beneficialIngredients: compat.beneficialIngredients || [],
         conflicts: result.conflicts || null,
-        aiComment: result.analysisComment || result.summary,
-        onReportIssue: () => this.openReportIssueModal({ barcode, productName: result.product?.name }),
-        onAddToVanity: () => this.openAddToVanityModal({ productName: result.product?.name, brand: result.product?.brand })
+        aiComment: result.safety
+          ? `Genel güvenlik skoru: ${result.safety.score}/100 (${result.safety.status}). Analiz edilen bileşen: ${compat.analyzedIngredients}.`
+          : null,
+        onReportIssue: () => this.openReportIssueModal({ barcode, productName: result.product?.productName }),
+        onAddToVanity: () => this.openAddToVanityModal({ productName: result.product?.productName, brand: result.product?.brandName })
       }));
     } catch (err) {
       this.resultsContainer.innerHTML = "";
@@ -821,16 +1196,42 @@ export class HomeScanView {
     this.resultsContainer.appendChild(CardFactory.createSkeletonCard());
 
     try {
+      // Seçenek A: Misafir kullanıcı yalnızca genel güvenlik analizini görür.
+      if (!store.isAuthenticated()) {
+        const analysis = await scanService.analyzeRawIngredients(rawText);
+        this.resultsContainer.innerHTML = "";
+        this.resultsContainer.appendChild(this.createGuestSafetyCard({
+          productName: "Özel İçerik Listesi Analizi",
+          safety: analysis?.summary || null,
+          ingredients: analysis?.items || []
+        }));
+        return;
+      }
+
       const result = await scanService.checkTextCompatibility(rawText);
       this.resultsContainer.innerHTML = "";
+
+      if (result.hasIngredients === false) {
+        this.resultsContainer.appendChild(this.createGuestSafetyCard({
+          productName: "Özel İçerik Listesi Analizi",
+          safety: null,
+          ingredients: [],
+          insufficientMessage: result.message
+        }));
+        return;
+      }
+
+      const compatText = result.compatibility || {};
       this.resultsContainer.appendChild(CardFactory.createCompatibilityCard({
         productName: "Özel İçerik Listesi Analizi",
-        score: result.compatibilityScore || 80,
-        matchedAllergens: result.matchedAllergens || [],
-        flaggedIngredients: result.flaggedIngredients || [],
-        beneficialIngredients: result.beneficialIngredients || [],
+        score: compatText.compatibilityScore,
+        matchedAllergens: compatText.matchedAllergens || [],
+        flaggedIngredients: compatText.flaggedIngredients || [],
+        beneficialIngredients: compatText.beneficialIngredients || [],
         conflicts: result.conflicts || null,
-        aiComment: result.analysisComment || "Cilt profilinize göre bileşenlerin güvenlik oranları analiz edilmiştir.",
+        aiComment: result.safety
+          ? `Genel güvenlik skoru: ${result.safety.score}/100 (${result.safety.status}). Analiz edilen bileşen: ${compatText.analyzedIngredients}.`
+          : "Cilt profilinize göre bileşenlerin güvenlik oranları analiz edilmiştir.",
         onAddToVanity: () => this.openAddToVanityModal({ productName: "Kişisel Cilt Bakım Ürünü", brand: "" })
       }));
     } catch (err) {
