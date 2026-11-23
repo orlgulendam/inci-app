@@ -24,6 +24,19 @@ class MongoIngredientRepository extends IIngredientRepository {
       .replace(/[^a-z0-9]+/g, " ").trim();
   }
 
+  // Regülasyon işaretlerini iki şemadan da okur.
+  // MongoDB'deki ingredients koleksiyonu `is_banned` / `is_restricted` / `is_allergen` kullanıyor,
+  // yerel yedek sözlük (data/glossary.flagged.json) ise `banned` / `restricted` / `allergen`.
+  // Yalnızca birini okumak 393 yasaklı + 398 kısıtlı + 135 alerjen maddenin sessizce
+  // işaretsiz kalmasına, dolayısıyla her ürünün 100/CLEAN puan almasına yol açıyordu.
+  static normalizeFlags(flags = {}) {
+    return {
+      banned: !!(flags.banned ?? flags.is_banned),
+      restricted: !!(flags.restricted ?? flags.is_restricted),
+      allergen: !!(flags.allergen ?? flags.is_allergen)
+    };
+  }
+
   // Domain Entity Dönüştürücü
   static toDomain(doc) {
     if (!doc) return null;
@@ -33,9 +46,9 @@ class MongoIngredientRepository extends IIngredientRepository {
       casNumber: doc.cas_number || doc.cas,
       functions: doc.functions_en || doc.functions || [],
       functionsTr: doc.functions_tr || [],
-      flags: doc.flags || {},
+      flags: MongoIngredientRepository.normalizeFlags(doc.flags),
       euAnnex: doc.eu_annex || {},
-      noteTr: doc.note_tr || null
+      noteTr: doc.note_tr || doc.description_tr || null
     });
   }
 
@@ -53,7 +66,8 @@ class MongoIngredientRepository extends IIngredientRepository {
           functions_tr: 1,
           flags: 1,
           eu_annex: 1,
-          note_tr: 1
+          note_tr: 1,
+          description_tr: 1
         }
       });
 
