@@ -12,21 +12,40 @@ class ProductService {
     this.analysisFacade = analysisFacade;
   }
 
+  /**
+   * Ürünün yeniden analiz edilmesi gerekiyor mu?
+   * Katalogdaki 3.300 ürün, `score`/`status` içermeyen eski şemayla
+   * ({ is_clean, banned_count, ... }) önbelleğe alınmış. Bu özet "var" sayıldığı için
+   * ürünler güvenlik skoru olmadan dönüyordu; `score` yoksa özet geçersiz kabul edilir.
+   */
+  static needsAnalysis(product) {
+    const summary = product.safetySummary;
+    if (!summary || typeof summary.score !== "number") return true;
+    return !Array.isArray(product.ingredientsSummary) || product.ingredientsSummary.length === 0;
+  }
+
   async getByBarcode(barcodeStr) {
     if (!barcodeStr) {
       throw new ValidationError("Barkod parametresi boş olamaz.");
     }
 
-    const barcodeVO = new Barcode(barcodeStr);
-    const product = await this.productRepository.findByBarcode(barcodeVO.getValue());
-
-    if (!product) {
-      throw new NotFoundError(`'${barcodeStr}' barkoduna ait ürün katalogda bulunamadı.`);
+    let searchCode = String(barcodeStr).trim();
+    try {
+      const barcodeVO = new Barcode(searchCode);
+      searchCode = barcodeVO.getValue();
+    } catch (_) {
+      // Alfasayısal kod, slug veya ObjectId olabilir; doğrudan sorgula
     }
 
-    // Lazy Enrichment: Ürünün ham içeriği var ama henüz analiz özeti yoksa
+    const product = await this.productRepository.findByBarcode(searchCode);
+
+    if (!product) {
+      throw new NotFoundError(`'${barcodeStr}' koduna ait ürün katalogda bulunamadı.`);
+    }
+
+    // Lazy Enrichment: Ürünün ham içeriği var ama henüz geçerli bir analiz özeti yoksa
     // analysisFacade üzerinden anında analiz edip dokümana göm
-    if (this.analysisFacade && product.rawIngredientsText && (!product.safetySummary || product.ingredientsSummary.length === 0)) {
+    if (this.analysisFacade && product.rawIngredientsText && ProductService.needsAnalysis(product)) {
       try {
         const analysis = await this.analysisFacade.analyzeText(product.rawIngredientsText);
         product.safetySummary = analysis.summary;
