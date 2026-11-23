@@ -1,13 +1,16 @@
 // public/js/api/apiClient.js - HTTP İstemci Adaptörü (Adapter Pattern)
 // Gerekçe: Tarayıcı fetch API'sini ve backend standart hata/yanıt formatını tek merkezden yönetmek, 401 durumunda oturum kapatmak için.
+import { MOBILE_API_BASE_URL, API_BASE_URL_STORAGE_KEY } from "../config.js";
 
 class ApiClient {
   constructor({ baseUrl = "", timeoutMs = 12000, onUnauthorized = null } = {}) {
-    // Mobil / Capacitor WebView ortamında yerel sunucuya veya konfigüre edilen API'ye bağlanma desteği
+    // Mobil / Capacitor WebView ortamında yerel sunucuya veya konfigüre edilen API'ye bağlanma desteği.
+    // Adres js/config.js dosyasından okunur; cihazda yeniden derlemeden değiştirmek için
+    // localStorage üzerinden geçersiz kılınabilir.
     if (!baseUrl) {
       const isCapacitor = window.Capacitor !== undefined || window.location.protocol === "capacitor:";
       if (isCapacitor) {
-        baseUrl = localStorage.getItem("inci_api_base_url") || "http://10.0.2.2:3000";
+        baseUrl = localStorage.getItem(API_BASE_URL_STORAGE_KEY) || MOBILE_API_BASE_URL;
       }
     }
     this.baseUrl = baseUrl;
@@ -76,6 +79,18 @@ class ApiClient {
         const timeoutError = new Error("İstek zaman aşımına uğradı. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.");
         timeoutError.code = "TIMEOUT_ERROR";
         throw timeoutError;
+      }
+      // fetch'in kendisi başarısız olduysa (TypeError) sunucuya hiç ulaşılamamıştır.
+      // Mobilde bunun en sık nedeni yanlış API adresi veya engellenen cleartext isteğidir;
+      // çıplak "Failed to fetch" mesajı teşhis için yetersiz kalıyordu.
+      if (err instanceof TypeError) {
+        const networkError = new Error(
+          `API sunucusuna ulaşılamadı (${this.baseUrl || "aynı köken"}). ` +
+          "Sunucunun çalıştığını ve js/config.js içindeki adresin bu cihazdan erişilebilir olduğunu doğrulayın."
+        );
+        networkError.code = "NETWORK_UNREACHABLE";
+        networkError.cause = err;
+        throw networkError;
       }
       throw err;
     }
