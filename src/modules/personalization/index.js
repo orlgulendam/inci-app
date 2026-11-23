@@ -8,6 +8,7 @@ const MongoUserRepository = require("./infrastructure/repositories/MongoUserRepo
  const AdminService = require("./application/services/AdminService");
  const ChatService = require("./application/services/ChatService");
  const GeminiFlashProvider = require("./infrastructure/ai/GeminiFlashProvider");
+ const GroqChatProvider = require("./infrastructure/ai/GroqChatProvider");
  const MockFallbackAiProvider = require("./infrastructure/ai/MockFallbackAiProvider");
  const AuthController = require("./presentation/controllers/AuthController");
  const ProfileController = require("./presentation/controllers/ProfileController");
@@ -20,6 +21,7 @@ const MongoUserRepository = require("./infrastructure/repositories/MongoUserRepo
 
 function initializePersonalizationModule({
   catalogFacade = null,
+  analysisFacade = null,
   userRepository = null,
   scanLogRepository = null,
   primaryAiProvider = null,
@@ -30,11 +32,18 @@ function initializePersonalizationModule({
 
   const authService = new AuthService(userRepo);
   const profileService = new ProfileService(userRepo);
-  const compatibilityService = new CompatibilityService(userRepo, scanRepo, catalogFacade);
+  const compatibilityService = new CompatibilityService(userRepo, scanRepo, catalogFacade, analysisFacade);
   const adminService = new AdminService(userRepo, scanRepo);
 
   // AI Danışmanlık ve Sohbet (Strategy Pattern)
-  const primaryAi = primaryAiProvider || new GeminiFlashProvider(config.ai.geminiApiKey, config.ai.geminiModel);
+  // Birincil sağlayıcı GROQ_API_KEY varsa Groq, yoksa Gemini olur.
+  // Groq çağrısı başarısız olursa ChatService yedek sağlayıcıya düşer.
+  const hasGroqKey = Boolean(config.ai.groqApiKey && config.ai.groqApiKey.trim().length > 10);
+  const primaryAi =
+    primaryAiProvider ||
+    (hasGroqKey
+      ? new GroqChatProvider(config.ai.groqApiKey, config.ai.groqChatModel)
+      : new GeminiFlashProvider(config.ai.geminiApiKey, config.ai.geminiModel));
   const fallbackAi = fallbackAiProvider || new MockFallbackAiProvider();
   const chatService = new ChatService({
     userRepository: userRepo,

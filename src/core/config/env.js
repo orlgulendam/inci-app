@@ -15,13 +15,16 @@ const config = {
     rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX, 10) || 100
   },
   ai: {
-    provider: process.env.AI_VISION_PROVIDER || "gemini", // "gemini" | "groq"
+    // Birincil görsel (Vision) sağlayıcısı.
+    // qwen/qwen3.8-27b Groq üzerinde görsel girdi + json_object destekliyor (23.11.2026 canlı doğrulandı)
+    // ve emekliye ayrılan llama-3.2-11b-vision-preview modelinin yerini alır.
+    // Gemini ikincil yedek olarak korunur; anahtarı geçerlidir ve Vision çağrısı 200 döner.
+    provider: process.env.AI_VISION_PROVIDER || "groq", // "groq" | "gemini"
     geminiApiKey: process.env.GEMINI_API_KEY || "",
     geminiModel: process.env.GEMINI_MODEL || "gemini-2.5-flash",
     groqApiKey: process.env.GROQ_API_KEY || "",
-    // Groq tarafında vision modelleri sık sık kullanımdan kaldırılıyor; varsayılan vermiyoruz.
-    // Groq Vision yedeğini açmak için GROQ_VISION_MODEL'e canlı bir model adı yazılmalıdır.
-    groqModel: process.env.GROQ_VISION_MODEL || "",
+    groqModel: process.env.GROQ_VISION_MODEL || "qwen/qwen3.8-27b",
+    groqChatModel: process.env.GROQ_CHAT_MODEL || "openai/gpt-oss-120b",
     fallbackEnabled: process.env.AI_FALLBACK_ENABLED !== "false"
   },
   swagger: {
