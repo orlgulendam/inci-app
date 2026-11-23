@@ -205,7 +205,8 @@ class MongoProductRepository extends IProductRepository {
             { brand_name: prefix },
             { brands: prefix },
             { product_name: prefix },
-            { product_name_tr: prefix }
+            { product_name_tr: prefix },
+            { product_name_en: prefix }
           ]
         },
         sortCriteria,
@@ -239,8 +240,14 @@ class MongoProductRepository extends IProductRepository {
         updated_at: new Date()
       };
 
+      // Guncelleme filtresi: _id bilindiginde ONCE onu kullan.
+      // Yalnizca { barcode } ile upsert etmek, toDomain temizlenmis/uretilmis bir
+      // barkod dondurdugunde mevcut dokumani guncellemek yerine eksik alanli
+      // YENI bir dokuman olusturur (dokuman cogaltmasi).
+      const filter = product.id ? { _id: product.id } : { barcode: barcodeValue };
+
       const result = await this.collection.updateOne(
-        { barcode: barcodeValue },
+        filter,
         { $set: doc },
         { upsert: true }
       );

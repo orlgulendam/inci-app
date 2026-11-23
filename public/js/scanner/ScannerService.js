@@ -46,6 +46,29 @@ export class ScannerService {
   async startLiveCamera(videoElement, onDetected, onError) {
     this.videoElement = videoElement;
 
+    // NATIVE MOBİL YOLU (Capacitor + ML Kit)
+    // Native tarayıcı kendi tam ekran kamera arayüzünü açar. Önce getUserMedia ile
+    // <video> üzerinden kamerayı kilitlersek donanım iki kez talep edilir ve
+    // ML Kit taraması siyah ekranla açılır veya hiç başlamaz.
+    // Bu yüzden native ortamda getUserMedia HİÇ çağrılmaz, doğrudan scan() çalışır.
+    const strategyForEnv = await this.resolveStrategy();
+    if (strategyForEnv && strategyForEnv.isNative === true) {
+      try {
+        this.isScanning = true;
+        const barcode = await strategyForEnv.detect();
+        this.isScanning = false;
+        if (barcode) {
+          onDetected(barcode);
+        } else {
+          onError(new Error("Barkod okunamadı. Lütfen tekrar deneyin veya barkodu elle girin."));
+        }
+      } catch (nativeErr) {
+        this.isScanning = false;
+        onError(new Error(`Native barkod tarayıcı başlatılamadı: ${nativeErr.message}`));
+      }
+      return;
+    }
+
     // HTTPS veya Localhost kontrolü (Tarayıcı güvenlik standardı)
     const isSecureOrigin = window.location.protocol === "https:" || 
                            window.location.hostname === "localhost" || 
@@ -77,7 +100,7 @@ export class ScannerService {
       await this.videoElement.play();
 
       this.isScanning = true;
-      const strategy = await this.resolveStrategy();
+      const strategy = strategyForEnv || (await this.resolveStrategy());
 
       // Döngüsel tarama
       const scanLoop = async () => {

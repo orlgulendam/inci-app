@@ -6,10 +6,11 @@ const { NotFoundError, ValidationError } = require("../../../../core/errors/AppE
 const eventBus = require("../../../../core/events/eventBus");
 
 class ProductService {
-  constructor(productRepository, brandRepository, analysisFacade = null) {
+  constructor(productRepository, brandRepository, analysisFacade = null, externalCatalogAdapter = null) {
     this.productRepository = productRepository;
     this.brandRepository = brandRepository;
     this.analysisFacade = analysisFacade;
+    this.externalCatalogAdapter = externalCatalogAdapter;
   }
 
   /**
@@ -37,7 +38,21 @@ class ProductService {
       // Alfasayısal kod, slug veya ObjectId olabilir; doğrudan sorgula
     }
 
-    const product = await this.productRepository.findByBarcode(searchCode);
+    let product = await this.productRepository.findByBarcode(searchCode);
+
+    // Yerel katalogda yoksa harici kaynaktan (Open Beauty Facts) anlık çekip kaydet.
+    // Adaptör yumuşak başarısızlık ilkesiyle çalışır: ulaşılamazsa akış 404 ile devam eder.
+    if (!product && this.externalCatalogAdapter) {
+      const external = await this.externalCatalogAdapter.fetchByBarcode(searchCode);
+      if (external) {
+        try {
+          await this.createOrUpdate(external);
+          product = await this.productRepository.findByBarcode(searchCode);
+        } catch (_) {
+          // Kayıt başarısız olsa bile kullanıcıya 404 yerine hata sızdırmayız
+        }
+      }
+    }
 
     if (!product) {
       throw new NotFoundError(`'${barcodeStr}' koduna ait ürün katalogda bulunamadı.`);

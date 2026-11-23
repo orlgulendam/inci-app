@@ -7,16 +7,22 @@ const ProductController = require("./presentation/controllers/ProductController"
 const BrandController = require("./presentation/controllers/BrandController");
 const createCatalogRoutes = require("./presentation/routes/catalogRoutes");
 const CatalogFacade = require("./public/CatalogFacade");
+const OpenBeautyFactsAdapter = require("./infrastructure/adapters/OpenBeautyFactsAdapter");
 
 function initializeCatalogModule({
   analysisFacade = null,
   productRepository = null,
-  brandRepository = null
+  brandRepository = null,
+  externalCatalogAdapter = undefined
 } = {}) {
   const prodRepo = productRepository || new MongoProductRepository();
   const brandRepo = brandRepository || new MongoBrandRepository();
 
-  const productService = new ProductService(prodRepo, brandRepo, analysisFacade);
+  // Harici katalog adaptörü testlerde null geçilerek kapatılabilir.
+  const externalAdapter =
+    externalCatalogAdapter === undefined ? new OpenBeautyFactsAdapter() : externalCatalogAdapter;
+
+  const productService = new ProductService(prodRepo, brandRepo, analysisFacade, externalAdapter);
   const brandService = new BrandService(brandRepo);
 
   const productController = new ProductController(productService);

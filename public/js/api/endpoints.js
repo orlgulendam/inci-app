@@ -17,6 +17,7 @@ export const ENDPOINTS = {
   // İçerik Analizi & Katalog
   ANALYZE_RAW: "/api/v1/analyze",
   ANALYZE_CONFLICTS: "/api/v1/analyze/conflicts",
+  ANALYZE_OCR: "/api/v1/analyze/ocr",
   PRODUCT_BY_BARCODE: (barcode) => `/api/v1/products/${encodeURIComponent(barcode)}`,
   PRODUCTS_SEARCH: "/api/v1/products/search",
   BRANDS: "/api/v1/brands",

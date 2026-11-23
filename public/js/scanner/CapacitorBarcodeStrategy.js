@@ -3,13 +3,23 @@
 import { IScannerStrategy } from "./IScannerStrategy.js";
 
 export class CapacitorBarcodeStrategy extends IScannerStrategy {
+  // ScannerService bu işarete bakarak native ortamda getUserMedia yolunu atlar.
+  get isNative() {
+    return true;
+  }
+
   async isSupported() {
     return typeof window !== "undefined" && 
            window.Capacitor !== undefined && 
            window.Capacitor.isPluginAvailable("BarcodeScanner");
   }
 
-  async detect() {
+  async detect(source = null) {
+    // Galeriden gelen bir görsel için native tarayıcı kullanılmaz; o akış
+    // görsel tabanlı okuyucuya / BackendVisionOcrStrategy'ye aittir.
+    // Aksi halde kullanıcı fotoğraf yüklediğinde beklenmedik şekilde kamera açılıyordu.
+    if (source) return null;
+
     try {
       const { BarcodeScanner } = window.Capacitor.Plugins;
       // İzin kontrolü ve talebi
