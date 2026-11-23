@@ -409,6 +409,43 @@ export class ProfileWizardView {
   renderStep2() {
     const box = document.createElement("div");
 
+    // Cilt durumları (conditions): SkinCompatibilityEngine bu alanı okuyor ama
+    // arayüzde seçilemediği için her kullanıcıda boş kalıyor ve hassasiyet
+    // kuralları hiç çalışmıyordu.
+    const conditionsGroup = document.createElement("div");
+    conditionsGroup.className = "form-group";
+    conditionsGroup.innerHTML = `<label class="form-label">Cilt Durumlarınız (Varsa Dokunarak Seçin)</label>`;
+
+    const skinConditions = [
+      { id: "eczema", label: "Egzama" },
+      { id: "rosacea", label: "Rozase (Gül Hastalığı)" },
+      { id: "fungal_acne", label: "Mantar Akne (Malassezia)" },
+      { id: "fragrance_sensitive", label: "Koku Hassasiyeti" },
+      { id: "comedogenic_prone", label: "Komedon / Siyah Nokta Eğilimi" },
+      { id: "acne", label: "Akne" },
+      { id: "hyperpigmentation", label: "Leke / Hiperpigmentasyon" }
+    ];
+
+    const conditionChips = document.createElement("div");
+    conditionChips.className = "chip-group";
+    for (const c of skinConditions) {
+      const isSelected = this.profileData.conditions.includes(c.id);
+      const chip = document.createElement("div");
+      chip.className = `chip ${isSelected ? "active" : ""}`;
+      chip.textContent = c.label;
+      chip.onclick = () => {
+        if (isSelected) {
+          this.profileData.conditions = this.profileData.conditions.filter(x => x !== c.id);
+        } else {
+          this.profileData.conditions.push(c.id);
+        }
+        this.render();
+      };
+      conditionChips.appendChild(chip);
+    }
+    conditionsGroup.appendChild(conditionChips);
+    box.appendChild(conditionsGroup);
+
     const allergyRadioGroup = document.createElement("div");
     allergyRadioGroup.className = "form-group";
     allergyRadioGroup.innerHTML = `

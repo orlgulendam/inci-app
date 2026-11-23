@@ -3,10 +3,10 @@
 
 class Store {
   constructor() {
-    const savedToken = sessionStorage.getItem("inci_token") || null;
+    const savedToken = Store.readStored("inci_token");
     let savedUser = null;
     try {
-      const rawUser = sessionStorage.getItem("inci_user");
+      const rawUser = Store.readStored("inci_user");
       if (rawUser) savedUser = JSON.parse(rawUser);
     } catch (_) {}
 
@@ -20,6 +20,34 @@ class Store {
     };
 
     this.listeners = new Set();
+  }
+
+  /**
+   * Oturum verisi hem localStorage hem sessionStorage icine yazilir.
+   * Yalnizca sessionStorage kullanildiginda mobil uygulama (WebView) kapaninca
+   * oturum siliniyor ve kullanici her acilista yeniden giris yapmak zorunda kaliyordu.
+   * Ozel pencere / kisitli depolama durumunda her erisim try/catch ile korunur.
+   */
+  static readStored(key) {
+    try {
+      const fromLocal = localStorage.getItem(key);
+      if (fromLocal) return fromLocal;
+    } catch (_) {}
+    try {
+      return sessionStorage.getItem(key) || null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static writeStored(key, value) {
+    try { localStorage.setItem(key, value); } catch (_) {}
+    try { sessionStorage.setItem(key, value); } catch (_) {}
+  }
+
+  static removeStored(key) {
+    try { localStorage.removeItem(key); } catch (_) {}
+    try { sessionStorage.removeItem(key); } catch (_) {}
   }
 
   getState() {
@@ -50,23 +78,23 @@ class Store {
 
   setAuth({ token, user }) {
     if (token) {
-      sessionStorage.setItem("inci_token", token);
+      Store.writeStored("inci_token", token);
     } else {
-      sessionStorage.removeItem("inci_token");
+      Store.removeStored("inci_token");
     }
 
     if (user) {
-      sessionStorage.setItem("inci_user", JSON.stringify(user));
+      Store.writeStored("inci_user", JSON.stringify(user));
     } else {
-      sessionStorage.removeItem("inci_user");
+      Store.removeStored("inci_user");
     }
 
     this.setState({ token, user });
   }
 
   clearAuth() {
-    sessionStorage.removeItem("inci_token");
-    sessionStorage.removeItem("inci_user");
+    Store.removeStored("inci_token");
+    Store.removeStored("inci_user");
     this.setState({ token: null, user: null, skinProfile: null });
   }
 

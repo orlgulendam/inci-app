@@ -37,7 +37,15 @@ export class AuthService {
 
   async verifyEmail(token) {
     const res = await this.client.get(ENDPOINTS.AUTH_VERIFY_EMAIL(token));
-    // Başarılı doğrulama sonrası kullanıcı durumunu güncelle
+
+    // Backend doğrulama sonrası JWT de döner; oturumu burada açarız.
+    // Aksi halde RouteGuard kullanıcıyı profil sihirbazı yerine giriş ekranına geri atıyordu.
+    if (res.data && res.data.token) {
+      this.store.setAuth({ token: res.data.token, user: res.data.user });
+      return res.data;
+    }
+
+    // Token dönmeyen eski sürümler için geriye dönük uyumluluk
     const currentUser = this.store.getState().user;
     if (currentUser) {
       this.store.setState({

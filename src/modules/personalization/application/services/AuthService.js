@@ -52,22 +52,11 @@ class AuthService {
     };
   }
 
-  async login({ email, password }) {
-    if (!email || !password) {
-      throw new ValidationError("E-posta ve parola zorunludur.");
-    }
-
-    const user = await this.userRepository.findByEmail(email);
-    if (!user) {
-      throw new UnauthorizedError("Geçersiz e-posta veya parola.");
-    }
-
-    const isMatch = await bcrypt.compare(password, user.passwordHash);
-    if (!isMatch) {
-      throw new UnauthorizedError("Geçersiz e-posta veya parola.");
-    }
-
-    // JWT Üretimi (Hassas sağlık verisi token içine konulmaz - KVKK)
+  /**
+   * Kullanıcıdan JWT + güvenli kullanıcı nesnesi üretir.
+   * Hassas sağlık verisi token içine konulmaz (KVKK).
+   */
+  static buildSession(user) {
     const token = jwt.sign(
       {
         sub: user.id,
@@ -93,6 +82,24 @@ class AuthService {
     };
   }
 
+  async login({ email, password }) {
+    if (!email || !password) {
+      throw new ValidationError("E-posta ve parola zorunludur.");
+    }
+
+    const user = await this.userRepository.findByEmail(email);
+    if (!user) {
+      throw new UnauthorizedError("Geçersiz e-posta veya parola.");
+    }
+
+    const isMatch = await bcrypt.compare(password, user.passwordHash);
+    if (!isMatch) {
+      throw new UnauthorizedError("Geçersiz e-posta veya parola.");
+    }
+
+    return AuthService.buildSession(user);
+  }
+
   async verifyEmail(token) {
     if (!token || typeof token !== "string") {
       throw new ValidationError("Doğrulama belirteci zorunludur.");
@@ -106,10 +113,16 @@ class AuthService {
     user.verifyEmail(token);
     await this.userRepository.save(user);
 
+    // Doğrulama sonrası oturum da açılır; aksi halde RouteGuard kullanıcıyı
+    // profil sihirbazı yerine tekrar giriş ekranına atıyordu.
+    const session = AuthService.buildSession(user);
+
     return {
       message: "E-posta adresiniz başarıyla doğrulandı.",
       email: user.email,
-      isEmailVerified: true
+      isEmailVerified: true,
+      token: session.token,
+      user: session.user
     };
   }
 
