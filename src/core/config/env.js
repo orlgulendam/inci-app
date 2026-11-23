@@ -15,8 +15,13 @@ const config = {
     rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX, 10) || 100
   },
   ai: {
+    provider: process.env.AI_VISION_PROVIDER || "gemini", // "gemini" | "groq"
     geminiApiKey: process.env.GEMINI_API_KEY || "",
-    geminiModel: process.env.GEMINI_MODEL || "gemini-1.5-flash",
+    geminiModel: process.env.GEMINI_MODEL || "gemini-2.5-flash",
+    groqApiKey: process.env.GROQ_API_KEY || "",
+    // Groq tarafında vision modelleri sık sık kullanımdan kaldırılıyor; varsayılan vermiyoruz.
+    // Groq Vision yedeğini açmak için GROQ_VISION_MODEL'e canlı bir model adı yazılmalıdır.
+    groqModel: process.env.GROQ_VISION_MODEL || "",
     fallbackEnabled: process.env.AI_FALLBACK_ENABLED !== "false"
   },
   swagger: {

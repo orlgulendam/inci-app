@@ -69,7 +69,8 @@ describe("OCR Görsel Metin Okuma & INCI Tespiti", () => {
   });
 
   test("GeminiVisionOcrService: API anahtarı yokken simülasyon modunda temiz içerik dönmeli", async () => {
-    const service = new GeminiVisionOcrService("");
+    // Hiçbir sağlayıcı yapılandırılmamış olmalı; aksi halde test gerçek API'ye çıkar.
+    const service = new GeminiVisionOcrService("", undefined, "", "");
     const result = await service.extractIngredientsFromImage({
       base64Data: "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
     });
@@ -91,12 +92,33 @@ describe("OCR Görsel Metin Okuma & INCI Tespiti", () => {
     assert.equal(res.body.error.code, "VALIDATION_ERROR");
   });
 
-  test("POST /api/v1/analyze/ocr: Geçerli görselle 200 OK ve metin dönmeli", async () => {
+  test("POST /api/v1/analyze/ocr: Geçerli görselle 200 OK ve metin dönmeli", async (t) => {
+    // Vision sağlayıcısı taklit edilir: test ağa çıkmadan tüm OCR zincirini doğrular.
+    t.mock.method(global, "fetch", async () => ({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        candidates: [{
+          content: {
+            parts: [{
+              text: JSON.stringify({
+                ingredientsText: "Aqua, Glycerin, Niacinamide, Phenoxyethanol",
+                detectedProductName: "Test Serum",
+                detectedBrand: "Test Brand",
+                isFrontCover: false,
+                confidence: "HIGH"
+              })
+            }]
+          }
+        }]
+      })
+    }));
+
     const res = await makeRequest(server, "/api/v1/analyze/ocr", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: {
-        image: "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+        image: "data:image/jpeg;base64,T0NSVEVTVElNQUdFUEFZTE9BRFVOSVFVRQ==",
         autoAnalyze: true
       }
     });
