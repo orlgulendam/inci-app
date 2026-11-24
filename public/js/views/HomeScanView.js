@@ -20,7 +20,7 @@ export class HomeScanView {
     const viewWrapper = document.createElement("div");
     viewWrapper.className = "home-scan-view";
 
-    // Hero / Başlık & Sevimli Maskot Kartı (skinbyinci Mascot Hero)
+    // Hero / Başlık & Sevimli Maskot Kartı (INCI Mascot Hero)
     const heroCard = document.createElement("section");
     heroCard.className = "mascot-hero-card";
 
@@ -36,7 +36,7 @@ export class HomeScanView {
     title.style.fontWeight = "800";
     title.style.marginTop = "var(--space-2)";
     title.style.marginBottom = "var(--space-1)";
-    title.textContent = "skinbyinci";
+    title.textContent = "INCI";
     heroCard.appendChild(title);
 
     const subtitle = document.createElement("p");

@@ -1,6 +1,6 @@
 {
   "appId": "app.inci.engine",
-  "appName": "skinbyinci",
+  "appName": "INCI",
   "webDir": "public",
   "bundledWebRuntime": false,
   "server": {

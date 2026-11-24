@@ -89,7 +89,7 @@ export class ShareCardModal {
     ctx.textAlign = "center";
     ctx.fillStyle = "#E5486B";
     ctx.font = "bold 56px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    ctx.fillText("skinbyinci", W / 2, 220);
+    ctx.fillText("INCI", W / 2, 220);
 
     ctx.fillStyle = "#8F5E68";
     ctx.font = "500 32px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
@@ -187,7 +187,7 @@ export class ShareCardModal {
 
     ctx.fillStyle = "#6F4951";
     ctx.font = "500 30px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-    ctx.fillText("skinbyinci.com | INCI Engine Platformu", W / 2, 1785);
+    ctx.fillText("INCI | Kozmetik İçerik Analizi Platformu", W / 2, 1785);
   }
 
   drawStatBox(ctx, x, y, w, h, label, value) {
@@ -226,7 +226,7 @@ export class ShareCardModal {
     const dataUrl = canvas.toDataURL("image/png");
     const a = document.createElement("a");
     a.href = dataUrl;
-    a.download = `skinbyinci_cilt_skorum_${Date.now()}.png`;
+    a.download = `INCI_cilt_skorum_${Date.now()}.png`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -239,13 +239,13 @@ export class ShareCardModal {
         toast.error("Görsel oluşturulamadı.");
         return;
       }
-      const file = new File([blob], "skinbyinci_skor.png", { type: "image/png" });
+      const file = new File([blob], "INCI_skor.png", { type: "image/png" });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         try {
           await navigator.share({
             files: [file],
-            title: "skinbyinci Cilt Bakım Skorum",
-            text: "Cilt bakım çantamın güvenlik skoruna bakın! Sen de içeriklerini skinbyinci ile tara!"
+            title: "INCI Cilt Bakım Skorum",
+            text: "Cilt bakım çantamın güvenlik skoruna bakın! Sen de içeriklerini INCI ile tara!"
           });
           toast.success("Başarıyla paylaşıldı!");
         } catch (err) {

@@ -1,7 +1,7 @@
 /* public/css/tokens.css - Tasarım Değişkenleri (Design Tokens) */
 /* WCAG AA (Minimum 4.5:1 kontrast) standartlarına tam uyumlu Pembe Dermokozmetik Teması */
 :root {
-  /* skinbyinci Gül Kurusu ve Pudra Pembe Paleti (WCAG AA Uyumlu) */
+  /* INCI Gül Kurusu ve Pudra Pembe Paleti (WCAG AA Uyumlu) */
   --color-primary-50: #fdf2f6;
   --color-primary-100: #fce4ed;
   --color-primary-200: #f9c9dc;

@@ -21,7 +21,9 @@ body {
   display: flex;
   flex-direction: column;
   /* Mobil Çentik ve Alt Çubuk Güvenli Alan Desteği (Safe Area Insets) */
-  padding-top: env(safe-area-inset-top, 0px);
+  /* Üst güvenli alan BODY yerine .app-header içinde uygulanır: header
+     position:sticky; top:0 olduğu için sayfa kaydırıldığında body dolgusunun
+     içine çıkıp durum çubuğunun (saat / pil / wifi) üstüne biniyordu. */
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
@@ -61,6 +63,8 @@ body {
   top: 0;
   z-index: 40;
   box-shadow: var(--shadow-sm);
+  /* Durum çubuğu alanını başlığın kendi arka planı doldurur; içerik altında kalır. */
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 .header-content {

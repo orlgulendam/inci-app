@@ -60,7 +60,7 @@ export class CardFactory {
     const body = document.createElement("div");
     body.className = "card-body";
 
-    // MASKOT DUYGU DURUMU (skinbyinci Mascot Integration)
+    // MASKOT DUYGU DURUMU (INCI Mascot Integration)
     const mascotBox = document.createElement("div");
     const isSuccess = hasScore && score >= 70 && !hasAllergenWarning;
     mascotBox.className = `mascot-sprite-box ${isSuccess ? "success" : "alert"}`;
@@ -68,7 +68,7 @@ export class CardFactory {
 
     const spriteImg = document.createElement("img");
     spriteImg.src = "/assets/mascot/inci_mascot_modes.jpg";
-    spriteImg.alt = isSuccess ? "skinbyinci Başarı Modu" : "skinbyinci Uyarı Modu";
+    spriteImg.alt = isSuccess ? "INCI Başarı Modu" : "INCI Uyarı Modu";
     spriteImg.className = "mascot-sprite-img";
     mascotBox.appendChild(spriteImg);
     body.appendChild(mascotBox);
