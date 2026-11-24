@@ -12,8 +12,18 @@ class MockFallbackAiProvider extends IAiProvider {
     let verdict = "BILGI";
     const suggestions = [];
 
+    // Ürün içeriği yoksa veya kullanıcı sohbet ediyorsa
+    if (!ingredients || ingredients.length === 0) {
+      if (lowerMsg.includes("ürün vermedim") || lowerMsg.includes("urun vermedim") || lowerMsg.includes("merhaba") || lowerMsg.includes("selam")) {
+        verdict = "BILGI";
+        reply = "Haklısınız, henüz bir ürün taratmadınız veya içerik girmediniz! Bana ambalajın ön yüzünü, arkasındaki INCI listesini veya barkodunu gönderebilirsiniz; cildinize uyumunu hemen inceleyeyim.";
+        suggestions.push("Barkod nasıl taranır?", "Ön yüz fotoğrafı nasıl çekilir?");
+        return { reply, suggestions, compatibilityVerdict: verdict, provider: "expert-fallback-engine", fallbackUsed: true };
+      }
+    }
+
     // Alerjen kontrolü
-    const matchedAllergens = ingredients.filter(i => 
+    const matchedAllergens = (ingredients || []).filter(i => 
       allergic.some(a => i.toLowerCase().includes(a.toLowerCase()))
     );
 

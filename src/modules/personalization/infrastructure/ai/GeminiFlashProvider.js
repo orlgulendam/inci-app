@@ -4,7 +4,7 @@ const IAiProvider = require("./IAiProvider");
 const logger = require("../../../../core/logging/logger");
 
 class GeminiFlashProvider extends IAiProvider {
-  constructor(apiKey, model = "gemini-1.5-flash") {
+  constructor(apiKey, model = "gemini-2.5-flash") {
     super();
     this.apiKey = apiKey;
     this.model = model;
@@ -17,22 +17,24 @@ class GeminiFlashProvider extends IAiProvider {
       throw err;
     }
 
-    const systemInstruction = `Sen uzman bir kozmetik içerik (INCI) ve dermokozmetik danışmanısın.
-Kullanıcının cilt profili şöyledir:
-- Cilt Tipi: ${safeProfile.skinType}
-- Cilt Durumları/Hassasiyetleri: ${safeProfile.conditions.join(", ") || "Belirtilmemiş"}
-- Alerjen Olduğu İçerikler: ${safeProfile.allergicIngredients.join(", ") || "Yok"}
-- Hedeflediği Cilt Etkileri: ${safeProfile.targetedBenefits.join(", ") || "Genel bakım"}
-${ingredients && ingredients.length > 0 ? `İncelenen Ürün İçerik Listesi (INCI): ${ingredients.join(", ")}` : ""}
+    const hasIngredients = ingredients && ingredients.length > 0;
+    const systemInstruction = `Sen uzman bir kozmetik içerik (INCI), makyaj ve dermokozmetik danışmanısın (skinbyinci yapay zeka asistanı).
+Kullanıcının cilt profili:
+- Cilt Tipi: ${safeProfile.skinType || "Normal"}
+- Cilt Durumları/Hassasiyetleri: ${safeProfile.conditions?.join(", ") || "Yok"}
+- Alerjen Olduğu İçerikler: ${safeProfile.allergicIngredients?.join(", ") || "Yok"}
+- Hedeflediği Cilt Etkileri: ${safeProfile.targetedBenefits?.join(", ") || "Genel bakım"}
+${hasIngredients ? `İncelenen Ürün İçerik Listesi (INCI): ${ingredients.join(", ")}` : "Şu an belirli bir ürün incelenmiyor; kullanıcı doğrudan sohbet ediyor veya genel bir soru soruyor."}
 
 KURALLAR:
-1. Asla tıbbi teşhis koyma. "Bu bilgiler tıbbi tavsiye değildir, dermatoloğunuza danışın." uyarısını benimse.
-2. Cilt tipine ve alerjenlerine göre ürünün uygunluğunu açıkla.
-3. Yanıtı SADECE aşağıdaki JSON formatında üret:
+1. Kullanıcı belirli bir ürün içeriği göndermediyse (örneğin 'ben sana ürün vermedim ki' veya genel soru soruyorsa), kesinlikle 'ürün içeriklerini değerlendirdik' deme! Kullanıcıyı dinle, kibar ve esprili bir şekilde yanıtla, hangi ürünü veya sorunu danışmak istediğini sor.
+2. Ürün içeriği (INCI) varsa, cilt tipine ve alerjenlerine göre ürünün uygunluğunu, komedojenik riskini ve bariyer etkisini açıkla.
+3. Asla tıbbi teşhis koyma.
+4. Yanıtı SADECE aşağıdaki JSON formatında üret:
 {
   "reply": "Kullanıcıya vereceğin samimi, bilimsel ve net açıklama",
   "suggestions": ["Önerilen takip sorusu 1", "Önerilen takip sorusu 2"],
-  "compatibilityVerdict": "UYGUN" | "DIKKAT" | "UYGUN_DEGIL"
+  "compatibilityVerdict": "UYGUN" | "DIKKAT" | "UYGUN_DEGIL" | "BILGI"
 }`;
 
     const contents = [];
