@@ -208,6 +208,7 @@ export class AuthView {
         submitBtn.textContent = "Kaydediliyor...";
         const res = await authService.register({ email, password, firstName, lastName });
         this.lastRegisteredEmail = email;
+        this.lastVerificationToken = res?.verificationToken || res?.data?.verificationToken || "";
         toast.success("Kayıt başarılı! Lütfen e-posta adresinizi doğrulayınız.");
         this.setMode("verify");
       } catch (err) {
@@ -264,6 +265,13 @@ export class AuthView {
     tokenInput.className = "form-input";
     tokenInput.placeholder = "Doğrulama kodunu buraya yapıştırabilirsiniz";
     tokenInput.style.marginBottom = "var(--space-2)";
+    if (this.lastVerificationToken) {
+      tokenInput.value = this.lastVerificationToken;
+      const autoHint = document.createElement("div");
+      autoHint.style.cssText = "font-size: 11px; color: var(--color-primary-700); margin-bottom: var(--space-2); font-weight: 600;";
+      autoHint.textContent = "✨ Geliştirme ortamı: Doğrulama kodu otomatik tanımlandı. 'Kodu Doğrula'ya basabilirsiniz.";
+      tokenForm.appendChild(autoHint);
+    }
     tokenForm.appendChild(tokenInput);
 
     const verifyBtn = document.createElement("button");
@@ -286,7 +294,11 @@ export class AuthView {
         return;
       }
       try {
-        await authService.resendVerification(email);
+        const res = await authService.resendVerification(email);
+        if (res?.verificationToken) {
+          tokenInput.value = res.verificationToken;
+          this.lastVerificationToken = res.verificationToken;
+        }
         toast.success("Yeni doğrulama linki oluşturuldu.");
       } catch (err) {
         toast.error(err.message);
