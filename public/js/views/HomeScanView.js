@@ -144,7 +144,12 @@ export class HomeScanView {
 
     let searchDebounceTimer = null;
 
+    // Sira numarasi: ag yanitlari gonderildikleri sirada donmeyebilir.
+    // Gec donen eski bir istek yeni sonucun uzerine yazmamali.
+    let searchSeq = 0;
+
     const performSearch = async (query) => {
+      const mySeq = ++searchSeq;
       const q = query.trim();
       if (q.length < 2) {
         searchDropdown.style.display = "none";
@@ -157,6 +162,7 @@ export class HomeScanView {
 
       try {
         const results = await scanService.searchProducts(q, 8);
+        if (mySeq !== searchSeq) return; // daha yeni bir arama basladi
         if (!results || results.length === 0) {
           searchDropdown.innerHTML = `
             <div style="padding: 12px; font-size: 12px; color: var(--color-text-muted); text-align: center;">
@@ -204,9 +210,19 @@ export class HomeScanView {
       }
     };
 
-    nameInput.oninput = (e) => {
+    // Android klavyesinin öneri şeridinden metin değiştiğinde bazı klavyeler
+    // "input" yerine yalnızca compositionend/change tetikliyor; yalnızca "input"
+    // dinlendiğinde kullanıcı öneriyi kabul etse bile arama eski terimle kalıyordu
+    // (örn. ekranda "clinique" yazarken sonuçlar "cln" için gösteriliyordu).
+    // Değer de olay anında değil, zamanlayıcı çalıştığında okunur.
+    const scheduleSearch = () => {
       clearTimeout(searchDebounceTimer);
-      searchDebounceTimer = setTimeout(() => performSearch(e.target.value), 250);
+      searchDebounceTimer = setTimeout(() => performSearch(nameInput.value), 250);
+    };
+    nameInput.addEventListener("change", scheduleSearch);
+    nameInput.addEventListener("compositionend", scheduleSearch);
+    nameInput.oninput = () => {
+      scheduleSearch();
     };
 
     nameSearchForm.onsubmit = (e) => {

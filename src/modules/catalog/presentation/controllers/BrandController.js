@@ -8,7 +8,8 @@ class BrandController {
     try {
       const page = parseInt(req.query.page, 10) || 1;
       const limit = parseInt(req.query.limit, 10) || 50;
-      const result = await this.brandService.getAllBrands({ limit, page });
+      const query = (req.query.q || req.query.query || "").trim() || null;
+      const result = await this.brandService.getAllBrands({ limit, page, query });
 
       return res.status(200).json({
         success: true,

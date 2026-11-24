@@ -7,8 +7,8 @@ class BrandService {
     this.brandRepository = brandRepository;
   }
 
-  async getAllBrands({ limit = 50, page = 1 } = {}) {
-    return this.brandRepository.findAll({ limit, page });
+  async getAllBrands({ limit = 50, page = 1, query = null } = {}) {
+    return this.brandRepository.findAll({ limit, page, query });
   }
 
   async getByName(name) {

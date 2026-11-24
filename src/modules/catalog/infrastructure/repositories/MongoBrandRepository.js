@@ -4,6 +4,10 @@ const logger = require("../../../../core/logging/logger");
 const Brand = require("../../domain/entities/Brand");
 const IBrandRepository = require("./IBrandRepository");
 
+function escapeRegex(str) {
+  return String(str).replace(/[.*+?^${}()|[\]\\]/g, (m) => "\\" + m);
+}
+
 class MongoBrandRepository extends IBrandRepository {
   get collection() {
     return getDb().collection("brands");
@@ -21,14 +25,22 @@ class MongoBrandRepository extends IBrandRepository {
     });
   }
 
-  async findAll({ limit = 50, page = 1 } = {}) {
+  async findAll({ limit = 50, page = 1, query = null } = {}) {
     try {
       const safeLimit = Math.min(100, Math.max(1, limit));
       const skip = (Math.max(1, page) - 1) * safeLimit;
 
-      const total = await this.collection.countDocuments();
+      // Arama terimi desteği. Önceden findAll her zaman find({}) çalıştırıp ada göre
+      // sıraladığı için ?q= parametresi sessizce yok sayılıyor ve noktalama ile
+      // başlayan markalar (">>BRINGGREEN", ",,", ".ki") dönüyordu.
+      const filter = {};
+      if (query && String(query).trim().length > 0) {
+        filter.name = new RegExp(escapeRegex(String(query).trim()), "i");
+      }
+
+      const total = await this.collection.countDocuments(filter);
       const docs = await this.collection
-        .find({})
+        .find(filter)
         .sort({ name: 1 })
         .skip(skip)
         .limit(safeLimit)
