@@ -51,10 +51,13 @@ class ApiClient {
 
       clearTimeout(timeoutId);
 
-      // 401 Yetkisiz Erişim Durumu (Token süresi dolmuş veya geçersiz)
+      // 401 Yetkisiz Erişim Durumu.
+      // Bağlam da iletilir: istek bir token İLE gönderildiyse oturum gerçekten
+      // düşmüştür. Token olmadan gelen 401 ise sadece "bu uç nokta giriş ister"
+      // demektir; misafir kullanıcıyı oturumu bitmiş gibi uyarmak yanlış olur.
       if (response.status === 401) {
         if (typeof this.onUnauthorized === "function") {
-          this.onUnauthorized();
+          this.onUnauthorized({ hadToken: Boolean(token), endpoint });
         }
       }
 

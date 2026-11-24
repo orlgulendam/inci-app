@@ -16,7 +16,13 @@ class Application {
     this.currentViewInstance = null;
 
     // 401 Durumunda Otomatik Oturum Temizleme ve Yönlendirme (Adapter Entegrasyonu)
-    apiClient.onUnauthorized = () => {
+    // Yalnızca GERÇEKTEN oturumu olan kullanıcı için çalışır. Misafir kullanıcı
+    // giriş isteyen bir uç noktaya dokunduğunda da 401 döner; önceden bu durumda
+    // da oturum temizlenip "süreniz doldu" denip zorla giriş ekranına atılıyordu,
+    // bu yüzden misafir hiçbir şey kullanamıyordu. Artık çağıran kod kendi
+    // misafir akışını gösterebiliyor.
+    apiClient.onUnauthorized = (context = {}) => {
+      if (!context.hadToken) return;
       store.clearAuth();
       this.navigate("auth");
       toast.info("Oturum süreniz doldu. Lütfen tekrar giriş yapınız.");
