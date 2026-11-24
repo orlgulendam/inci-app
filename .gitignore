@@ -19,3 +19,6 @@ Thumbs.db
 
 # Temporary / Scratch files
 data/test.pdf
+
+# Yerel test kullanicisi giris bilgileri (asla commitlenmez)
+.test-user.local.json
