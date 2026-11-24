@@ -22,3 +22,6 @@ data/test.pdf
 
 # Yerel test kullanicisi giris bilgileri (asla commitlenmez)
 .test-user.local.json
+
+# Pazarlama videosu ara dosyalari (yeniden uretilebilir)
+docs/.build/
