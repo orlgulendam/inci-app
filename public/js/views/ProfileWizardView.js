@@ -6,6 +6,50 @@ import { toast } from "../components/Toast.js";
 import { OysterChestModal } from "../components/OysterChestModal.js";
 import { ShareCardModal } from "../components/ShareCardModal.js";
 
+// Backend cilt tipini İngilizce domain sabiti olarak saklar ("dry"), arayüz çipleri
+// ise Türkçe kimlik kullanır ("kuru"). Ters eşleme olmadan kaydedilmiş cilt tipi
+// profile dönüldüğünde hiçbir çip seçili görünmüyordu.
+const BACKEND_TO_UI_SKIN_TYPE = {
+  dry: "kuru",
+  oily: "yagli",
+  combination: "karma",
+  sensitive: "hassas",
+  normal: "normal"
+};
+
+/**
+ * Backend'den gelen dermatolog notlarını metin kutusunda gösterilebilir düz metne çevirir.
+ * Backend [{ note, date }] dizisi saklıyor; dizi doğrudan metin kutusuna basıldığında
+ * "[object Object]" görünüyor ve kullanıcı alana dokunduğu anda gerçek not bu metinle
+ * kalıcı olarak eziliyordu.
+ */
+function notlariMetneCevir(value) {
+  if (!value) return "";
+  if (typeof value === "string") return value;
+  if (!Array.isArray(value)) return "";
+  return value
+    .map((n) => (typeof n === "string" ? n : (n && n.note) || ""))
+    .filter((n) => String(n).trim().length > 0)
+    .join("\n");
+}
+
+/**
+ * Büyük/küçük harf duyarsız liste karşılaştırması.
+ * Backend alerjenleri BÜYÜK HARFE ("PARABENS"), hedefleri küçük harfe
+ * ("nemlendirme") çeviriyor; arayüz çipleri ise özgün yazımı kullanıyor
+ * ("Parabens", "Nemlendirme"). Birebir karşılaştırma yüzünden kaydedilmiş
+ * seçimler profile dönüldüğünde seçili görünmüyordu.
+ */
+function listedeVarMi(list, value) {
+  const hedef = String(value).toLocaleLowerCase("tr");
+  return (list || []).some((item) => String(item).toLocaleLowerCase("tr") === hedef);
+}
+
+function listedenCikar(list, value) {
+  const hedef = String(value).toLocaleLowerCase("tr");
+  return (list || []).filter((item) => String(item).toLocaleLowerCase("tr") !== hedef);
+}
+
 export class ProfileWizardView {
   constructor(container, onNavigate) {
     this.container = container;
@@ -43,13 +87,13 @@ export class ProfileWizardView {
         this.profileData.firstName = res.firstName || "";
         this.profileData.lastName = res.lastName || "";
         const p = res.skinProfile || {};
-        this.profileData.skinType = p.skinType || "karma";
+        this.profileData.skinType = BACKEND_TO_UI_SKIN_TYPE[p.skinType] || p.skinType || "karma";
         this.profileData.conditions = Array.isArray(p.conditions) ? [...p.conditions] : [];
         this.profileData.allergicIngredients = Array.isArray(p.allergicIngredients) ? [...p.allergicIngredients] : [];
         this.profileData.hasAllergy = this.profileData.allergicIngredients.length > 0;
         this.profileData.frequentlyUsedProducts = Array.isArray(p.frequentlyUsedProducts) ? [...p.frequentlyUsedProducts] : [];
         this.profileData.routineMedications = Array.isArray(p.routineMedications) ? [...p.routineMedications] : [];
-        this.profileData.dermatologistNotes = p.dermatologistNotes || "";
+        this.profileData.dermatologistNotes = notlariMetneCevir(p.dermatologistNotes);
         this.profileData.targetedBenefits = Array.isArray(p.targetedBenefits) ? [...p.targetedBenefits] : [];
       }
     } catch (err) {
@@ -472,13 +516,13 @@ export class ProfileWizardView {
       const chips = document.createElement("div");
       chips.className = "chip-group";
       for (const item of commonAllergens) {
-        const isSelected = this.profileData.allergicIngredients.includes(item);
+        const isSelected = listedeVarMi(this.profileData.allergicIngredients, item);
         const chip = document.createElement("div");
         chip.className = `chip ${isSelected ? "active" : ""}`;
         chip.textContent = item;
         chip.onclick = () => {
           if (isSelected) {
-            this.profileData.allergicIngredients = this.profileData.allergicIngredients.filter(x => x !== item);
+            this.profileData.allergicIngredients = listedenCikar(this.profileData.allergicIngredients, item);
           } else {
             this.profileData.allergicIngredients.push(item);
           }
@@ -500,7 +544,7 @@ export class ProfileWizardView {
       input.onchange = (e) => {
         const items = e.target.value.split(",").map(s => s.trim()).filter(Boolean);
         for (const it of items) {
-          if (!this.profileData.allergicIngredients.includes(it)) {
+          if (!listedeVarMi(this.profileData.allergicIngredients, it)) {
             this.profileData.allergicIngredients.push(it);
           }
         }
@@ -551,13 +595,13 @@ export class ProfileWizardView {
     const chips = document.createElement("div");
     chips.className = "chip-group";
     for (const b of benefits) {
-      const isSelected = this.profileData.targetedBenefits.includes(b);
+      const isSelected = listedeVarMi(this.profileData.targetedBenefits, b);
       const chip = document.createElement("div");
       chip.className = `chip ${isSelected ? "active" : ""}`;
       chip.textContent = b;
       chip.onclick = () => {
         if (isSelected) {
-          this.profileData.targetedBenefits = this.profileData.targetedBenefits.filter(x => x !== b);
+          this.profileData.targetedBenefits = listedenCikar(this.profileData.targetedBenefits, b);
         } else {
           this.profileData.targetedBenefits.push(b);
         }
