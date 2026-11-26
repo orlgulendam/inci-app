@@ -139,16 +139,34 @@ test("Community: POST /api/v1/contributions yetkisiz kullanıcıda 401 UNAUTHORI
   }
 });
 
-test("Community: GET /api/v1/contributions/pending onay bekleyen listeyi dönmeli", async () => {
+test("Community: GET /api/v1/contributions/pending yetkisiz istekte 401 UNAUTHORIZED dönmeli", async () => {
+  // Bu uç nokta önceden hiçbir middleware kullanmıyordu: kimliksiz bir istemci
+  // bekleyen katkıları listeleyebiliyor, onaylayıp kataloğa ürün yazabiliyor ve
+  // puan dağıtabiliyordu. Artık authMiddleware + adminMiddleware ile korunuyor.
   const server = app.listen(3089);
   try {
     const res = await fetch("http://localhost:3089/api/v1/contributions/pending");
-    assert.equal(res.status, 200);
+    assert.equal(res.status, 401);
 
     const body = await res.json();
-    assert.equal(body.success, true);
-    assert.ok(Array.isArray(body.data));
-    assert.ok(body.meta);
+    assert.equal(body.success, false);
+    assert.equal(body.error.code, "UNAUTHORIZED");
+  } finally {
+    server.close();
+  }
+});
+
+test("Community: moderasyon onay/red uç noktaları da yetkisiz istekte 401 dönmeli", async () => {
+  const server = app.listen(3091);
+  try {
+    for (const yol of ["/api/v1/contributions/abc/approve", "/api/v1/contributions/abc/reject"]) {
+      const res = await fetch(`http://localhost:3091${yol}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+      assert.equal(res.status, 401, `${yol} kimliksiz istekte 401 dönmeli`);
+    }
   } finally {
     server.close();
   }

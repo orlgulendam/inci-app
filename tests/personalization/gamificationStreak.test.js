@@ -131,9 +131,23 @@ describe("İnci Serisi (Streak) & Oyunlaştırma Kuralları", () => {
   });
 
   test("POST /api/v1/community/report-issue: Hatalı içerik bildirimi 20 puan vaadiyle kaydedilmeli", async () => {
+    // Uç nokta artık authMiddleware ile korunuyor: önceden req.user hiç dolmuyor,
+    // bildirim userId: null ile kaydediliyor ve vadedilen 20 puan hiçbir hesaba
+    // yazılamıyordu. Bildirimi yapanı kaydedebilmek için geçerli bir JWT şart.
+    const jwt = require("jsonwebtoken");
+    const config = require("../../src/core/config/env");
+    const token = jwt.sign(
+      { sub: "test-user-id", email: "bildirim@test.local", role: "user", isEmailVerified: true },
+      config.security.jwtSecret,
+      { expiresIn: "1h" }
+    );
+
     const res = await makeRequest(server, "/api/v1/community/report-issue", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
       body: {
         barcode: "8690123456789",
         productName: "CeraVe Nemlendirici Krem",
@@ -146,5 +160,17 @@ describe("İnci Serisi (Streak) & Oyunlaştırma Kuralları", () => {
     assert.equal(res.body.success, true);
     assert.equal(res.body.data.rewardPoints, 20);
     assert.equal(res.body.data.status, "RECEIVED");
+    assert.equal(res.body.data.userId, "test-user-id", "Bildirim, bildirimi yapan kullanıcıya bağlanmalı");
+  });
+
+  test("POST /api/v1/community/report-issue: oturumsuz istekte 401 dönmeli", async () => {
+    const res = await makeRequest(server, "/api/v1/community/report-issue", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: { barcode: "8690123456789", issueDescription: "Eksik içerik" }
+    });
+
+    assert.equal(res.statusCode, 401);
+    assert.equal(res.body.error.code, "UNAUTHORIZED");
   });
 });
