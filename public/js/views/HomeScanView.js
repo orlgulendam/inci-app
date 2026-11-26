@@ -971,6 +971,21 @@ export class HomeScanView {
     } catch (err) {
       this.resultsContainer.innerHTML = "";
 
+      // Yalnızca gerçekten "katalogda yok" hatasında katkı kartı gösterilir.
+      // Önceden her hata (ağ kopması, 500, zaman aşımı) "bu barkod kayıtlı
+      // değil" diye gösteriliyordu; kullanıcı var olan ürünü yok sanıp katkı
+      // formunu dolduruyordu.
+      const isNotFound = err.status === 404 || err.code === "NOT_FOUND" || err.code === "PRODUCT_NOT_FOUND";
+      if (!isNotFound) {
+        this.resultsContainer.appendChild(
+          CardFactory.createErrorCard(
+            err.message || "Ürün bilgisi alınamadı. Lütfen tekrar deneyin.",
+            () => this.processBarcode(barcode)
+          )
+        );
+        return;
+      }
+
       const notFoundCard = document.createElement("div");
       notFoundCard.className = "card";
       notFoundCard.style.borderTop = "4px solid var(--color-primary-500)";
