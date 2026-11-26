@@ -2,6 +2,23 @@
 const { NotFoundError, ValidationError } = require("../../../../core/errors/AppError");
 const SkinProfile = require("../../domain/value-objects/SkinProfile");
 
+/**
+ * Domain varliklari (User) duz Error firlatiyor; errorHandler yalnizca AppError
+ * turevlerini operasyonel sayip 400 donduruyordu. Bu yuzden "Istiridye sandigini
+ * acmak icin en az 7 gunluk seri gerekir" gibi anlamli Turkce is kurali mesajlari
+ * kullaniciya 500 "Sunucuda beklenmeyen bir hata meydana geldi" olarak
+ * gosteriliyordu. Bu yardimci, domain kural ihlallerini ValidationError'a
+ * cevirip mesaji korur.
+ */
+function domainKuraliniCalistir(fn) {
+  try {
+    return fn();
+  } catch (err) {
+    if (err && err.isOperational) throw err;
+    throw new ValidationError(err && err.message ? err.message : "İşlem gerçekleştirilemedi.");
+  }
+}
+
 class ProfileService {
   constructor(userRepository) {
     this.userRepository = userRepository;
@@ -124,7 +141,7 @@ class ProfileService {
     const user = await this.userRepository.findById(userId);
     if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
 
-    user.updateRoutine({ morning, evening });
+    domainKuraliniCalistir(() => user.updateRoutine({ morning, evening }));
     await this.userRepository.save(user);
 
     return {
@@ -137,7 +154,7 @@ class ProfileService {
     const user = await this.userRepository.findById(userId);
     if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
 
-    const result = user.completeRoutine(routineType, now);
+    const result = domainKuraliniCalistir(() => user.completeRoutine(routineType, now));
     await this.userRepository.save(user);
 
     return {
@@ -165,7 +182,7 @@ class ProfileService {
     const user = await this.userRepository.findById(userId);
     if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
 
-    const newItem = user.addVanityItem(itemData);
+    const newItem = domainKuraliniCalistir(() => user.addVanityItem(itemData));
     await this.userRepository.save(user);
 
     return newItem;
@@ -190,7 +207,7 @@ class ProfileService {
     const user = await this.userRepository.findById(userId);
     if (!user) throw new NotFoundError("Kullanıcı bulunamadı.");
 
-    const result = user.claimOysterChest(now);
+    const result = domainKuraliniCalistir(() => user.claimOysterChest(now));
     await this.userRepository.save(user);
 
     return result;
