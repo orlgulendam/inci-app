@@ -94,9 +94,12 @@ Görseldeki kozmetik ürününü, şişesini veya tüpünü dikkatle incele:
 }`;
 
     let parsed = null;
+    // Aynı istek içinde zaten başarısız olmuş sağlayıcıya ikinci kez gitmemek için.
+    let groqAttempted = false;
 
     // 1. Tercih: Groq Vision (eğer provider='groq' ise veya Gemini anahtarı yoksa)
     if (hasGroq && (config.ai.provider === "groq" || !hasGemini)) {
+      groqAttempted = true;
       try {
         parsed = await this._callGroqVision({ cleanBase64, resolvedMime, systemInstruction });
       } catch (groqErr) {
@@ -111,7 +114,9 @@ Görseldeki kozmetik ürününü, şişesini veya tüpünü dikkatle incele:
       } catch (geminiErr) {
         logger.warn("Gemini Vision çağrısı başarısız oldu:", { error: geminiErr.message });
         // Gemini başarısız olursa Groq yedek olarak devrede mi?
-        if (hasGroq) {
+        // Groq bu istekte zaten denenip başarısız olduysa boşa ikinci bir API çağrısı
+        // yapılmaz; eskiden her iki sağlayıcı da düştüğünde üç istek atılıyordu.
+        if (hasGroq && !groqAttempted) {
           try {
             logger.info("Yedek olarak Groq Vision API deneniyor...");
             parsed = await this._callGroqVision({ cleanBase64, resolvedMime, systemInstruction });

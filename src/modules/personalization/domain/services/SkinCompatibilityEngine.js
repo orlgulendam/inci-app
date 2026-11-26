@@ -1,14 +1,27 @@
 // src/modules/personalization/domain/services/SkinCompatibilityEngine.js - Cilt Uyumluluk Motoru (Domain Service)
 // Gerekçe: Kozmetik kimyası ile dermatolojik cilt profili arasındaki uyumluluk kurallarını saf iş mantığında işletir.
 
+// Gözenek tıkama riski yüksek maddeler. Tam ad eşitliği yerine kalıp kullanılır:
+// gerçek etiketlerde bileşen neredeyse her zaman halk adıyla birlikte yazılır
+// ("Cocos Nucifera (Coconut) Oil"), bu da tam eşitlikte hiç yakalanmıyordu.
+// Kalıplar yağ olmayan türevleri (örn. "Cocos Nucifera Fruit Extract") dışarıda bırakır.
+const COMEDOGENIC_PATTERNS = [
+  /\bISOPROPYL\s+MYRISTATE\b/,
+  /\bCOCOS\s+NUCIFERA\b.*\bOIL\b/,
+  /\bETHYLHEXYL\s+PALMITATE\b/,
+  /\bMYRISTYL\s+MYRISTATE\b/
+];
+
 class SkinCompatibilityEngine {
   static evaluate(skinProfile, ingredientsList = []) {
     const warnings = [];
     let riskPoints = 0;
 
     const ingNames = ingredientsList.map(item => {
+      // Listede null/undefined bulunması tüm değerlendirmeyi TypeError ile çökertiyordu.
+      if (!item) return "";
       const name = typeof item === "string" ? item : (item.inciName || item.clean || item.raw || "");
-      return name.toUpperCase().trim();
+      return String(name).toUpperCase().trim();
     });
 
     for (const ing of ingNames) {
@@ -88,7 +101,7 @@ class SkinCompatibilityEngine {
 
       // 6. KURAL: Komedojenik (Gözenek Tıkayıcı) Eğilim
       if (skinProfile.hasCondition("comedogenic_prone") || skinProfile.skinType === "oily") {
-        if (ing === "ISOPROPYL MYRISTATE" || ing === "COCOS NUCIFERA OIL" || ing === "ETHYLHEXYL PALMITATE" || ing === "MYRISTYL MYRISTATE") {
+        if (COMEDOGENIC_PATTERNS.some(pattern => pattern.test(ing))) {
           warnings.push({
             type: "PORE_CLOGGING_RISK",
             severity: "MEDIUM",

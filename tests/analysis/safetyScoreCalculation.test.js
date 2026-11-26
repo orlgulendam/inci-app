@@ -3,9 +3,8 @@
 // beklenen aralıkta kalması, ceza/eşik sınırları, değişmezliği (immutability) ve
 // AnalysisService üzerinden uçtan uca tutarlılığı.
 //
-// NOT: Boş bileşen listesinin 100/CLEAN üretmesi ve tamamı tanınmayan formülün 80/CLEAN
-// alması tartışmalı bulgulardır; bu dosya o değerleri doğru kabul edip sabitlemez,
-// yalnızca yapısal değişmezleri doğrular. Bulgular PR açıklamasında raporlanmıştır.
+// Dosyanın sonundaki "Düzeltilen Hatalar" bölümü, bu PR'da giderilen NaN puan ve
+// "veri yetersizken temiz puan" hatalarının regresyon testlerini içerir.
 const { test, describe } = require("node:test");
 const assert = require("node:assert/strict");
 const SafetyScore = require("../../src/modules/analysis/domain/value-objects/SafetyScore");
@@ -274,5 +273,99 @@ describe("Güvenlik Skoru: Boş ve Tanınmayan Listeler", () => {
       result.summary.matchedIngredients + result.summary.unknownIngredients,
       result.summary.totalIngredients
     );
+  });
+});
+
+describe("Güvenlik Skoru: Düzeltilen Hatalar (Regresyon)", () => {
+  test("Eksik sayımlarda NaN puan üretilmemeli", () => {
+    // Eskiden undefined sayımlar aritmetiği NaN'a çeviriyor, NaN puan "CLEAN" ve
+    // isClean: true ile birlikte geçerli görünen bozuk bir skora dönüşüyordu.
+    for (const input of [{}, undefined, { total: 10 }, { restrictedCount: 1 }]) {
+      const result = SafetyScore.calculate(input);
+
+      assert.ok(Number.isFinite(result.score), `puan sayı olmalı, gelen: ${result.score}`);
+      assert.ok(Number.isInteger(result.score));
+      assert.ok(result.score >= 0 && result.score <= 100);
+    }
+  });
+
+  test("Sayı olmayan veya negatif sayımlar güvenli şekilde sıfıra indirgenmeli", () => {
+    const result = SafetyScore.calculate({
+      total: 10,
+      matched: 10,
+      bannedCount: null,
+      restrictedCount: "2",
+      allergenCount: -5,
+      unknownCount: undefined
+    });
+
+    assert.ok(Number.isFinite(result.score));
+    assert.equal(result.breakdown.restrictedPenalty, 30, "metin sayı değeri okunmalı");
+    assert.equal(result.breakdown.allergenPenalty, 0, "negatif sayım ceza üretmemeli");
+  });
+
+  test("Geçersiz yasaklı sayımı ürünü hatalı biçimde HAZARDOUS yapmamalı", () => {
+    const result = SafetyScore.calculate({ ...ZERO_COUNTS, total: 5, matched: 5, bannedCount: "abc" });
+
+    assert.notEqual(result.status, "HAZARDOUS");
+    assert.ok(Number.isFinite(result.score));
+  });
+
+  test("Bileşenlerin yarısından fazlası tanınmıyorsa ürün CLEAN sayılmamalı", () => {
+    // Tanınmayan cezası 20 puanda tavan yaptığı için hakkında hiçbir şey bilinmeyen
+    // formül eskiden 80/CLEAN alıyordu.
+    const result = score({ total: 30, matched: 0, unknownCount: 30 });
+
+    assert.equal(result.isClean, false, "veri yetersizken ürün temiz sayılmamalı");
+    assert.notEqual(result.status, "CLEAN");
+    assert.ok(result.score <= 50, `puan durumla tutarlı olmalı, gelen: ${result.score}`);
+  });
+
+  test("Boş bileşen listesi 100/CLEAN yerine veri yetersizliği olarak puanlanmalı", () => {
+    const result = score({ total: 0, matched: 0 });
+
+    assert.equal(result.isClean, false);
+    assert.notEqual(result.status, "CLEAN");
+    assert.ok(result.score <= 50);
+  });
+
+  test("Veri yetersizliği eşiği tam yarıda devreye girmemeli", () => {
+    // Yarısı tanınıyorsa hâlâ yeterli veri vardır; yarısından fazlası tanınmıyorsa değil.
+    const half = score({ total: 4, matched: 2, unknownCount: 2 });
+    const moreThanHalf = score({ total: 4, matched: 1, unknownCount: 3 });
+
+    assert.equal(half.isClean, true, "bileşenlerin yarısı tanınıyorsa veri yeterli sayılmalı");
+    assert.equal(half.status, "CLEAN");
+    assert.equal(moreThanHalf.isClean, false);
+    assert.notEqual(moreThanHalf.status, "CLEAN");
+  });
+
+  test("Veri yetersizliği tam olarak tanınan formülleri etkilememeli", () => {
+    assert.equal(score({ total: 10, matched: 10 }).status, "CLEAN");
+    assert.equal(score({ total: 10, matched: 10 }).score, 100);
+    assert.equal(score({ total: 10, matched: 9, unknownCount: 1 }).status, "CLEAN");
+  });
+
+  test("Veri yetersizliği yasaklı maddenin 0 puanını ezmemeli", () => {
+    const result = score({ total: 4, matched: 1, bannedCount: 1, unknownCount: 3 });
+
+    assert.equal(result.score, 0);
+    assert.equal(result.status, "HAZARDOUS");
+  });
+
+  test("Veri yetersizliği daha ağır bir HAZARDOUS durumunu yumuşatmamalı", () => {
+    const result = score({ total: 6, matched: 2, restrictedCount: 3, unknownCount: 4 });
+
+    assert.equal(result.status, "HAZARDOUS", "kısıtlı madde eşiği veri yetersizliğinden baskın olmalı");
+  });
+
+  test("Tamamı tanınmayan formül uçtan uca temiz raporlanmamalı", async () => {
+    const text = Array.from({ length: 12 }, (_, i) => `Unknownium ${i + 1}`).join(", ");
+
+    const result = await serviceWith([]).analyze(text);
+
+    assert.equal(result.summary.unknownIngredients, 12);
+    assert.equal(result.summary.isClean, false);
+    assert.notEqual(result.summary.status, "CLEAN");
   });
 });

@@ -3,9 +3,8 @@
 // Ayraçlar, parantezli ifadeler, CI renk kodları, OCR gürültüsü, Türkçe karakterler ve uç
 // girdiler (boş metin, tek bileşen, çok uzun liste) bu dosyada toplanır.
 //
-// NOT: Ayrıştırıcıda tespit edilen iki gerçek hata (büyük "İ" ile başlayan Türkçe başlığın
-// temizlenmemesi ve kapanmamış parantezin ardındaki tüm bileşenleri yutması) bilinçli olarak
-// burada doğru davranış varsayılarak test EDİLMEMİŞTİR; PR açıklamasında raporlanmıştır.
+// Dosyanın sonundaki "Düzeltilen Hatalar" bölümü, bu PR'da giderilen ayrıştırıcı
+// hatalarının regresyon testlerini içerir.
 const { test, describe } = require("node:test");
 const assert = require("node:assert/strict");
 const TokenizerService = require("../../src/modules/analysis/application/services/TokenizerService");
@@ -202,5 +201,72 @@ describe("INCI Metin Ayrıştırma: Yüzde İfadelerinin Temizlenmesi (cleanToke
 
   test("Baştaki ve sondaki boşluklar kırpılmalı", () => {
     assert.equal(TokenizerService.cleanToken("   Aqua   "), "Aqua");
+  });
+});
+
+describe("INCI Metin Ayrıştırma: Düzeltilen Hatalar (Regresyon)", () => {
+  test("Büyük 'İ' ile başlayan Türkçe başlık da temizlenmeli", () => {
+    // JavaScript'in /i/ bayrağı büyük "İ" (U+0130) ile küçük "i"yi eşleştirmez;
+    // Türkçe ambalajlarda başlık neredeyse her zaman büyük harfle basılır.
+    assert.deepEqual(TokenizerService.split("İçindekiler: Su, Gliserin, Şeker"), ["Su", "Gliserin", "Şeker"]);
+    assert.deepEqual(TokenizerService.split("İÇİNDEKİLER: Aqua, Glycerin"), ["Aqua", "Glycerin"]);
+    assert.deepEqual(TokenizerService.split("IÇINDEKILER: Aqua, Glycerin"), ["Aqua", "Glycerin"]);
+  });
+
+  test("Türkçe başlık temizlendikten sonra ilk bileşen kaybolmamalı", () => {
+    const tokens = TokenizerService.split("İçindekiler: Aqua, Glycerin, Panthenol");
+
+    assert.equal(tokens.length, 3);
+    assert.equal(tokens[0], "Aqua", "ilk bileşen başlıkla birleşmemeli");
+    assert.ok(!tokens[0].includes("İçindekiler"));
+  });
+
+  test("Kapanmamış parantez ardındaki bileşenleri yutmamalı", () => {
+    // OCR kapanış parantezini sık kaçırır; eskiden listenin tamamı tek jetona dönüşüyordu.
+    const tokens = TokenizerService.split("Aqua (Water, Glycerin, Niacinamide, Panthenol, Phenoxyethanol");
+
+    assert.ok(tokens.length >= 5, `bileşenler ayrışmalı, gelen: ${JSON.stringify(tokens)}`);
+    assert.ok(tokens.includes("Glycerin"));
+    assert.ok(tokens.includes("Niacinamide"));
+    assert.ok(tokens.includes("Panthenol"));
+    assert.ok(tokens.includes("Phenoxyethanol"));
+  });
+
+  test("Fazla kapanış parantezi de listeyi bozmamalı", () => {
+    const tokens = TokenizerService.split("Aqua), Glycerin, Panthenol");
+
+    assert.ok(tokens.includes("Glycerin"));
+    assert.ok(tokens.includes("Panthenol"));
+  });
+
+  test("Parantez dengesi bozukken bile dengeli listeler etkilenmemeli", () => {
+    // Denge kontrolü yalnızca bozuk metni kurtarır; normal etiketler aynı kalmalı.
+    assert.deepEqual(
+      TokenizerService.split("Water (Aqua), Butylene Glycol (and) Glycerin"),
+      ["Water (Aqua)", "Butylene Glycol (and) Glycerin"]
+    );
+    assert.deepEqual(
+      TokenizerService.split("Extract (Camellia Sinensis (Green Tea) Leaf), Aqua"),
+      ["Extract (Camellia Sinensis (Green Tea) Leaf)", "Aqua"]
+    );
+  });
+
+  test("Virgülden sonra boşluk bırakılmış kimyasal konum listesi bölünmemeli", () => {
+    assert.deepEqual(TokenizerService.split("1, 2-Hexanediol"), ["1, 2-Hexanediol"]);
+    assert.deepEqual(TokenizerService.split("Ceramide NP, 1, 3-Butanediol"), ["Ceramide NP", "1, 3-Butanediol"]);
+  });
+
+  test("Boşluklu konum koruması gerçek ayraçları kimyasal virgül sanmamalı", () => {
+    // "CI 77491, 77492" iki ayrı renklendiricidir; tek bileşene birleşmemeli.
+    assert.deepEqual(TokenizerService.split("CI 77491, 77492"), ["CI 77491", "77492"]);
+    assert.deepEqual(
+      TokenizerService.split("Titanium Dioxide, 12345 Compound"),
+      ["Titanium Dioxide", "12345 Compound"]
+    );
+  });
+
+  test("Boşluksuz kimyasal virgül davranışı korunmalı", () => {
+    assert.deepEqual(TokenizerService.split("1,2,3-Propanetriol, Aqua"), ["1,2,3-Propanetriol", "Aqua"]);
+    assert.deepEqual(TokenizerService.split("1,2-Hexanediol, Aqua"), ["1,2-Hexanediol", "Aqua"]);
   });
 });

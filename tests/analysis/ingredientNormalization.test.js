@@ -4,8 +4,8 @@
 // Repository'nin normalizeKey sözleşmesi ile AnalysisService.resolveToken çözümleme zinciri
 // birlikte doğrulanır. Gerçek MongoDB veya ağ kullanılmaz; repository sahtelenir.
 //
-// NOT: normalizeKey'in Türkçe noktasız "ı" harfini tamamen düşürmesi gerçek bir hatadır
-// ("Çay Ağacı" -> "cay agac"); doğru davranış varsayılarak test edilmemiş, PR'da raporlanmıştır.
+// Dosyanın sonundaki "Düzeltilen Hatalar" bölümü, bu PR'da giderilen Türkçe
+// normalizasyon hatasının regresyon testlerini içerir.
 const { test, describe } = require("node:test");
 const assert = require("node:assert/strict");
 const MongoIngredientRepository = require("../../src/modules/analysis/infrastructure/repositories/MongoIngredientRepository");
@@ -245,5 +245,57 @@ describe("Eş Ad Eşleştirme: Farklı Yazımlar Aynı Analiz Sonucunu Vermeli",
     assert.equal(unmatched.inciName, "MYSTERY COMPOUND");
     assert.equal(unmatched.badges, null);
     assert.deepEqual(result.unknown, ["Mystery Compound"]);
+  });
+});
+
+describe("Bileşen Normalizasyonu: Düzeltilen Hatalar (Regresyon)", () => {
+  test("Türkçe noktasız 'ı' harfi düşürülmeyip 'i' olarak normalize edilmeli", () => {
+    // NFD ayrıştırması "ı" (U+0131) harfini çözmediği için eskiden tamamen siliniyordu:
+    // "Çay Ağacı" -> "cay agac". Böylece ASCII karşılığıyla eşleşmiyordu.
+    assert.equal(normalizeKey("Çay Ağacı"), "cay agaci");
+    assert.equal(normalizeKey("Çay Ağacı"), normalizeKey("Cay Agaci"));
+  });
+
+  test("Noktalı 'İ' ve noktasız 'ı' aynı ASCII harfe inmeli", () => {
+    assert.equal(normalizeKey("İzopropil"), "izopropil");
+    assert.equal(normalizeKey("Isıtıcı"), "isitici");
+    assert.equal(normalizeKey("IŞILTI"), normalizeKey("isilti"));
+  });
+
+  test("Türkçe karakterli bileşen adı ASCII yazımıyla aynı anahtara inmeli", () => {
+    const pairs = [
+      ["Çay Ağacı Yağı", "Cay Agaci Yagi"],
+      ["Üzüm Çekirdeği Yağı", "Uzum Cekirdegi Yagi"],
+      ["Şeker Kamışı Özü", "Seker Kamisi Ozu"],
+      ["Çörek Otu Yağı", "Corek Otu Yagi"]
+    ];
+
+    for (const [turkish, ascii] of pairs) {
+      assert.equal(normalizeKey(turkish), normalizeKey(ascii), `${turkish} ≠ ${ascii}`);
+    }
+  });
+
+  test("Türkçe adlı bileşen ASCII yazımıyla sözlükte bulunabilmeli", async () => {
+    const repository = createFakeRepository([new Ingredient({ inciName: "CAY AGACI YAGI" })]);
+    const service = new AnalysisService(repository);
+
+    const turkish = await service.resolveToken("Çay Ağacı Yağı");
+
+    assert.equal(turkish.method, "exact");
+    assert.equal(turkish.ingredient.inciName, "CAY AGACI YAGI");
+  });
+
+  test("Diğer Türkçe harflerin normalizasyonu bozulmamalı", () => {
+    assert.equal(normalizeKey("Ğ"), "g");
+    assert.equal(normalizeKey("Şeker"), "seker");
+    assert.equal(normalizeKey("Çay"), "cay");
+    assert.equal(normalizeKey("Ürea"), "urea");
+    assert.equal(normalizeKey("Öz"), "oz");
+  });
+
+  test("Metin olmayan girdi normalizasyonda çökmemeli", () => {
+    assert.equal(normalizeKey(123), "123");
+    assert.equal(normalizeKey(0), "");
+    assert.equal(normalizeKey(false), "");
   });
 });

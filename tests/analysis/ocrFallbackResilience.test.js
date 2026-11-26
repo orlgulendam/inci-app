@@ -459,3 +459,47 @@ describe("OCR Dayanıklılığı: Controller Katmanı", () => {
     assert.match(forwarded.message, /erişilemez/);
   });
 });
+
+describe("OCR Dayanıklılığı: Düzeltilen Hatalar (Regresyon)", () => {
+  test("Aynı istekte başarısız olan sağlayıcı ikinci kez denenmemeli", async (t) => {
+    // provider=groq iken Groq düşüp Gemini de düşerse yedek blok eskiden Groq'u
+    // tekrar çağırıyordu: tek istek için üç API çağrısı.
+    withProvider(t, "groq");
+    const requested = [];
+    t.mock.method(global, "fetch", async (url) => {
+      requested.push(isGeminiUrl(url) ? "gemini" : "groq");
+      return httpError(500);
+    });
+
+    const result = await dualProviderService().extractIngredientsFromImage({ base64Data: uniqueImage() });
+
+    assert.deepEqual(requested, ["groq", "gemini"], "her sağlayıcı en çok bir kez denenmeli");
+    assert.equal(requested.filter((p) => p === "groq").length, 1, "Groq'a boşa ikinci çağrı yapılmamalı");
+    assertDegraded(result);
+  });
+
+  test("Groq henüz denenmediyse Gemini hatasından sonra yedek olarak çalışmalı", async (t) => {
+    // Tekrar engelinin gerçek yedeklemeyi kapatmadığı doğrulanır.
+    withProvider(t, "gemini");
+    const requested = [];
+    t.mock.method(global, "fetch", async (url) => {
+      requested.push(isGeminiUrl(url) ? "gemini" : "groq");
+      if (isGeminiUrl(url)) return httpError(500);
+      return groqOk({ ingredientsText: "Aqua, Glycerin", confidence: "HIGH" });
+    });
+
+    const result = await dualProviderService().extractIngredientsFromImage({ base64Data: uniqueImage() });
+
+    assert.deepEqual(requested, ["gemini", "groq"]);
+    assert.equal(result.ingredientsText, "Aqua, Glycerin");
+  });
+
+  test("Her iki sağlayıcı da düştüğünde toplam istek sayısı ikiyi aşmamalı", async (t) => {
+    withProvider(t, "gemini");
+    const fetchMock = t.mock.method(global, "fetch", async () => httpError(503));
+
+    await dualProviderService().extractIngredientsFromImage({ base64Data: uniqueImage() });
+
+    assert.equal(fetchMock.mock.callCount(), 2, "sağlayıcı sayısı kadar istek atılmalı");
+  });
+});
