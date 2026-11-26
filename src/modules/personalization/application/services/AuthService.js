@@ -6,6 +6,13 @@ const config = require("../../../../core/config/env");
 const { ValidationError, UnauthorizedError, ConflictError, NotFoundError } = require("../../../../core/errors/AppError");
 const User = require("../../domain/entities/User");
 
+// GUVENLIK: Dogrulama ve sifre sifirlama belirtecleri yalnizca uretim DISI
+// ortamlarda HTTP yanitinda doner. Uretimde yanitla donmesi, e-posta
+// adresini bilen herkesin hesabi ele gecirmesine izin veriyordu.
+function exposeTokensInResponse() {
+  return !config.isProduction;
+}
+
 class AuthService {
   constructor(userRepository) {
     this.userRepository = userRepository;
@@ -49,7 +56,8 @@ class AuthService {
       lastName: user.lastName,
       role: user.role,
       isEmailVerified: user.isEmailVerified,
-      verificationToken // Dev/Test ortamında kolay doğrulama için döner
+      // Yalnızca üretim dışı ortamda döner (bkz. exposeTokensInResponse)
+      ...(exposeTokensInResponse() ? { verificationToken } : {})
     };
   }
 
@@ -146,7 +154,7 @@ class AuthService {
 
     return {
       message: "Yeni e-posta doğrulama linki gönderildi.",
-      verificationToken: newToken
+      ...(exposeTokensInResponse() ? { verificationToken: newToken } : {})
     };
   }
 
@@ -169,7 +177,7 @@ class AuthService {
 
     return {
       message: "Şifre sıfırlama talebiniz alındı. Kayıtlı e-posta adresinize talimatlar iletildi.",
-      resetToken // Dev/Test ortamı için
+      ...(exposeTokensInResponse() ? { resetToken } : {})
     };
   }
 
