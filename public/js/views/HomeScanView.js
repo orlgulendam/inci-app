@@ -9,8 +9,11 @@ import { CardFactory } from "../components/CardFactory.js";
 import { toast } from "../components/Toast.js";
 
 export class HomeScanView {
-  constructor(container) {
+  constructor(container, onNavigate = null) {
     this.container = container;
+    this.onNavigate = typeof onNavigate === "function"
+      ? onNavigate
+      : (view) => { window.location.hash = `#${view}`; };
     this.isCameraModalOpen = false;
   }
 

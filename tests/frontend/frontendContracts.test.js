@@ -42,3 +42,11 @@ test("Toast: cagrilan her toast.<tur> metodu ToastManager icinde tanimli olmali"
 
   assert.ok(cagrilanTurler.has("warning"), "toast.warning kullanimi beklenmeli (gerileme korumasi)");
 });
+
+test("HomeScanView yonlendirme geri cagrisi ile olusturulmali", () => {
+  const appSource = readJs("app.js");
+  assert.ok(
+    /new HomeScanView\(\s*this\.mainContainer\s*,/.test(appSource),
+    "HomeScanView'e onNavigate parametresi verilmeli; aksi halde misafir giris butonu patlar"
+  );
+});

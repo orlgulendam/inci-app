@@ -66,7 +66,10 @@ class Application {
 
     switch (viewName) {
       case "home":
-        this.currentViewInstance = new HomeScanView(this.mainContainer);
+        // onNavigate verilmediginde misafir guvenlik kartindaki
+        // "Giris Yap / Cilt Profili Olustur" butonu
+        // "this.onNavigate is not a function" ile patliyordu.
+        this.currentViewInstance = new HomeScanView(this.mainContainer, (v) => this.navigate(v));
         this.currentViewInstance.render();
         break;
       case "auth":
