@@ -19,7 +19,15 @@ class MongoIngredientRepository extends IIngredientRepository {
   // Normalizasyon fonksiyonu (karakter temizleme ve küçük harfe çekme)
   static normalizeKey(name) {
     if (!name) return "";
-    return name.toLowerCase()
+    // Türkçe noktasız "ı" (U+0131) ve noktalı "İ" (U+0130) bağımsız harflerdir; NFD
+    // ayrıştırması bunları "i + birleşik nokta" biçimine çevirmediği için [^a-z0-9]
+    // adımında tamamen siliniyordu ("Çay Ağacı" -> "cay agac"). Sonuçta "ı" içeren
+    // Türkçe adlar ASCII karşılıklarıyla eşleşmiyordu; diğer Türkçe harfler (ğ, ü, ö,
+    // ş, ç) NFD üzerinden doğru çalıştığı için normalizasyon tutarsızdı.
+    return String(name)
+      .replace(/\u0131/g, "i")
+      .replace(/\u0130/g, "I")
+      .toLowerCase()
       .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
       .replace(/[^a-z0-9]+/g, " ").trim();
   }
