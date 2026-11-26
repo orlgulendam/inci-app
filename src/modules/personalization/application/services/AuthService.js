@@ -11,7 +11,7 @@ class AuthService {
     this.userRepository = userRepository;
   }
 
-  async register({ email, password, firstName = null, lastName = null, role = "user" }) {
+  async register({ email, password, firstName = null, lastName = null }) {
     if (!email || !email.includes("@")) {
       throw new ValidationError("Geçerli bir e-posta adresi gereklidir.");
     }
@@ -35,7 +35,8 @@ class AuthService {
       passwordHash,
       firstName,
       lastName,
-      role,
+      // Rol her zaman "user"; yukseltme yalnizca operasyon tarafindan yapilir.
+      role: "user",
       isEmailVerified: false,
       emailVerificationToken: verificationToken
     });

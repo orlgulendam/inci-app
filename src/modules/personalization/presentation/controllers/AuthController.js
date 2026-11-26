@@ -6,8 +6,10 @@ class AuthController {
 
   register = async (req, res, next) => {
     try {
-      const { email, password, firstName, lastName, role } = req.body;
-      const result = await this.authService.register({ email, password, firstName, lastName, role });
+      // GUVENLIK: `role` istemciden KABUL EDILMEZ. Aksi halde herkes
+      // {"role":"admin"} gondererek yonetici hesabi acabiliyordu.
+      const { email, password, firstName, lastName } = req.body;
+      const result = await this.authService.register({ email, password, firstName, lastName });
       return res.status(201).json({
         success: true,
         data: result
