@@ -29,14 +29,20 @@ class MongoContributionRepository extends IContributionRepository {
   }
 
   async findById(id, session = null) {
+    // Hata YUTULMAZ. Onceden her istisna null'a cevriliyordu; MongoDB standalone
+    // calisirken islem (transaction) desteklenmedigi icin olusan
+    // "Transaction numbers are only allowed on a replica set member or mongos"
+    // hatasi "katki bulunamadi" (404) olarak gorunuyor ve onay akisinin neden
+    // hic calismadigi anlasilamiyordu.
+    const query = ObjectId.isValid(id) ? { _id: new ObjectId(id) } : { _id: id };
+    const options = session ? { session } : {};
+
     try {
-      const query = ObjectId.isValid(id) ? { _id: new ObjectId(id) } : { _id: id };
-      const options = session ? { session } : {};
       const doc = await this.collection.findOne(query, options);
       return MongoContributionRepository.toDomain(doc);
     } catch (err) {
       logger.error(`Error finding contribution: ${id}`, { error: err.message });
-      return null;
+      throw err;
     }
   }
 
