@@ -9,13 +9,14 @@ function initializeCommunityModule({
   catalogFacade = null,
   personalizationFacade = null,
   authMiddleware = null,
+  adminMiddleware = null,
   contributionRepository = null,
   transactionRunner = null
 } = {}) {
   const repo = contributionRepository || new MongoContributionRepository();
   const service = new ContributionService(repo, catalogFacade, personalizationFacade, transactionRunner);
   const controller = new ContributionController(service);
-  const router = createCommunityRoutes(controller, authMiddleware);
+  const router = createCommunityRoutes(controller, authMiddleware, adminMiddleware);
   const facade = new CommunityFacade(service);
 
   return {

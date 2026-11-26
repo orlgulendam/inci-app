@@ -96,7 +96,8 @@ const personalizationModule = initializePersonalizationModule({
 const communityModule = initializeCommunityModule({
   catalogFacade: catalogModule.facade,
   personalizationFacade: personalizationModule.facade,
-  authMiddleware: personalizationModule.authMiddleware
+  authMiddleware: personalizationModule.authMiddleware,
+  adminMiddleware: personalizationModule.adminMiddleware
 });
 
 app.locals.analysisFacade = analysisModule.facade;

@@ -77,6 +77,7 @@ function initializePersonalizationModule({
     adminService,
     chatService,
     authMiddleware,
+    adminMiddleware,
     router,
     facade
   };
