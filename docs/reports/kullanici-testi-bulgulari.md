@@ -10,15 +10,38 @@
 
 ## Özet
 
-| Ciddiyet | Adet | Düzeltildi | Kullanıcı kararı bekliyor |
+| Ciddiyet | Adet | Düzeltildi | Açık kaldı |
 |---|---|---|---|
-| Engelleyici | 6 | 6 | 0 |
-| Yüksek | 7 | 7 | 0 |
-| Orta | 14 | 9 | 5 |
-| Düşük | 6 | 2 | 4 |
-| **Toplam** | **33** | **24** | **9** |
+| Engelleyici | 6 | 5 | 1 (B-06: yayın öncesi yapılandırma kararı) |
+| Yüksek | 7 | 6 | 1 (Y-07: kalıcı çözümü mimari karar; hata artık doğru raporlanıyor) |
+| Orta | 14 | 2 | 12 |
+| Düşük | 6 | 0 | 6 |
+| **Toplam** | **33** | **13** | **20** |
 
 Ayrıca tarayıcıda çalıştırılamayan Capacitor/Android tarafı için 7 risk maddesi ayrı başlıkta toplandı.
+
+## Bu oturumda düzeltilenler
+
+Hepsi `fix/kullanici-testi-bulgulari` dalında, her biri ayrı commit olarak; her
+düzeltme tarayıcıda yeniden denenerek doğrulandı ve mümkün olanlara `tests/`
+altına gerileme testi eklendi (toplam test sayısı 98 → 120, tamamı geçiyor).
+
+| Bulgu | Commit konusu |
+|---|---|
+| B-01 | Kayıtta `role` alanı yok sayılıyor |
+| B-02, B-03 | Belirteçler yalnızca üretim dışı ortamda yanıtta dönüyor |
+| B-04, O-05 | Moderasyon ve hata bildirimi uç noktaları yetkilendirildi |
+| B-05 | Yönetici listesi alan beyaz listesinden geçiyor |
+| Y-01 | `toast.warning` eklendi |
+| Y-02 | Misafir giriş butonu çalışıyor |
+| Y-03 | Ağ hatası artık "barkod kayıtlı değil" denmiyor |
+| Y-04, Y-05 | Profil geri yükleme (cilt tipi, alerjen, hedef, dermatolog notu) |
+| Y-06 | XSS kaçışlama (`escapeHtml` / `safeUrl`) |
+| Y-07 (kısmi) | Katkı deposu hatayı yutmuyor, gerçek sebep görünüyor |
+| O-01 | İş kuralı hataları 500 yerine 400 ve anlamlı mesaj |
+
+**Açık kalan orta/düşük bulgular** (O-02, O-03, O-04, O-06 – O-14, D-01 – D-06)
+raporda yazıldığı gibi duruyor; hiçbirine dokunulmadı.
 
 ---
 
