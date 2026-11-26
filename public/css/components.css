@@ -376,6 +376,7 @@
 .toast-success { background: var(--color-success); color: #fff; }
 .toast-error { background: var(--color-danger); color: #fff; }
 .toast-info { background: var(--color-primary-800); color: #fff; }
+.toast-warning { background: #b45309; color: #fff; }
 
 @keyframes slideInUp {
   from { transform: translateY(100%); opacity: 0; }

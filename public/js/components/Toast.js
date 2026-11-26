@@ -51,6 +51,10 @@ class ToastManager {
   success(msg) { this.show(msg, "success"); }
   error(msg) { this.show(msg, "error", 5000); }
   info(msg) { this.show(msg, "info"); }
+  // Kod tabaninda 8 yerden cagriliyordu ama tanimli degildi; her cagri
+  // "toast.warning is not a function" ile patlayip misafir katki/dolap/hata
+  // bildir butonlarini ve OCR geri bildirimini tamamen olduruyordu.
+  warning(msg) { this.show(msg, "warning", 5000); }
 }
 
 export const toast = new ToastManager();
