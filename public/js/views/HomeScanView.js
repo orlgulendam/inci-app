@@ -7,6 +7,7 @@ import { routineService } from "../services/routineService.js";
 import { store } from "../state/store.js";
 import { CardFactory } from "../components/CardFactory.js";
 import { toast } from "../components/Toast.js";
+import { escapeHtml, safeUrl } from "../utils/escapeHtml.js";
 
 export class HomeScanView {
   constructor(container, onNavigate = null) {
@@ -161,7 +162,7 @@ export class HomeScanView {
       }
 
       searchDropdown.style.display = "block";
-      searchDropdown.innerHTML = `<div style="padding: 10px; font-size: 12px; color: var(--color-text-muted); text-align: center;">Aranıyor: '${q}'...</div>`;
+      searchDropdown.innerHTML = `<div style="padding: 10px; font-size: 12px; color: var(--color-text-muted); text-align: center;">Aranıyor: '${escapeHtml(q)}'...</div>`;
 
       try {
         const results = await scanService.searchProducts(q, 8);
@@ -169,7 +170,7 @@ export class HomeScanView {
         if (!results || results.length === 0) {
           searchDropdown.innerHTML = `
             <div style="padding: 12px; font-size: 12px; color: var(--color-text-muted); text-align: center;">
-              '${q}' ile eşleşen ürün bulunamadı.<br/>
+              '${escapeHtml(q)}' ile eşleşen ürün bulunamadı.<br/>
               <span style="font-size: 11px; color: var(--color-primary);">Tüpün arkasındaki barkodu okutarak veya içerik metnini girerek analiz edebilirsiniz.</span>
             </div>
           `;
@@ -188,8 +189,8 @@ export class HomeScanView {
 
           itemEl.innerHTML = `
             <div style="flex: 1; padding-right: 8px;">
-              <strong style="color: var(--color-primary-dark); font-size: 13px;">${pName}</strong>
-              <div style="font-size: 11px; color: var(--color-text-muted);">${pBrand}</div>
+              <strong style="color: var(--color-primary-dark); font-size: 13px;">${escapeHtml(pName)}</strong>
+              <div style="font-size: 11px; color: var(--color-text-muted);">${escapeHtml(pBrand)}</div>
             </div>
             <button type="button" class="btn btn-sm btn-outline" style="font-size: 11px; padding: 4px 8px;">Seç & Analiz Et ➔</button>
           `;
@@ -209,7 +210,7 @@ export class HomeScanView {
           searchDropdown.appendChild(itemEl);
         });
       } catch (err) {
-        searchDropdown.innerHTML = `<div style="padding: 10px; font-size: 12px; color: var(--color-danger); text-align: center;">Arama hatası: ${err.message}</div>`;
+        searchDropdown.innerHTML = `<div style="padding: 10px; font-size: 12px; color: var(--color-danger); text-align: center;">Arama hatası: ${escapeHtml(err.message)}</div>`;
       }
     };
 
@@ -537,7 +538,7 @@ export class HomeScanView {
     const badgeText = [detectedCategory || bestItem.category, detectedShade].filter(Boolean).join(" • ");
 
     const bestImgHtml = bestImg
-      ? `<img src="${bestImg}" alt="${bestName}" style="width: 64px; height: 64px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--color-border); flex-shrink: 0;" onerror="this.onerror=null; this.src='/assets/mascot/inci_mascot_shell.jpg';" />`
+      ? `<img src="${safeUrl(bestImg)}" alt="${escapeHtml(bestName)}" style="width: 64px; height: 64px; object-fit: cover; border-radius: var(--radius-md); border: 1px solid var(--color-border); flex-shrink: 0;" onerror="this.onerror=null; this.src='/assets/mascot/inci_mascot_shell.jpg';" />`
       : `<div style="width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: #fee2e2; border-radius: var(--radius-md); font-size: 2rem; flex-shrink: 0;">🧴</div>`;
 
     confirmCard.innerHTML = `
@@ -552,9 +553,9 @@ export class HomeScanView {
       <div style="display: flex; align-items: center; justify-content: flex-start; gap: 14px; background: #ffffff; padding: 12px 16px; border-radius: var(--radius-md); border: 1px solid var(--color-primary-200); margin: 0 auto var(--space-4) auto; max-width: 480px; text-align: left;">
         ${bestImgHtml}
         <div style="flex: 1; min-width: 0;">
-          <div style="font-size: var(--font-size-xs); color: var(--color-primary-600); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${bestBrand}</div>
-          <strong style="color: var(--color-text-main); font-size: var(--font-size-sm); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${bestName}</strong>
-          ${badgeText ? `<div style="margin-top: 4px;"><span class="badge" style="background: var(--color-primary-50); color: var(--color-primary-700); font-size: 10px;">${badgeText}</span></div>` : ""}
+          <div style="font-size: var(--font-size-xs); color: var(--color-primary-600); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">${escapeHtml(bestBrand)}</div>
+          <strong style="color: var(--color-text-main); font-size: var(--font-size-sm); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(bestName)}</strong>
+          ${badgeText ? `<div style="margin-top: 4px;"><span class="badge" style="background: var(--color-primary-50); color: var(--color-primary-700); font-size: 10px;">${escapeHtml(badgeText)}</span></div>` : ""}
         </div>
       </div>
 
@@ -617,15 +618,15 @@ export class HomeScanView {
         const itemImg = item.imageUrl || item.image_front_small_url || item.image_front_url;
 
         const imgHtml = itemImg
-          ? `<img src="${itemImg}" alt="${name}" style="width: 42px; height: 42px; object-fit: cover; border-radius: var(--radius-sm); margin-right: 12px; flex-shrink: 0;" onerror="this.onerror=null; this.src='/assets/mascot/inci_mascot_shell.jpg';" />`
+          ? `<img src="${safeUrl(itemImg)}" alt="${escapeHtml(name)}" style="width: 42px; height: 42px; object-fit: cover; border-radius: var(--radius-sm); margin-right: 12px; flex-shrink: 0;" onerror="this.onerror=null; this.src='/assets/mascot/inci_mascot_shell.jpg';" />`
           : `<div style="width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; background: var(--color-primary-50); border-radius: var(--radius-sm); font-size: 1.3rem; margin-right: 12px; flex-shrink: 0;">💄</div>`;
 
         itemRow.innerHTML = `
           <div style="display: flex; align-items: center; flex: 1; padding-right: 10px;">
             ${imgHtml}
             <div>
-              <strong style="color: var(--color-primary-800); font-size: var(--font-size-sm); display: block;">${name}</strong>
-              <div style="font-size: var(--font-size-xs); color: var(--color-text-muted);">${brand}</div>
+              <strong style="color: var(--color-primary-800); font-size: var(--font-size-sm); display: block;">${escapeHtml(name)}</strong>
+              <div style="font-size: var(--font-size-xs); color: var(--color-text-muted);">${escapeHtml(brand)}</div>
             </div>
           </div>
           <button type="button" class="btn btn-sm btn-primary">Seç & Analiz Et</button>
@@ -673,9 +674,9 @@ export class HomeScanView {
     card.innerHTML = `
       <div style="font-size: 2.8rem; margin-bottom: var(--space-2);">🏷️</div>
       <h3 style="color: var(--color-primary-800); margin-bottom: var(--space-1);">
-        '${detectedBrand} ${detectedName}' Tespit Edildi
+        '${escapeHtml(detectedBrand)} ${escapeHtml(detectedName)}' Tespit Edildi
       </h3>
-      ${badgeText ? `<div style="margin-bottom: var(--space-2);"><span class="badge" style="background: var(--color-primary-50); color: var(--color-primary-700);">${badgeText}</span></div>` : ""}
+      ${badgeText ? `<div style="margin-bottom: var(--space-2);"><span class="badge" style="background: var(--color-primary-50); color: var(--color-primary-700);">${escapeHtml(badgeText)}</span></div>` : ""}
       <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); max-width: 480px; margin: 0 auto var(--space-4) auto; line-height: 1.5;">
         Ürünün ön yüzünü başarıyla tanıdık, ancak bu ürün henüz veritabanımızda kayıtlı değil. 
         Makyaj malzemelerinin kimyasal formül analizi için ambalajın <strong>arka yüzündeki 'Ingredients' kısmını</strong> veya <strong>barkodunu</strong> taratabilirsiniz.
@@ -751,7 +752,7 @@ export class HomeScanView {
       detectedInfo.style.borderRadius = "var(--radius-md)";
       detectedInfo.style.fontSize = "var(--font-size-xs)";
       detectedInfo.style.color = "var(--color-primary-800)";
-      detectedInfo.innerHTML = `🏷️ <strong>Tespit Edilen:</strong> ${ocrResult.detectedBrand || ""} ${ocrResult.detectedProductName || ""}`;
+      detectedInfo.innerHTML = `🏷️ <strong>Tespit Edilen:</strong> ${escapeHtml(ocrResult.detectedBrand || "")} ${escapeHtml(ocrResult.detectedProductName || "")}`;
       modalBody.appendChild(detectedInfo);
     }
 
@@ -994,7 +995,7 @@ export class HomeScanView {
 
       notFoundCard.innerHTML = `
         <div style="font-size: 2.8rem; margin-bottom: var(--space-2);">✨</div>
-        <h3 style="color: var(--color-primary-800); margin-bottom: var(--space-2);">'${barcode}' Barkodu Henüz Kayıtlı Değil</h3>
+        <h3 style="color: var(--color-primary-800); margin-bottom: var(--space-2);">'${escapeHtml(barcode)}' Barkodu Henüz Kayıtlı Değil</h3>
         <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); max-width: 440px; margin: 0 auto var(--space-4) auto;">
           Bu ürünü topluluğumuzda ilk keşfeden sen olabilirsin! Ürünün adını ve içeriklerini sisteme ekle, <strong>50 Puan</strong> kazan.
         </p>
@@ -1302,11 +1303,11 @@ export class HomeScanView {
           </p>
           <div class="form-group">
             <label class="form-label">Ürün Adı *</label>
-            <input type="text" id="vanityProdName" class="form-input" value="${productName || ""}" placeholder="Örn: C Vitamini Serumu" required />
+            <input type="text" id="vanityProdName" class="form-input" value="${escapeHtml(productName)}" placeholder="Örn: C Vitamini Serumu" required />
           </div>
           <div class="form-group">
             <label class="form-label">Marka</label>
-            <input type="text" id="vanityBrandName" class="form-input" value="${brand || ""}" placeholder="Örn: The Ordinary" />
+            <input type="text" id="vanityBrandName" class="form-input" value="${escapeHtml(brand)}" placeholder="Örn: The Ordinary" />
           </div>
           <div class="form-group">
             <label class="form-label">Açılış Tarihi</label>

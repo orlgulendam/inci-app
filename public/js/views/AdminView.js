@@ -1,6 +1,7 @@
 // public/js/views/AdminView.js - Yönetici Paneli Görünümü (SRP & Admin Only)
 import { adminService } from "../services/adminService.js";
 import { toast } from "../components/Toast.js";
+import { escapeHtml } from "../utils/escapeHtml.js";
 
 export class AdminView {
   constructor(container) {
@@ -71,14 +72,14 @@ export class AdminView {
         const res = await adminService.listUsers({ search: this.searchQuery });
         this.renderUsersTable(res.data || []);
       } catch (err) {
-        this.tabContent.innerHTML = `<p style="color:var(--color-danger)">Veri yüklenemedi: ${err.message}</p>`;
+        this.tabContent.innerHTML = `<p style="color:var(--color-danger)">Veri yüklenemedi: ${escapeHtml(err.message)}</p>`;
       }
     } else {
       try {
         const res = await adminService.listScanLogs();
         this.renderScansTable(res.data || []);
       } catch (err) {
-        this.tabContent.innerHTML = `<p style="color:var(--color-danger)">Veri yüklenemedi: ${err.message}</p>`;
+        this.tabContent.innerHTML = `<p style="color:var(--color-danger)">Veri yüklenemedi: ${escapeHtml(err.message)}</p>`;
       }
     }
   }
@@ -131,9 +132,9 @@ export class AdminView {
       <tbody>
         ${users.map(u => `
           <tr style="border-bottom: 1px solid var(--color-border-subtle);">
-            <td style="padding: 8px;">${u.firstName || "-"} ${u.lastName || ""}</td>
-            <td style="padding: 8px;">${u.email}</td>
-            <td style="padding: 8px;"><span class="badge ${u.role === 'admin' ? 'badge-danger' : 'badge-info'}">${u.role}</span></td>
+            <td style="padding: 8px;">${escapeHtml(u.firstName || "-")} ${escapeHtml(u.lastName || "")}</td>
+            <td style="padding: 8px;">${escapeHtml(u.email)}</td>
+            <td style="padding: 8px;"><span class="badge ${u.role === 'admin' ? 'badge-danger' : 'badge-info'}">${escapeHtml(u.role)}</span></td>
             <td style="padding: 8px;">${u.isEmailVerified ? '✅ Doğrulanmış' : '⏳ Bekliyor'}</td>
             <td style="padding: 8px;">${u.points || 0}</td>
           </tr>
@@ -168,9 +169,9 @@ export class AdminView {
       <tbody>
         ${scans.map(s => `
           <tr style="border-bottom: 1px solid var(--color-border-subtle);">
-            <td style="padding: 8px; font-family:monospace;">${s.barcode}</td>
+            <td style="padding: 8px; font-family:monospace;">${escapeHtml(s.barcode)}</td>
             <td style="padding: 8px;">%${s.compatibilityScore || 0}</td>
-            <td style="padding: 8px; font-size:11px; color:#64748b;">${s.userId || "Anonim"}</td>
+            <td style="padding: 8px; font-size:11px; color:#64748b;">${escapeHtml(s.userId || "Anonim")}</td>
             <td style="padding: 8px;">${new Date(s.scannedAt).toLocaleString("tr-TR")}</td>
           </tr>
         `).join("")}

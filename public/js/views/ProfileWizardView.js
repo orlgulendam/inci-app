@@ -5,6 +5,7 @@ import { store } from "../state/store.js";
 import { toast } from "../components/Toast.js";
 import { OysterChestModal } from "../components/OysterChestModal.js";
 import { ShareCardModal } from "../components/ShareCardModal.js";
+import { escapeHtml } from "../utils/escapeHtml.js";
 
 // Backend cilt tipini İngilizce domain sabiti olarak saklar ("dry"), arayüz çipleri
 // ise Türkçe kimlik kullanır ("kuru"). Ters eşleme olmadan kaydedilmiş cilt tipi
@@ -407,11 +408,11 @@ export class ProfileWizardView {
     nameGrid.innerHTML = `
       <div class="form-group">
         <label class="form-label">Adınız</label>
-        <input type="text" id="profFirst" class="form-input" value="${this.profileData.firstName || ""}" />
+        <input type="text" id="profFirst" class="form-input" value="${escapeHtml(this.profileData.firstName)}" />
       </div>
       <div class="form-group">
         <label class="form-label">Soyadınız</label>
-        <input type="text" id="profLast" class="form-input" value="${this.profileData.lastName || ""}" />
+        <input type="text" id="profLast" class="form-input" value="${escapeHtml(this.profileData.lastName)}" />
       </div>
     `;
     nameGrid.querySelector("#profFirst").oninput = (e) => this.profileData.firstName = e.target.value;
@@ -617,7 +618,7 @@ export class ProfileWizardView {
     dermGroup.className = "form-group";
     dermGroup.innerHTML = `
       <label class="form-label">Dermatoloğunuzun Verdiği Tavsiyeler & Notlar</label>
-      <textarea id="dermNotes" class="form-textarea" placeholder="Örn: 15 Ekim 2026 muayenesi: Cilt bariyeri zayıf, kimyasal peelinglerden kaçınılmalı, seramid bazlı ürünler tercih edilmeli.">${this.profileData.dermatologistNotes || ""}</textarea>
+      <textarea id="dermNotes" class="form-textarea" placeholder="Örn: 15 Ekim 2026 muayenesi: Cilt bariyeri zayıf, kimyasal peelinglerden kaçınılmalı, seramid bazlı ürünler tercih edilmeli.">${escapeHtml(this.profileData.dermatologistNotes)}</textarea>
       <span class="form-hint">KVKK Güvencesi: Bu notlar hiçbir zaman yapay zeka sağlayıcılarına veya dış servislere gönderilmez; yalnızca sizin profilinizde güvenle saklanır.</span>
     `;
     dermGroup.querySelector("#dermNotes").oninput = (e) => {
@@ -819,7 +820,7 @@ export class ProfileWizardView {
         routineBox.appendChild(fullDayCelebration);
       }
     } catch (err) {
-      routineBox.innerHTML = `<p style="color: var(--color-danger);">Rutin bilgisi yüklenemedi: ${err.message}</p>`;
+      routineBox.innerHTML = `<p style="color: var(--color-danger);">Rutin bilgisi yüklenemedi: ${escapeHtml(err.message)}</p>`;
     }
   }
 
@@ -922,13 +923,13 @@ export class ProfileWizardView {
 
           itemCard.innerHTML = `
             <div style="flex: 1; padding-right: 12px;">
-              <div style="font-weight: 700; font-size: 14px; color: var(--color-text);">${item.name}</div>
+              <div style="font-weight: 700; font-size: 14px; color: var(--color-text);">${escapeHtml(item.name)}</div>
               <div style="font-size: 11px; color: var(--color-text-muted); margin: 2px 0;">
-                ${item.brand ? `<strong>${item.brand}</strong> • ` : ''}Açılış: ${openDateFormatted} (${item.paoMonths} Ay PAO)
+                ${item.brand ? `<strong>${escapeHtml(item.brand)}</strong> • ` : ''}Açılış: ${openDateFormatted} (${item.paoMonths} Ay PAO)
               </div>
               <div style="display: flex; align-items: center; gap: 8px; margin-top: 6px;">
                 <span class="badge ${isExpired ? 'badge-danger' : (isWarning ? 'badge-warning' : 'badge-success')}" style="font-size: 10px;">
-                  ${item.statusTextTr}
+                  ${escapeHtml(item.statusTextTr)}
                 </span>
                 <span style="font-size: 11px; font-weight: 600; color: ${isExpired ? '#B91C1C' : '#4B5563'};">
                   ${isExpired ? 'Süresi Doldu!' : `${item.daysRemaining} Gün Kaldı`}
@@ -958,7 +959,7 @@ export class ProfileWizardView {
         vanityBox.appendChild(grid);
       }
     } catch (err) {
-      vanityBox.innerHTML = `<p style="color: var(--color-danger);">Dolap bilgisi yüklenemedi: ${err.message}</p>`;
+      vanityBox.innerHTML = `<p style="color: var(--color-danger);">Dolap bilgisi yüklenemedi: ${escapeHtml(err.message)}</p>`;
     }
   }
 
