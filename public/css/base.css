@@ -125,6 +125,11 @@ body {
   text-align: center;
   font-size: var(--font-size-sm);
   color: var(--color-text-subtle);
+  /* Alt navigasyon sabit (64px) ve .app-footer, alt boşluğu tanımlı olan
+     .app-container'ın DIŞINDA. Bu boşluk olmadan alt bilginin son ~82 pikseli
+     menünün arkasında kalıyor ve daha fazla kaydırılamıyordu; tıbbi sorumluluk
+     reddi metninin sonu ile telif satırı hiç okunamıyordu. */
+  padding-bottom: calc(var(--space-6) + 80px + env(safe-area-inset-bottom, 0px));
 }
 
 .footer-disclaimer {
