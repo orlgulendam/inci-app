@@ -17,11 +17,16 @@ class ChatService {
     }
 
     // 1. Kullanıcı Profili ve Gizlilik Filtresi (KVKK)
-    let safeProfile = { skinType: "normal", conditions: [], allergicIngredients: [], targetedBenefits: [] };
+    // Profili OLMAYAN kullanici icin uydurma bir profil gonderilmez.
+    // Onceden sabit { skinType: "normal", allergicIngredients: [] } gonderiliyordu;
+    // AI bunu kullanicinin gercek profili sanip misafire "Normal cilt tipine
+    // sahip oldugunuz ve alerjiniz olmadigi icin..." diyordu. Alerjisi olan bir
+    // kullanicinin "alerjiniz yok" cumlesine guvenmesi gercek bir risk.
+    let safeProfile = { hasProfile: false, skinType: null, conditions: [], allergicIngredients: [], targetedBenefits: [] };
     if (userId) {
       const user = await this.userRepository.findById(userId);
       if (user && user.skinProfile) {
-        safeProfile = AiPrivacyGuard.sanitizeForAi(user.skinProfile);
+        safeProfile = { ...AiPrivacyGuard.sanitizeForAi(user.skinProfile), hasProfile: true };
       }
     }
 

@@ -4,7 +4,8 @@ const IAiProvider = require("./IAiProvider");
 
 class MockFallbackAiProvider extends IAiProvider {
   async generateChatResponse({ message, safeProfile, ingredients = [], isRateLimited = false }) {
-    const skinType = safeProfile.skinType || "karma";
+    // Profil yoksa cilt tipi uydurulmaz (bkz. ChatService.hasProfile)
+    const skinType = (safeProfile && safeProfile.hasProfile && safeProfile.skinType) || null;
     const allergic = safeProfile.allergicIngredients || [];
     const lowerMsg = (message || "").toLowerCase();
 
@@ -41,7 +42,9 @@ class MockFallbackAiProvider extends IAiProvider {
       suggestions.push("Bu ürün gözeneklerimi tıkar mı?", "Salisilik asit oranı kaç olmalıdır?");
     } else {
       verdict = "BILGI";
-      reply = `Cilt profiliniz (${skinType} cilt tipi) doğrultusunda ürün içeriklerini değerlendirdik. Formülasyon genel olarak standart kozmetik tolerans sınırları içerisindedir. Ancak yeni bir ürüne başlarken daima çene veya kol iç yüzeyinde 24 saatlik yama testi yapılması tavsiye edilir.`;
+      reply = skinType
+        ? `Cilt profiliniz (${skinType} cilt tipi) doğrultusunda ürün içeriklerini değerlendirdik. Formülasyon genel olarak standart kozmetik tolerans sınırları içerisindedir. Ancak yeni bir ürüne başlarken daima çene veya kol iç yüzeyinde 24 saatlik yama testi yapılması tavsiye edilir.`
+        : `Ürün içeriklerini genel kozmetik standartları açısından değerlendirdik; formülasyon standart tolerans sınırları içerisindedir. Cilt tipinize ve alerjenlerinize özel bir değerlendirme için cilt profilinizi oluşturmanız gerekir. Yeni bir ürüne başlarken daima çene veya kol iç yüzeyinde 24 saatlik yama testi yapılması tavsiye edilir.`;
       suggestions.push("Bu ürünün cilt bariyerime etkisi nedir?", "Hangi sıklıkla kullanmalıyım?");
     }
 

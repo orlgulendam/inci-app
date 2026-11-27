@@ -20,10 +20,12 @@ class GeminiFlashProvider extends IAiProvider {
     const hasIngredients = ingredients && ingredients.length > 0;
     const systemInstruction = `Sen uzman bir kozmetik içerik (INCI), makyaj ve dermokozmetik danışmanısın (skinbyinci yapay zeka asistanı).
 Kullanıcının cilt profili:
-- Cilt Tipi: ${safeProfile.skinType || "Normal"}
+${safeProfile && safeProfile.hasProfile
+  ? `- Cilt Tipi: ${safeProfile.skinType || "Belirtilmemiş"}
 - Cilt Durumları/Hassasiyetleri: ${safeProfile.conditions?.join(", ") || "Yok"}
 - Alerjen Olduğu İçerikler: ${safeProfile.allergicIngredients?.join(", ") || "Yok"}
-- Hedeflediği Cilt Etkileri: ${safeProfile.targetedBenefits?.join(", ") || "Genel bakım"}
+- Hedeflediği Cilt Etkileri: ${safeProfile.targetedBenefits?.join(", ") || "Genel bakım"}`
+  : "KAYITLI CİLT PROFİLİ YOK. Kullanıcının cilt tipini, alerjenlerini veya hassasiyetlerini BİLMİYORSUN; bunlar hakkında asla varsayımda bulunma ve 'cildiniz normal', 'alerjiniz yok' gibi ifadeler KULLANMA. Genel bilgi ver ve kişiye özel değerlendirme için cilt profili oluşturmasını öner."}
 ${hasIngredients ? `İncelenen Ürün İçerik Listesi (INCI): ${ingredients.join(", ")}` : "Şu an belirli bir ürün incelenmiyor; kullanıcı doğrudan sohbet ediyor veya genel bir soru soruyor."}
 
 KURALLAR:
