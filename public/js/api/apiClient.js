@@ -87,9 +87,16 @@ class ApiClient {
       // Mobilde bunun en sık nedeni yanlış API adresi veya engellenen cleartext isteğidir;
       // çıplak "Failed to fetch" mesajı teşhis için yetersiz kalıyordu.
       if (err instanceof TypeError) {
+        // Kullanıcıya sade bir mesaj gösterilir; teknik ayrıntı yalnızca
+        // konsola yazılır. Önceden son kullanıcıya "js/config.js içindeki
+        // adresin bu cihazdan erişilebilir olduğunu doğrulayın" deniyordu.
+        console.warn(
+          `[apiClient] Sunucuya ulaşılamadı (${this.baseUrl || "aynı köken"}${endpoint}). ` +
+          "Sunucunun çalıştığını ve js/config.js içindeki adresin bu cihazdan erişilebilir olduğunu doğrulayın.",
+          err
+        );
         const networkError = new Error(
-          `API sunucusuna ulaşılamadı (${this.baseUrl || "aynı köken"}). ` +
-          "Sunucunun çalıştığını ve js/config.js içindeki adresin bu cihazdan erişilebilir olduğunu doğrulayın."
+          "İnternet bağlantısı kurulamadı. Lütfen bağlantınızı kontrol edip tekrar deneyin."
         );
         networkError.code = "NETWORK_UNREACHABLE";
         networkError.cause = err;
