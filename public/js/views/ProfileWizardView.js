@@ -103,14 +103,23 @@ export class ProfileWizardView {
     this.render();
   }
 
+  /**
+   * Tamamlanma yüzdesi, backend'deki SkinProfile.calculateCompletionPercentage
+   * ile BİREBİR aynı ağırlıkları kullanır.
+   *
+   * Önceden arayüzün kendi ağırlıkları vardı (ad +15, cilt tipi +25, "alerjim
+   * yok" seçilince +15 ...). Hiçbir şey doldurmamış yeni bir kullanıcıda arayüz
+   * %65 gösterirken backend %20 diyordu. "%100 doldur, +30 İnci kazan" vaadi
+   * backend'in sayısına göre işlediği için kullanıcı arayüzde %100 görüp ödül
+   * alamayabiliyordu. İki hesap artık ayrışamaz.
+   */
   calculateCompletion() {
-    let score = 0;
-    if (this.profileData.firstName) score += 15;
-    if (this.profileData.skinType) score += 25;
-    if (this.profileData.targetedBenefits.length > 0) score += 20;
-    if (this.profileData.allergicIngredients.length > 0 || !this.profileData.hasAllergy) score += 15;
+    let score = 20; // cilt tipi her zaman bir değere sahip
+    if (this.profileData.conditions.length > 0) score += 20;
+    if (this.profileData.allergicIngredients.length > 0) score += 15;
+    if (this.profileData.targetedBenefits.length > 0) score += 15;
     if (this.profileData.frequentlyUsedProducts.length > 0) score += 15;
-    if (this.profileData.dermatologistNotes || this.profileData.routineMedications.length > 0) score += 10;
+    if (this.profileData.routineMedications.length > 0 || this.profileData.dermatologistNotes) score += 15;
     return Math.min(100, score);
   }
 
