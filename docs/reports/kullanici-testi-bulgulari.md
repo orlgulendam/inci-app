@@ -14,34 +14,45 @@
 |---|---|---|---|
 | Engelleyici | 6 | 5 | 1 (B-06: yayın öncesi yapılandırma kararı) |
 | Yüksek | 7 | 6 | 1 (Y-07: kalıcı çözümü mimari karar; hata artık doğru raporlanıyor) |
-| Orta | 14 | 2 | 12 |
-| Düşük | 6 | 0 | 6 |
-| **Toplam** | **33** | **13** | **20** |
+| Orta | 14 | 8 | 6 |
+| Düşük | 7 | 1 | 6 |
+| **Toplam** | **34** | **20** | **14** |
 
 Ayrıca tarayıcıda çalıştırılamayan Capacitor/Android tarafı için 7 risk maddesi ayrı başlıkta toplandı.
 
 ## Bu oturumda düzeltilenler
 
-Hepsi `fix/kullanici-testi-bulgulari` dalında, her biri ayrı commit olarak; her
-düzeltme tarayıcıda yeniden denenerek doğrulandı ve mümkün olanlara `tests/`
-altına gerileme testi eklendi (toplam test sayısı 98 → 120, tamamı geçiyor).
+Hepsi `fix/kullanici-testi-bulgulari` dalında, her biri ayrı commit olarak.
+**Her düzeltme, raporda yazan tekrar adımları tarayıcıda yeniden yürütülerek
+doğrulandı**; mümkün olanlara `tests/` altına gerileme testi eklendi
+(toplam test sayısı 98 → 133, tamamı geçiyor).
 
-| Bulgu | Commit konusu |
-|---|---|
-| B-01 | Kayıtta `role` alanı yok sayılıyor |
-| B-02, B-03 | Belirteçler yalnızca üretim dışı ortamda yanıtta dönüyor |
-| B-04, O-05 | Moderasyon ve hata bildirimi uç noktaları yetkilendirildi |
-| B-05 | Yönetici listesi alan beyaz listesinden geçiyor |
-| Y-01 | `toast.warning` eklendi |
-| Y-02 | Misafir giriş butonu çalışıyor |
-| Y-03 | Ağ hatası artık "barkod kayıtlı değil" denmiyor |
-| Y-04, Y-05 | Profil geri yükleme (cilt tipi, alerjen, hedef, dermatolog notu) |
-| Y-06 | XSS kaçışlama (`escapeHtml` / `safeUrl`) |
-| Y-07 (kısmi) | Katkı deposu hatayı yutmuyor, gerçek sebep görünüyor |
-| O-01 | İş kuralı hataları 500 yerine 400 ve anlamlı mesaj |
+| Bulgu | Ne düzeltildi | Tarayıcıda doğrulandı |
+|---|---|---|
+| B-01 | Kayıtta `role` alanı yok sayılıyor | API ile (arayüzde karşılığı yok) |
+| B-02, B-03 | Belirteçler yalnızca üretim dışı ortamda yanıtta dönüyor | API ile |
+| B-04, O-05 | Moderasyon ve hata bildirimi uç noktaları yetkilendirildi | API ile (401/403 doğrulandı) |
+| B-05 | Yönetici listesi alan beyaz listesinden geçiyor | API ile |
+| Y-01 | `toast.warning` eklendi | ✅ Misafir "Bu Ürünü Sisteme Ekle" artık uyarı gösteriyor |
+| Y-02 | Misafir giriş butonu çalışıyor | ✅ Butona basınca `#auth` ekranı açılıyor |
+| Y-03 | Ağ hatası artık "barkod kayıtlı değil" denmiyor | ✅ Ulaşılamaz sunucuda hata kartı, 404'te katkı kartı |
+| Y-04, Y-05 | Profil geri yükleme (cilt tipi, alerjen, hedef, dermatolog notu) | ✅ Üç çip grubu seçili geliyor, not metni bozulmadan dönüyor |
+| Y-06 | XSS kaçışlama (`escapeHtml` / `safeUrl`) | ✅ `<img onerror>` yükü düz metin olarak gösteriliyor, çalışmıyor |
+| Y-07 (kısmi) | Katkı deposu hatayı yutmuyor, gerçek sebep görünüyor | Sunucu logu ile |
+| O-01 | İş kuralı hataları 500 yerine 400 ve anlamlı mesaj | API ile (3 uç nokta) |
+| O-02 | Tamamlanma yüzdesi backend ile aynı formülden | ✅ Yeni hesapta arayüz %20, backend %20 |
+| O-03 | Misafire uydurma cilt profili atfedilmiyor | ✅ Gerçek Groq yanıtı artık cilt tipi iddia etmiyor |
+| O-04 | Story kartı gerçek dolap verisini gösteriyor | ✅ 65 puan / 0 taze / "1 Ürünün Süresi Dolmuş" + "Kuru Cilt" |
+| O-06 | 10 MB üstü gövde 413, bozuk JSON 400 | API ile |
+| O-07 | Sohbet rozeti gerçek sağlayıcıyı gösteriyor | ✅ "AI Asistan" → yanıt sonrası "Groq" |
+| O-08 | Ağ hatası mesajı sadeleştirildi | ✅ "İnternet bağlantısı kurulamadı..." |
+| O-09 | Alt bilgi artık menünün arkasında kalmıyor | ✅ Telif satırı tamamen görünür (708px < 748px) |
+| O-11 | Üretimde varsayılan JWT anahtarıyla açılış engellendi | Birim testi ile |
+| D-06 | Tekrar tamamlanan rutinde "+0 İnci" denmiyor | Kod + API davranışı ile |
 
-**Açık kalan orta/düşük bulgular** (O-02, O-03, O-04, O-06 – O-14, D-01 – D-06)
-raporda yazıldığı gibi duruyor; hiçbirine dokunulmadı.
+**Açık kalan bulgular** (B-06, Y-07'nin kalıcı çözümü, O-10, O-12, O-13, O-14,
+D-01 – D-05, D-07) raporda yazıldığı gibi duruyor; hiçbirine dokunulmadı.
+Gerekçeleri bölüm 5'te.
 
 ---
 
@@ -576,6 +587,23 @@ Backend `PUT /api/v1/personalization/routine` ile sabah/akşam ürün listesi ka
 ## D-06 — İkinci kez tamamlanan rutinde "+0 İnci kazandınız" mesajı
 Sunucu doğru davranıyor (`ALREADY_COMPLETED`, 0 puan) ama arayüz yine de `+${pointsAwarded} İnci kazandınız!` diyor → "+0 İnci kazandınız!".
 **Çözüm:** `status === "ALREADY_COMPLETED"` durumunda farklı mesaj göster.
+
+## D-07 — Sayfa yenilendiğinde kullanıcı her zaman ana sayfaya düşüyor
+
+- **Ciddiyet:** Düşük
+- **Nerede:** `public/js/app.js:37-38` (`init()`)
+
+**Tekrar adımları**
+1. Giriş yapın ve Profil sekmesine gidin (adres `#profile` olur).
+2. Sayfayı yenileyin (telefonda: uygulamayı kapatıp açın).
+
+**Beklenen:** Profil ekranında kalınması.
+**Gerçekleşen:** `init()` adres çubuğundaki hash'i hiç okumadan koşulsuz
+`this.navigate("home")` çağırıyor; kullanıcı her yenilemede ana sayfaya düşüyor.
+Paylaşılan bir `#profile` / `#chat` bağlantısı da hedefine gitmiyor.
+
+**Önerilen çözüm:** `init()` içinde başlangıç görünümünü
+`window.location.hash.replace("#", "") || "home"` ile belirle.
 
 ---
 
