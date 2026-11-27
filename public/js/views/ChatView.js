@@ -32,7 +32,7 @@ export class ChatView {
           <span class="form-hint" style="color:var(--color-success); font-weight:600;">● Çevrimiçi</span>
         </div>
       </div>
-      <span class="badge badge-info">Gemini Flash</span>
+      <span class="badge badge-info" id="aiProviderBadge">AI Asistan</span>
     `;
     card.appendChild(header);
 
@@ -123,6 +123,26 @@ export class ChatView {
     this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
   }
 
+  /**
+   * Yanıtta dönen sağlayıcı kimliğini okunabilir bir etikete çevirir.
+   * Rozet sabit "Gemini Flash" yazıyordu; yapılandırma Groq kullanırken ve
+   * yedek kural motoruna düşüldüğünde bile aynı etiket görünüyordu.
+   * @param {string} provider örnek: "groq:openai/gpt-oss-120b"
+   */
+  updateProviderBadge(provider) {
+    const badge = document.getElementById("aiProviderBadge");
+    if (!badge || !provider) return;
+
+    const kaynak = String(provider).split(":")[0].toLowerCase();
+    const etiketler = {
+      groq: "Groq",
+      gemini: "Gemini Flash",
+      mock: "Uzman Kural Motoru",
+      fallback: "Uzman Kural Motoru"
+    };
+    badge.textContent = etiketler[kaynak] || "AI Asistan";
+  }
+
   async handleSend() {
     const text = this.inputField.value.trim();
     if (!text || this.isTyping) return;
@@ -144,6 +164,7 @@ export class ChatView {
         text: res.reply,
         suggestions: res.suggestions || []
       });
+      this.updateProviderBadge(res.provider);
       this.renderMessages();
     } catch (err) {
       this.isTyping = false;
