@@ -1,6 +1,8 @@
 // src/core/config/env.js - Ortam Değişkenleri ve Konfigürasyon Yöneticisi
 require("dotenv").config();
 
+const INSECURE_JWT_SECRET = "default_dev_secret_replace_in_prod";
+
 const config = {
   env: process.env.NODE_ENV || "development",
   isProduction: process.env.NODE_ENV === "production",
@@ -10,7 +12,7 @@ const config = {
     dbName: process.env.MONGO_DB_NAME || "obf"
   },
   security: {
-    jwtSecret: process.env.JWT_SECRET || "default_dev_secret_replace_in_prod",
+    jwtSecret: process.env.JWT_SECRET || INSECURE_JWT_SECRET,
     rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS, 10) || 15 * 60 * 1000,
     rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX, 10) || 100
   },
@@ -32,5 +34,16 @@ const config = {
   }
 };
 
+// Uretimde guvensiz varsayilan anahtarla calismak, saldirganin istedigi
+// kullanici/rol icin gecerli JWT uretebilmesi demektir. Bu durumda uygulama
+// sessizce calismak yerine acilista durur.
+if (config.isProduction && config.security.jwtSecret === INSECURE_JWT_SECRET) {
+  throw new Error(
+    "Guvenlik: Uretim ortaminda JWT_SECRET tanimlanmalidir. " +
+    "Varsayilan gelistirme anahtari ile uretimde calisilamaz."
+  );
+}
+
 module.exports = config;
+module.exports.INSECURE_JWT_SECRET = INSECURE_JWT_SECRET;
 
