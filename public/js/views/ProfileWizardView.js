@@ -802,7 +802,13 @@ export class ProfileWizardView {
         try {
           const result = await routineService.completeRoutineStep("morning");
           const r = result.data;
-          toast.success(`☀️ Sabah Rutini Tamamlandı! +${r.pointsAwarded} İnci kazandınız!`);
+          // Sunucu ayni gun ikinci istekte ALREADY_COMPLETED ve 0 puan doner;
+          // arayuz yine de "+0 Inci kazandiniz!" diyordu.
+          if (r.status === "ALREADY_COMPLETED") {
+            toast.info("☀️ Sabah rutininizi bugün zaten tamamlamıştınız.");
+          } else {
+            toast.success(`☀️ Sabah Rutini Tamamlandı! +${r.pointsAwarded} İnci kazandınız!`);
+          }
           this.userPoints = r.points;
           this.render();
         } catch (err) {
@@ -842,7 +848,11 @@ export class ProfileWizardView {
           const result = await routineService.completeRoutineStep("evening");
           const r = result.data;
           const bonusMsg = r.bothCompletedBonus ? " 🌟 Hem sabah hem akşam tamamlandığı için +2 ekstra bonus eklendi!" : "";
-          toast.success(`🌙 Akşam Rutini Tamamlandı! +${r.pointsAwarded} İnci kazandınız!${bonusMsg}`);
+          if (r.status === "ALREADY_COMPLETED") {
+            toast.info("🌙 Akşam rutininizi bugün zaten tamamlamıştınız.");
+          } else {
+            toast.success(`🌙 Akşam Rutini Tamamlandı! +${r.pointsAwarded} İnci kazandınız!${bonusMsg}`);
+          }
           this.userPoints = r.points;
           this.render();
         } catch (err) {
