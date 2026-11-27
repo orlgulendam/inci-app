@@ -17,11 +17,16 @@ app.use(helmet({
   contentSecurityPolicy: false // Statik HTML arayüzün yerel çalışabilmesi için
 }));
 app.use(cors());
+
+// 2) İzlenebilirlik ve Loglama.
+// Gövde ayrıştırıcılarından ÖNCE çalışmalı: 10 MB sınırını aşan bir istekte
+// hata express.json içinde oluşuyor ve correlationId henüz atanmadığı için
+// yanıtta "unknown" dönüyor, hata izlenemiyordu.
+app.use(correlationIdMiddleware);
+
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
-// 2) İzlenebilirlik ve Loglama
-app.use(correlationIdMiddleware);
 app.use(requestLogger);
 
 // 3) Statik Dosyalar (PWA / Web UI)

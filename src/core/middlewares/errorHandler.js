@@ -25,6 +25,34 @@ function errorHandler(err, req, res, next) {
     });
   }
 
+  // Gövde ayrıştırma hataları (express.json).
+  // Bunlar AppError değil, ama kullanıcı hatası: 500 "beklenmeyen hata" demek
+  // yanıltıcı. 10 MB sınırını aşan bir ambalaj fotoğrafı gönderen kullanıcıya
+  // "Sunucuda beklenmeyen bir hata meydana geldi" gösteriliyordu.
+  if (err && err.type === "entity.too.large") {
+    logger.warn("Request body too large", { correlationId, url: req.originalUrl, limit: err.limit });
+    return res.status(413).json({
+      success: false,
+      error: {
+        code: "PAYLOAD_TOO_LARGE",
+        message: "Gönderdiğiniz görsel veya veri çok büyük. Lütfen daha düşük çözünürlüklü bir fotoğraf ile tekrar deneyin.",
+        correlationId
+      }
+    });
+  }
+
+  if (err && (err.type === "entity.parse.failed" || err instanceof SyntaxError && "body" in err)) {
+    logger.warn("Request body parse failed", { correlationId, url: req.originalUrl });
+    return res.status(400).json({
+      success: false,
+      error: {
+        code: "INVALID_JSON",
+        message: "İstek gövdesi geçerli bir JSON değil.",
+        correlationId
+      }
+    });
+  }
+
   // Beklenmeyen sistem / sunucu hatası (500)
   logger.error(`Unhandled Exception: ${err.message}`, {
     correlationId,
