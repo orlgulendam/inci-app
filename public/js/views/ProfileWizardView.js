@@ -10,6 +10,16 @@ import { escapeHtml } from "../utils/escapeHtml.js";
 // Backend cilt tipini İngilizce domain sabiti olarak saklar ("dry"), arayüz çipleri
 // ise Türkçe kimlik kullanır ("kuru"). Ters eşleme olmadan kaydedilmiş cilt tipi
 // profile dönüldüğünde hiçbir çip seçili görünmüyordu.
+// Paylaşım kartı gibi kullanıcıya/dışarıya görünen yerlerde Türkçe etiket gerekir;
+// arayüz kimliği ("kuru") ya da domain sabiti ("dry") gösterilmemeli.
+const UI_SKIN_TYPE_LABEL = {
+  kuru: "Kuru Cilt",
+  yagli: "Yağlı Cilt",
+  karma: "Karma Cilt",
+  normal: "Normal Cilt",
+  hassas: "Hassas Cilt"
+};
+
 const BACKEND_TO_UI_SKIN_TYPE = {
   dry: "kuru",
   oily: "yagli",
@@ -248,16 +258,34 @@ export class ProfileWizardView {
 
     const shareStoryBtn = gamificationBanner.querySelector("#btnShareStory");
     if (shareStoryBtn) {
-      shareStoryBtn.onclick = () => {
+      shareStoryBtn.onclick = async () => {
         const name = this.profileData.firstName ? `${this.profileData.firstName} ${this.profileData.lastName || ""}` : "İnci Kaşifi";
+
+        // Güvenlik skoru ve dolap sayıları SABİT yazılıydı (92 puan, 4 taze,
+        // 0 süresi geçmiş). Kart sosyal medyada paylaşılmak üzere üretiliyor;
+        // uygulama kullanıcı adına gerçek olmayan bilgi yayıyordu. Artık
+        // gerçek dolap verisi çekilir.
+        let safetyScore = 0;
+        let freshCount = 0;
+        let expiredCount = 0;
+        try {
+          const vanity = await routineService.getVanity();
+          const skor = vanity?.data?.safetyScore || {};
+          safetyScore = skor.score ?? 0;
+          freshCount = skor.freshCount ?? 0;
+          expiredCount = skor.expiredCount ?? 0;
+        } catch (err) {
+          console.warn("Dolap verisi alınamadı:", err.message);
+        }
+
         new ShareCardModal().show({
           userName: name.trim(),
-          skinType: this.profileData.skinType || "Karma Cilt",
+          skinType: UI_SKIN_TYPE_LABEL[this.profileData.skinType] || "Cilt Tipi Belirtilmemiş",
           streakCount: this.streakCount,
           points: this.userPoints,
-          safetyScore: 92,
-          freshCount: 4,
-          expiredCount: 0
+          safetyScore,
+          freshCount,
+          expiredCount
         });
       };
     }
